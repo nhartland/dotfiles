@@ -1,13 +1,10 @@
 set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-
 execute pathogen#infect()
 
 " syntax highlights
 syntax enable
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme fu 
 
 " tabs
 set tabstop=4
