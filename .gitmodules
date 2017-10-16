@@ -1,0 +1,12 @@
+[submodule ".vim/autoload/pathogen.vim"]
+	path = .vim/autoload/pathogen.vim
+	url = https://github.com/tpope/vim-pathogen
+[submodule ".vim/bundle/ale"]
+	path = .vim/bundle/ale
+	url = https://github.com/w0rp/ale
+[submodule ".vim/bundle/vim-colors-solarized"]
+	path = .vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized
+[submodule ".vim/bundle/lightline.vim"]
+	path = .vim/bundle/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
