@@ -1,3 +1,6 @@
+set nocompatible
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
 execute pathogen#infect()
 
 " syntax highlights
@@ -28,6 +31,7 @@ set incsearch
 " General
 set autoindent
 set autoread
+set showcmd
 filetype plugin indent on
 
 " move by vertical line
