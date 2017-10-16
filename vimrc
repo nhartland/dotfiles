@@ -4,7 +4,7 @@ execute pathogen#infect()
 
 " syntax highlights
 syntax enable
-colorscheme fu 
+colorscheme jellybeans 
 
 " tabs
 set tabstop=4
