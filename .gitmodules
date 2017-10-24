@@ -1,8 +1,8 @@
 [submodule ".vim/bundle/ale"]
-	path = vim/bundle/ale
+	path = vim/pack/plugins/start/ale
 	url = https://github.com/w0rp/ale
 [submodule ".vim/bundle/lightline.vim"]
-	path = vim/bundle/lightline.vim
+	path = vim/pack/plugins/start/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
 [submodule "dotbot"]
 	path = dotbot
@@ -10,3 +10,6 @@
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen
+[submodule "vim/pack/plugins/start/LaTeX-Box"]
+	path = vim/pack/plugins/start/LaTeX-Box
+	url = https://github.com/LaTeX-Box-Team/LaTeX-Box
