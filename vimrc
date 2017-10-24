@@ -17,6 +17,7 @@ set number
 set showcmd
 set cursorline
 set wildmenu
+set wildmode=full
 set lazyredraw
 set showmatch
 set ruler
@@ -26,6 +27,8 @@ set incsearch
 "set hlsearch
 
 " General
+set esckeys
+set autowrite
 set autoindent
 set autoread
 set showcmd
@@ -41,3 +44,7 @@ set laststatus=2
 " ale
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
