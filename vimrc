@@ -35,7 +35,7 @@ set ruler
 
 " Search
 set incsearch
-"set hlsearch
+set hlsearch
 
 " Backups
 set backup
