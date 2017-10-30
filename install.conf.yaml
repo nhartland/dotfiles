@@ -7,6 +7,7 @@
 - link:
     ~/.vim:
     ~/.vimrc:
-
+    ~/.gitignore:
+    ~/.gitconfig:
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

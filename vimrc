@@ -15,6 +15,12 @@ set expandtab
 autocmd FileType gitcommit  setlocal spell spelllang=en_gb
 autocmd FileType markdown   setlocal spell spelllang=en_gb
 autocmd FileType tex        setlocal spell spelllang=en_gb
+" Regenerate spl file if needed
+for d in glob('~/.vim/spell/*.add', 1, 1)
+    if filereadable(d) && (!filereadable(d . '.spl') || getftime(d) > getftime(d . '.spl'))
+        exec 'mkspell! ' . fnameescape(d)
+    endif
+endfor
 
 " UI
 set number
@@ -30,6 +36,13 @@ set ruler
 " Search
 set incsearch
 "set hlsearch
+
+" Backups
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
 
 " General
 set esckeys
