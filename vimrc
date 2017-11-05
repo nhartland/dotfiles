@@ -11,6 +11,9 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 
+" Automatically compile tex files on write
+autocmd BufWritePost *.tex !pdflatex <afile>
+
 " Spelling
 autocmd FileType gitcommit  setlocal spell spelllang=en_gb
 autocmd FileType markdown   setlocal spell spelllang=en_gb
@@ -35,7 +38,8 @@ set ruler
 
 " Search
 set incsearch
-set hlsearch
+"set hlsearch
+set smartcase
 
 " Backups
 set backup
