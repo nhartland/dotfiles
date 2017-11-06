@@ -30,6 +30,7 @@ set number
 "set relativenumber
 set showcmd
 set cursorline
+set path+=** " Recursive find searched subdirectories
 set wildmenu
 set wildmode=full
 set lazyredraw
@@ -39,7 +40,7 @@ set ruler
 " Search
 set incsearch
 "set hlsearch
-set smartcase
+set smartcase " Search is case sensitive only when a capital letter is present in the search string
 
 " Backups
 set backup
@@ -59,6 +60,16 @@ filetype plugin indent on
 " move by vertical line
 nnoremap j gj
 nnoremap k gk
+
+" disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
 
 " lightline
 set laststatus=2
