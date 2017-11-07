@@ -4,6 +4,7 @@ execute pathogen#infect()
 
 " syntax highlights
 syntax enable
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown " Identify .md as markdown
 colorscheme jellybeans 
 
 " tabs
