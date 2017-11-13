@@ -4,7 +4,6 @@ execute pathogen#infect()
 
 " syntax highlights
 syntax enable
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown " Identify .md as markdown
 colorscheme jellybeans 
 
 " tabs
@@ -16,15 +15,28 @@ set expandtab
 autocmd BufWritePost *.tex !pdflatex <afile>
 
 " Spelling
-autocmd FileType gitcommit  setlocal spell spelllang=en_gb
-autocmd FileType markdown   setlocal spell spelllang=en_gb
-autocmd FileType tex        setlocal spell spelllang=en_gb
 " Regenerate spl file if needed
 for d in glob('~/.vim/spell/*.add', 1, 1)
     if filereadable(d) && (!filereadable(d . '.spl') || getftime(d) > getftime(d . '.spl'))
         exec 'mkspell! ' . fnameescape(d)
     endif
 endfor
+
+" Writing mode
+function! Writing()
+  setlocal spell spelllang=en_gb textwidth=80 softtabstop=4 tabstop=4 shiftwidth=4
+  " Don't count acronyms/ abbreviations as spelling errors.
+  syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
+  " Don't count url-ish things as spelling errors
+  syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
+  " highlight double words ("word word")
+  syn match doubleWord "\c\<\(\a\+\)\_s\+\1\>"
+  hi def link doubleWord Error
+endfunction
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown " Identify .md as markdown
+autocmd FileType gitcommit  call Writing() 
+autocmd FileType markdown   call Writing()
+autocmd FileType tex        call Writing()
 
 " UI
 set number
@@ -33,7 +45,7 @@ set showcmd
 set cursorline
 set path+=** " Recursive find searched subdirectories
 set wildmenu
-set wildmode=full
+set wildmode=list:longest,full
 set lazyredraw
 set showmatch
 set ruler
@@ -41,6 +53,7 @@ set ruler
 " Search
 set incsearch
 "set hlsearch
+set ignorecase
 set smartcase " Search is case sensitive only when a capital letter is present in the search string
 
 " Backups
@@ -53,10 +66,16 @@ set writebackup
 " General
 set esckeys
 set autowrite
-set autoindent
+set autoindent " not sure about this one
 set autoread
 set showcmd
 filetype plugin indent on
+set undolevels=1000 " max number of undo levels
+set visualbell
+
+" Split buffers open to right and below
+set splitbelow
+set splitright
 
 " move by vertical line
 nnoremap j gj
