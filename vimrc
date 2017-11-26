@@ -4,12 +4,16 @@ execute pathogen#infect()
 
 " syntax highlights
 syntax enable
-colorscheme jellybeans 
+colorscheme blaquemagick
+" colorscheme jellybeans 
 
 " tabs
 set tabstop=4
 set softtabstop=4
 set expandtab
+
+" Personal wiki
+let g:wiki = { 'root' : '~/wiki' }
 
 " Automatically compile tex files on write
 autocmd BufWritePost *.tex !pdflatex <afile>
@@ -24,7 +28,10 @@ endfor
 
 " Writing mode
 function! Writing()
-  setlocal spell spelllang=en_gb textwidth=80 softtabstop=4 tabstop=4 shiftwidth=4
+  setlocal spell spelllang=en_gb 
+  setlocal wrap linebreak
+  setlocal softtabstop=4 tabstop=4 shiftwidth=4
+  setlocal textwidth=80 wrapmargin=2
   " Don't count acronyms/ abbreviations as spelling errors.
   syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
   " Don't count url-ish things as spelling errors
@@ -36,6 +43,7 @@ endfunction
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown " Identify .md as markdown
 autocmd FileType gitcommit  call Writing() 
 autocmd FileType markdown   call Writing()
+autocmd FileType wiki       call Writing()
 autocmd FileType tex        call Writing()
 
 " UI
