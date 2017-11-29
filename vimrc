@@ -4,19 +4,18 @@ execute pathogen#infect()
 
 " syntax highlights
 syntax enable
-colorscheme blaquemagick
-" colorscheme jellybeans 
+"colorscheme blaquemagick
+colorscheme jellybeans 
 
 " tabs
+set smartindent
 set tabstop=4
+set shiftwidth=4
 set softtabstop=4
 set expandtab
 
 " Personal wiki
 let g:wiki = { 'root' : '~/wiki' }
-
-" Automatically compile tex files on write
-autocmd BufWritePost *.tex !pdflatex <afile>
 
 " Spelling
 " Regenerate spl file if needed
