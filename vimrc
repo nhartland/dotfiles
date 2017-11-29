@@ -14,9 +14,6 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" Personal wiki
-let g:wiki = { 'root' : '~/wiki' }
-
 " Spelling
 " Regenerate spl file if needed
 for d in glob('~/.vim/spell/*.add', 1, 1)

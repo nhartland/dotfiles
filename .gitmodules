@@ -13,6 +13,3 @@
 [submodule "vim/pack/plugins/start/vimtex"]
 	path = vim/pack/plugins/start/vimtex
 	url = https://github.com/lervag/vimtex.git
-[submodule "vim/pack/plugins/start/wiki"]
-	path = vim/pack/plugins/start/wiki
-	url = https://github.com/lervag/wiki.git
