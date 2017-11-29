@@ -1,8 +1,6 @@
 [user]
 	name = Nathan Hartland
 	email = n.p.hartland@vu.nl
-[push]
-	default = simple
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
