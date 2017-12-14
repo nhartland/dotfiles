@@ -4,8 +4,10 @@ execute pathogen#infect()
 
 " syntax highlights
 syntax enable
-"colorscheme blaquemagick
+" Currently need to enable jellybeans first, as it adds sensible SpellCheck
+" error formatting. Need to fix this
 colorscheme jellybeans 
+colorscheme Tomorrow-Night-Bright
 
 " tabs
 set smartindent
