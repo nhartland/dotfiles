@@ -14,6 +14,10 @@ colorscheme Tomorrow-Night-Bright
 au InsertEnter * hi Normal ctermbg=234 guibg=#000000
 au InsertLeave * hi Normal ctermbg=232 guibg=#1b1d1e
 
+" Mapping time-outs, specifically to speed up pressing Esc
+set timeoutlen=1000 
+set ttimeoutlen=10
+
 " tabs
 set smartindent
 set tabstop=4
