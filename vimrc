@@ -9,6 +9,11 @@ syntax enable
 colorscheme jellybeans 
 colorscheme Tomorrow-Night-Bright
 
+" Highlight background in insert mode
+" https://gist.github.com/igoodrich/5072880
+au InsertEnter * hi Normal ctermbg=234 guibg=#000000
+au InsertLeave * hi Normal ctermbg=232 guibg=#1b1d1e
+
 " tabs
 set smartindent
 set tabstop=4
