@@ -54,7 +54,7 @@ autocmd FileType wiki       call Writing()
 autocmd FileType tex        call Writing()
 
 " Automatically erase end of line whitespace in certain file types
-autocmd FileType c,cpp,lua,md,tex autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd FileType c,cpp,lua,md,tex,python autocmd BufWritePre <buffer> %s/\s\+$//e
 
 " UI
 set number
