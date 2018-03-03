@@ -7,7 +7,7 @@
 - link:
     ~/.vim:
     ~/.vimrc:
-    ~/.pylintrc:
+    ~/.flake8:
     ~/.gitignore:
     ~/.gitconfig:
     ~/.zshrc:

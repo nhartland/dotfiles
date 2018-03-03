@@ -1,0 +1,6 @@
+[flake8]
+# E221: Whitespace before operator (I like to use this to align stuff)
+# E226: Whitespace around arithmetic operator
+# E241: Whitespace after ','
+ignore = E221, E226, E241
+max-line-length = 100

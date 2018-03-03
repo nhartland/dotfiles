@@ -99,6 +99,9 @@ set splitright
 nnoremap j gj
 nnoremap k gk
 
+" ale
+let g:ale_linters = {'python': ['flake8']}
+
 " disable arrow keys
 map <up> <nop>
 map <down> <nop>
@@ -111,10 +114,6 @@ imap <right> <nop>
 
 " lightline
 set laststatus=2
-
-" ale
-"let g:ale_lint_on_text_changed = 'never'
-"let g:ale_lint_on_enter = 0
 
 " netrw
 let g:netrw_banner = 0
