@@ -1,20 +1,20 @@
-#nhartland/dotfiles
+# nhartland/dotfiles
 
-My dotfiles, setup uses:
+My dotfiles, installation via:
 
-- dotbot: anishathalye/dotbot
-- strap: MikeMcQuaid/strap
+- [dotbot](https://github.com/anishathalye/dotbot)
+- [strap](https://github.com/MikeMcQuaid/strap)
 
 which are setup as submodules.
 
-# Installing/updating 
+### Installing/updating 
 
 ```Shell
+# dotbot
 ./install
 # When on macOS
 cd strap && bash bin/strap.sh
 ```
-vim
-###
+### vim
 vim plugins are setup in the vim8 standard way, located at "vim/pack/plugins/"
 for compatibility with vim7, pathogen is used to mirror these plugins.
