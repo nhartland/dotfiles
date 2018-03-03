@@ -8,3 +8,7 @@
 	clean = git-lfs clean -- %f
 [core]
 	excludesfile = ~/.gitignore
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
