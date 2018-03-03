@@ -1,0 +1,84 @@
+#  casks
+tap 'caskroom/homebrew-cask' || true
+cask_args appdir: '/Applications'
+
+cask 'google-chrome'
+cask 'dropbox'
+cask 'flux'
+cask 'spotify'
+cask 'lastpass'
+cask 'db-browser-for-sqlite'
+cask 'love'
+cask 'mactex'
+cask 'macvim'
+cask 'vlc'
+cask 'xquartz'
+
+# vcs
+brew 'git'
+brew 'git-lfs'
+
+# Vis
+brew 'graphicsmagick'
+brew 'imagemagick'
+brew 'graphviz'
+
+brew 'vim', args: ['--with-override-system-vi']
+brew 'enchant'
+
+# shell
+brew 'zsh'
+brew 'zsh-completions'
+
+# search
+brew 'the_silver_searcher'
+
+# lua
+brew 'lua@5.1'
+brew 'luajit'
+
+# python
+brew 'python'
+brew 'cython'
+
+# C/C++/fortran
+brew 'gcc'
+brew 'boost'
+
+# build
+brew 'automake'
+brew 'autoconf'
+brew 'cmake'
+
+# conf
+brew 'libyaml'
+brew 'yaml-cpp'
+brew 'libconfig'
+
+# numerics
+brew 'gsl'
+
+# utils
+brew 'htop'
+brew 'pandoc'
+brew 'swig'
+brew 'cloc'
+brew 'tldr'
+brew 'wget'
+brew 'markdown'
+brew 'pkg-config'
+brew 'libarchive'
+
+# db
+brew 'sqlite'
+
+# physics
+brew 'root'
+tap 'davidchall/homebrew-hep'
+brew "davidchall/hep/lhapdf", args: ['--build-from-source']
+brew "davidchall/hep/applgrid"
+brew "davidchall/hep/hoppet"
+brew "davidchall/hep/mcfm"
+brew "davidchall/hep/rivet"
+brew "nhartland/nnpdf/apfel", args: ["HEAD"]
+brew "nhartland/nnpdf/nnpdf", args: ["HEAD"]
