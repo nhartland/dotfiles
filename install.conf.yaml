@@ -5,14 +5,14 @@
 - clean: ['~']
 
 - link:
-    ~/.vim:
-    ~/.vimrc:
-    ~/.flake8:
-    ~/.gitignore:
-    ~/.gitconfig:
-    ~/.zshrc:
-    ~/.bashrc:
-    ~/.Brewfile:
-    ~/.bash_profile: bashrc
+    ~/.vim: 
+    ~/.vimrc: config/vimrc
+    ~/.flake8: config/flake8
+    ~/.gitignore: config/gitignore
+    ~/.gitconfig: config/gitconfig
+    ~/.zshrc: config/zshrc
+    ~/.bashrc: config/bashrc
+    ~/.Brewfile: config/Brewfile
+    ~/.bash_profile: config/bashrc
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
