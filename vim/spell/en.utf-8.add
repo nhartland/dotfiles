@@ -136,3 +136,7 @@ resummation
 libnnpdf
 validphys2
 conda
+lhapdf
+python3
+startup
+lbatch
