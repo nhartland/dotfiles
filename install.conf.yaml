@@ -12,8 +12,9 @@
     ~/.gitconfig: config/gitconfig
     ~/.zshrc: config/zshrc
     ~/.bashrc: config/bashrc
-    ~/.Brewfile: config/Brewfile
     ~/.bash_profile: config/bashrc
     ~/Library/Preferences/kitty/kitty.conf: config/kitty
+    ~/.chunkwmrc: config/chunkwmrc
+    ~/.Brewfile: config/Brewfile
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
