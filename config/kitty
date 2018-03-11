@@ -12,13 +12,15 @@
 # You can get a list of full family names available on your computer by running
 # kitty list-fonts
 # The default values shown below rely on your OS to choose an appropriate monospace font family.
-font_family      DejaVuSansMono
-italic_font      auto
-bold_font        auto
-bold_italic_font auto
+#font_family      Cousine
+#font_family      DejaVu Sans Mono Book
+font_family      DejaVu Sans Mono Bold
+italic_font      DejaVu Sans Mono Oblique
+bold_font        DejaVu Sans Mono Book
+bold_italic_font DejaVu Sans Mono Bold Oblique
 
 # Font size (in pts)
-font_size        14.0
+font_size        13.0
 
 # The amount the font size is changed by (in pts) when increasing/decreasing
 # the font size in a running terminal.
@@ -151,10 +153,10 @@ sync_to_monitor yes
 
 # Visual bell duration. Flash the screen when a bell occurs for the specified number of
 # seconds. Set to zero to disable.
-visual_bell_duration 0.0
+visual_bell_duration 0.1
 
 # Enable/disable the audio bell. Useful in environments that require silence.
-enable_audio_bell yes
+enable_audio_bell no
 
 # The modifier keys to press when clicking with the mouse on URLs to open the URL
 open_url_modifiers ctrl+shift
@@ -215,37 +217,27 @@ inactive_tab_font_style normal
 # The 16 terminal colors. There are 8 basic colors, each color has a dull and
 # bright version.
 
-# black
-color0   #0E151B
-color8   #23323F
+# Colours from glacier 
+# https://github.com/NSBrianWard/Glacier-Remixes/blob/master/terminal/color_term(linux).sh
 
-# red
-color1   #D7503C
-color9   #F05E33
+# Normal colours
+color1 #D7503C
+color2 #52EAA9
+color3 #FFB454
+color4 #266B85
+color5 #CB253D
+color6 #8996A8
+color7 #FEFEFE
 
-# green
-color2    #52EAA9
-color10   #76FFCD 
-
-# yellow
-color3    #FFB454 
-color11   #FFE792 
-
-# blue
-color4   #266B85 
-color12  #3CADD7
-
-# magenta
-color5   #775759
-color13  #775759
-
-# cyan
-color6   #84edb9
-color14  #84edb9
-
-# white
-color7   #c0b18b
-color15  #d8d8d8
+# Bright colours
+color8 #23323F
+color9 #F05E33
+color10 #76FFCD
+color11 #FFE792
+color12 #3CADD7
+color13 #D73C4D
+color14 #AFC4DB
+color15 #FFFFFF
 
 # Key mapping
 # For a list of key names, see: http://www.glfw.org/docs/latest/group__keys.html
@@ -262,8 +254,8 @@ color15  #d8d8d8
 # this will create a new window and switch to the next available layout
 
 # Clipboard
-map super+v        paste_from_clipboard
-map super+c        copy_to_clipboard
+map super+v             paste_from_clipboard
+map super+c             copy_to_clipboard
 map ctrl+shift+s        paste_from_selection
 map shift+insert        paste_from_selection
 # You can also pass the contents of the current selection to any program using
@@ -408,7 +400,7 @@ macos_hide_titlebar true
 # the macOS native Option+Key = unicode character behavior. This will
 # break any Alt+key keyboard shortcuts in your terminal programs, but you
 # can use the macOS unicode input technique.
-macos_option_as_alt yes
+macos_option_as_alt no
 
 # The number is a percentage of maximum volume.
 # See man XBell for details.
