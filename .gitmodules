@@ -1,9 +1,6 @@
 [submodule ".vim/bundle/ale"]
 	path = vim/pack/plugins/start/ale
 	url = https://github.com/w0rp/ale
-[submodule ".vim/bundle/lightline.vim"]
-	path = vim/pack/plugins/start/lightline.vim
-	url = https://github.com/itchyny/lightline.vim
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
