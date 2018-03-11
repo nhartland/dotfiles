@@ -16,7 +16,7 @@
 #font_family      DejaVu Sans Mono Book
 font_family      DejaVu Sans Mono Bold
 italic_font      DejaVu Sans Mono Oblique
-bold_font        DejaVu Sans Mono Book
+bold_font        DejaVu Sans Mono Bold
 bold_italic_font DejaVu Sans Mono Bold Oblique
 
 # Font size (in pts)
@@ -184,7 +184,7 @@ term xterm-kitty
 window_border_width 1
 
 # The window margin (in pts) (blank area outside the border)
-window_margin_width 0
+window_margin_width 15
 
 # The window padding (in pts) (blank area between the text and the window border)
 window_padding_width 0
@@ -276,9 +276,9 @@ map ctrl+shift+end       scroll_end
 map ctrl+shift+h         show_scrollback
 
 # Window management
+map super+n             new_os_window
+map super+q             close_window
 map ctrl+shift+enter    new_window
-map ctrl+shift+n        new_os_window
-map ctrl+shift+w        close_window
 map ctrl+shift+]        next_window
 map ctrl+shift+[        previous_window
 map ctrl+shift+f        move_window_forward
@@ -336,10 +336,10 @@ map ctrl+shift+,        move_tab_backward
 # Miscellaneous
 map super+equal         increase_font_size
 map super+minus         decrease_font_size
-map ctrl+shift+backspace restore_font_size
-map ctrl+shift+f11      toggle_fullscreen
+map super+f             toggle_fullscreen
 map ctrl+shift+u        input_unicode_character
 map ctrl+shift+f2       edit_config_file
+#map ctrl+shift+backspace restore_font_size
 # Open a currently visible URL using the keyboard. The program used ot open the URL is specified in open_url_with.
 # You can customize how the URLs are detected and opened by specifying command line options to
 # url_hints. For example:
