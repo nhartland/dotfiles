@@ -4,6 +4,7 @@ execute pathogen#infect()
 
 " syntax highlights
 syntax enable
+
 " Currently need to enable jellybeans first, as it adds sensible SpellCheck
 " error formatting. Need to fix this
 colorscheme jellybeans 
@@ -111,9 +112,6 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
-
-" lightline
-set laststatus=2
 
 " netrw
 let g:netrw_banner = 0
