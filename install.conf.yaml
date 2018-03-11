@@ -16,8 +16,6 @@
     ~/.chunkwmrc: config/chunkwmrc
     ~/.Brewfile: config/Brewfile
     ~/Library/Preferences/kitty/kitty.conf: config/kitty
-    ~/.chunkwmrc: config/chunkwmrc
-    ~/.Brewfile: config/Brewfile
 - shell:
-  - [tic -x -o \~/.terminfo terminfo/kitty.terminfo]
+  - [tic -x -o \~/.terminfo terminfo/kitty.terminfo, Installing kitty terminfo]
   - [git submodule update --init --recursive, Installing submodules]
