@@ -13,6 +13,7 @@ cask 'mactex'
 cask 'macvim'
 cask 'vlc'
 cask 'xquartz'
+cask 'kitty'
 
 # vcs
 brew 'git'
