@@ -159,7 +159,7 @@ visual_bell_duration 0.1
 enable_audio_bell no
 
 # The modifier keys to press when clicking with the mouse on URLs to open the URL
-open_url_modifiers ctrl+shift
+open_url_modifiers super 
 
 # The program with which to open URLs that are clicked on. The special value "default" means to
 # use the operating system's default URL handler.
@@ -277,7 +277,7 @@ map ctrl+shift+h         show_scrollback
 
 # Window management
 map super+n             new_os_window
-map super+q             close_window
+map ctrl+shift+q        close_window
 map ctrl+shift+enter    new_window
 map ctrl+shift+]        next_window
 map ctrl+shift+[        previous_window
