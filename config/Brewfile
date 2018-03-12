@@ -27,6 +27,12 @@ brew 'graphviz'
 brew 'vim', args: ['--with-override-system-vi']
 brew 'enchant'
 
+# wm
+tap 'crisidev/homebrew-chunkwm'
+tap 'koekeishiya/formulae'
+brew 'chunkwm', restart_service: :changed
+brew 'koekeishiya/formulae/skhd', restart_service: :changed
+
 # shell
 brew 'zsh'
 brew 'zsh-completions'
@@ -60,6 +66,7 @@ brew 'libconfig'
 brew 'gsl'
 
 # utils
+brew 'exa'
 brew 'htop'
 brew 'pandoc'
 brew 'swig'
