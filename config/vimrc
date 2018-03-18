@@ -26,6 +26,10 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+" vim-gitgutter
+set updatetime=100
+let g:gitgutter_terminal_reports_focus=0
+
 " Spelling
 " Regenerate spl file if needed
 for d in glob('~/.vim/spell/*.add', 1, 1)
