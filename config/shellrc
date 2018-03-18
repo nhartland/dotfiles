@@ -1,5 +1,5 @@
 # Common shell
-
+EDITOR="vim"
 export KITTY_CONFIG_DIRECTORY="~/.config/kitty/"
 export PATH="~/.bin/:$PATH"
 source ~/.common_profile
