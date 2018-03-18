@@ -79,6 +79,7 @@ brew 'wget'
 brew 'markdown'
 brew 'pkg-config'
 brew 'libarchive'
+brew 'lastpass-cli'
 
 # db
 brew 'sqlite'
