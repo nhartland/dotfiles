@@ -9,7 +9,6 @@ ZSH_THEME="Honukai"
 #Timestamp format
 HIST_STAMPS="dd.mm.yyyy"
 
-export PATH="~/.bin/:$PATH"
-source ~/.common_profile
 source $ZSH/oh-my-zsh.sh
+source ~/.shellrc
 
