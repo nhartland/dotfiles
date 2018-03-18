@@ -276,7 +276,8 @@ map ctrl+shift+end       scroll_end
 map ctrl+shift+h         show_scrollback
 
 # Window management
-map super+n             new_os_window
+map super+n             new_os_window_with_cwd
+map super+w             close_window
 map ctrl+shift+q        close_window
 map ctrl+shift+enter    new_window
 map ctrl+shift+]        next_window
