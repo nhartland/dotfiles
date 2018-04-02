@@ -14,6 +14,7 @@ cask 'macvim'
 cask 'vlc'
 cask 'xquartz'
 cask 'kitty'
+cask 'skim'
 
 # vcs
 brew 'git'
