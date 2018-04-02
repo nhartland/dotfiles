@@ -19,6 +19,10 @@ au InsertLeave * hi Normal ctermbg=232 guibg=#1b1d1e
 set timeoutlen=1000 
 set ttimeoutlen=10
 
+" disable ex-mode
+map q: <Nop>
+nnoremap Q <nop>
+
 " tabs
 set smartindent
 set tabstop=4
