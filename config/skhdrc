@@ -33,6 +33,9 @@
 # open terminal, blazingly fast compared to iTerm/Hyper
 cmd - return : open -na /Applications/Kitty.app
 
+# Restart chunkwm
+cmd - backspace : brew services restart chunkwm
+
 # close focused window
 alt - q : chunkc tiling::window --close
 
