@@ -12,7 +12,6 @@
 # You can get a list of full family names available on your computer by running
 # kitty list-fonts
 # The default values shown below rely on your OS to choose an appropriate monospace font family.
-#font_family      Cousine
 #font_family      DejaVu Sans Mono Book
 font_family      DejaVu Sans Mono Bold
 italic_font      DejaVu Sans Mono Oblique
@@ -41,12 +40,6 @@ adjust_column_width 0
 # and very thick lines;
 box_drawing_scale 0.001, 1, 1.5, 2
 
-# The foreground color
-foreground       #dddddd
-
-# The background color
-background       #000000
-
 # The opacity of the background. A number between 0 and 1, where 1 is opaque and 0 is fully transparent.
 # This will only work if supported by the OS (for instance, when using a compositor under X11). Note
 # that it only sets the default background color's opacity. This is so that
@@ -69,9 +62,6 @@ selection_background #FFFACD
 # none, single, double, curly
 url_color #0087BD
 url_style curly
-
-# The cursor color
-cursor           #cccccc
 
 # The cursor shape can be one of (block, beam, underline)
 cursor_shape     block
@@ -219,6 +209,11 @@ inactive_tab_font_style normal
 
 # Colours from glacier 
 # https://github.com/NSBrianWard/Glacier-Remixes/blob/master/terminal/color_term(linux).sh
+
+# Special colours
+cursor           #cccccc
+foreground       #dddddd
+background       #000000
 
 # Normal colours
 color1 #D7503C
