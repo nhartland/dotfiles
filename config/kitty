@@ -14,7 +14,7 @@
 # The default values shown below rely on your OS to choose an appropriate monospace font family.
 #font_family      DejaVu Sans Mono Book
 font_family      DejaVu Sans Mono Bold
-italic_font      DejaVu Sans Mono Oblique
+italic_font      DejaVu Sans Mono Bold Oblique
 bold_font        DejaVu Sans Mono Bold
 bold_italic_font DejaVu Sans Mono Bold Oblique
 
