@@ -37,6 +37,7 @@ brew 'koekeishiya/formulae/skhd', restart_service: :changed
 # shell
 brew 'zsh'
 brew 'zsh-completions'
+brew 'z'
 
 # file browser
 brew 'ranger'
