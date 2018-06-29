@@ -143,7 +143,7 @@ sync_to_monitor yes
 
 # Visual bell duration. Flash the screen when a bell occurs for the specified number of
 # seconds. Set to zero to disable.
-visual_bell_duration 0.1
+visual_bell_duration 0.01
 
 # Enable/disable the audio bell. Useful in environments that require silence.
 enable_audio_bell no
