@@ -1,4 +1,2 @@
-# Ignore vim spl files - these are recomputed in vimrc
-vim/spell/nl.utf-8.add.spl
-vim/spell/en.utf-8.add.spl
+vim/spell
 vim/.netrwhist
