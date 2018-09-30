@@ -65,7 +65,6 @@ brew 'cmake'
 # conf
 brew 'libyaml'
 brew 'yaml-cpp'
-brew 'libconfig'
 
 # numerics
 brew 'gsl'
@@ -84,14 +83,3 @@ brew 'libarchive'
 
 # db
 brew 'sqlite'
-
-# physics
-brew 'root'
-tap 'davidchall/homebrew-hep'
-brew 'davidchall/hep/lhapdf', args: ['--build-from-source']
-brew 'davidchall/hep/applgrid'
-brew 'davidchall/hep/hoppet'
-brew 'davidchall/hep/mcfm'
-brew 'davidchall/hep/rivet'
-brew 'nhartland/nnpdf/apfel', args: ["HEAD"]
-brew 'nhartland/nnpdf/nnpdf', args: ["HEAD"]
