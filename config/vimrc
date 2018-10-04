@@ -62,6 +62,10 @@ autocmd FileType markdown   call Writing()
 autocmd FileType wiki       call Writing()
 autocmd FileType tex        call Writing()
 
+" markdown
+let g:markdown_fenced_languages = ['python']
+let g:markdown_fenced_languages = ['lua']
+
 " Automatically erase end of line whitespace in certain file types
 autocmd FileType c,cpp,lua,md,tex,python autocmd BufWritePre <buffer> %s/\s\+$//e
 
