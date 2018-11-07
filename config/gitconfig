@@ -1,6 +1,6 @@
 [user]
 	name = Nathan Hartland
-	email = n.p.hartland@vu.nl
+	email = nathan@qlouder.com
 [core]
 	excludesfile = ~/.gitignore
 [push]
