@@ -7,7 +7,6 @@ cask 'dropbox'
 cask 'flux'
 cask 'spotify'
 cask 'lastpass'
-cask 'db-browser-for-sqlite'
 cask 'love'
 cask 'mactex'
 cask 'macvim'
@@ -39,6 +38,9 @@ brew 'zsh'
 brew 'zsh-completions'
 brew 'z'
 
+# python
+brew 'flake8'
+
 # file browser
 brew 'ranger'
 
@@ -48,10 +50,6 @@ brew 'the_silver_searcher'
 # lua
 brew 'lua@5.1'
 brew 'luajit'
-
-# python
-brew 'python'
-brew 'cython'
 
 # C/C++/fortran
 brew 'gcc'
@@ -80,6 +78,7 @@ brew 'wget'
 brew 'markdown'
 brew 'pkg-config'
 brew 'libarchive'
+brew 'grip'
 
 # db
 brew 'sqlite'
