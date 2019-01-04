@@ -5,8 +5,8 @@ cask_args appdir: '/Applications'
 cask 'google-chrome'
 cask 'dropbox'
 cask 'flux'
+cask 'steam'
 cask 'spotify'
-cask 'lastpass'
 cask 'love'
 cask 'mactex'
 cask 'macvim'
@@ -41,9 +41,6 @@ brew 'z'
 # python
 brew 'flake8'
 
-# file browser
-brew 'ranger'
-
 # search
 brew 'the_silver_searcher'
 
@@ -71,9 +68,7 @@ brew 'gsl'
 brew 'exa'
 brew 'htop'
 brew 'pandoc'
-brew 'swig'
 brew 'cloc'
-brew 'tldr'
 brew 'wget'
 brew 'markdown'
 brew 'pkg-config'
