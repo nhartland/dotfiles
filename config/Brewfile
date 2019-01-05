@@ -3,7 +3,6 @@ tap 'caskroom/homebrew-cask' || true
 cask_args appdir: '/Applications'
 
 cask 'google-chrome'
-cask 'dropbox'
 cask 'flux'
 cask 'steam'
 cask 'spotify'
