@@ -1,0 +1,10 @@
+import os
+
+ENV_VAR="GRIP_ACCESS"
+def find_password():
+    if ENV_VAR not in os.environ:
+        raise RuntimeError("Cannot find {}, add a GitHub access token to this env var.".format(ENV_VAR))
+    return os.environ[ENV_VAR]
+
+USERNAME = 'nphartland@gmail.com'
+PASSWORD = find_password()
