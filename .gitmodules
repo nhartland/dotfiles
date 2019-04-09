@@ -16,3 +16,6 @@
 [submodule "vim/pack/plugins/start/vim-gitgutter"]
 	path = vim/pack/plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vim/pack/plugins/start/vim-wakatime"]
+	path = vim/pack/plugins/start/vim-wakatime
+	url = git://github.com/wakatime/vim-wakatime.git
