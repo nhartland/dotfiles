@@ -2,4 +2,5 @@
 EDITOR="vim"
 export KITTY_CONFIG_DIRECTORY="~/.config/kitty/"
 export PATH="~/.bin/:$PATH"
+# Local rc
 source ~/.common_profile

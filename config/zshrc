@@ -11,4 +11,3 @@ HIST_STAMPS="dd.mm.yyyy"
 
 source $ZSH/oh-my-zsh.sh
 source ~/.shellrc
-
