@@ -3,7 +3,7 @@ fpath=(~/.zsh $fpath)
 export ZSH=$HOME/.oh-my-zsh
 
 ## Plugins via oh-my-zsh
-plugins=(brew cp osx)
+plugins=(cp osx)
 #Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="Honukai"
 #Timestamp format
