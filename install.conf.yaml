@@ -16,7 +16,7 @@
     ~/.bashrc: config/bashrc
     ~/.bash_profile: config/bashrc
     ~/.skhdrc: config/skhdrc
-    ~/.chunkwmrc: config/chunkwmrc
+    ~/.yabairc: config/yabairc
     ~/.Brewfile: config/Brewfile
     ~/.config/kitty/kitty.conf: config/kitty
     ~/.grip/settings.py: config/grip
