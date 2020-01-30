@@ -13,13 +13,18 @@
 # kitty list-fonts
 # The default values shown below rely on your OS to choose an appropriate monospace font family.
 #font_family      DejaVu Sans Mono Book
-font_family      DejaVu Sans Mono Bold
-italic_font      DejaVu Sans Mono Bold Oblique
+font_family      DejaVu Sans Mono Book
+italic_font      DejaVu Sans Mono Oblique
 bold_font        DejaVu Sans Mono Bold
 bold_italic_font DejaVu Sans Mono Bold Oblique
 
+#font_family      DejaVu Sans Mono Bold
+#italic_font      DejaVu Sans Mono Bold Oblique
+#bold_font        DejaVu Sans Mono Bold
+#bold_italic_font DejaVu Sans Mono Bold Oblique
+
 # Font size (in pts)
-font_size        13.0
+font_size        18.0
 
 # The amount the font size is changed by (in pts) when increasing/decreasing
 # the font size in a running terminal.
