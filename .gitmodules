@@ -16,3 +16,6 @@
 [submodule "vim/pack/plugins/start/vim-gitgutter"]
 	path = vim/pack/plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vim/tabnine"]
+	path = vim/tabnine
+	url = git://github.com/zxqfl/tabnine-vim

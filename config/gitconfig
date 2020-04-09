@@ -1,6 +1,6 @@
 [user]
 	name = Nathan Hartland
-	email = nathan@qlouder.com
+	email = nathan@pseudorandom.dev
 [core]
 	excludesfile = ~/.gitignore
 [push]
@@ -22,3 +22,5 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[credential "https://source.developers.google.com"]
+	helper = gcloud.sh

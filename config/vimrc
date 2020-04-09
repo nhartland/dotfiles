@@ -2,6 +2,9 @@ set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+" tabnine
+set rtp+=~/.vim/tabnine
+
 " syntax highlights
 syntax enable
 
@@ -11,6 +14,10 @@ au BufNewFile,BufRead *.dart set syntax=dart
 " Snakemake syntax highlighting
 au BufNewFile,BufRead Snakefile set syntax=snakemake
 au BufNewFile,BufRead *.snake set syntax=snakemake
+
+" Run Black before saving on all python files
+autocmd BufWritePre *.py execute ':Black'
+
 
 " Currently need to enable jellybeans first, as it adds sensible SpellCheck
 " error formatting. Need to fix this
