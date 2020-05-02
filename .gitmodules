@@ -4,9 +4,6 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "vim/bundle/vim-pathogen"]
-	path = vim/bundle/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen
 [submodule "vim/pack/plugins/start/vimtex"]
 	path = vim/pack/plugins/start/vimtex
 	url = https://github.com/lervag/vimtex.git
