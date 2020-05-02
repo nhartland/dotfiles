@@ -8,6 +8,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plug 'psf/black', { 'branch': 'stable' }
+Plug 'zxqfl/tabnine-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex'
 Plug 'dense-analysis/ale'
