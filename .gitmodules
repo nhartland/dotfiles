@@ -1,12 +1,6 @@
-[submodule ".vim/bundle/ale"]
-	path = vim/pack/plugins/start/ale
-	url = https://github.com/w0rp/ale
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "vim/pack/plugins/start/vimtex"]
-	path = vim/pack/plugins/start/vimtex
-	url = https://github.com/lervag/vimtex.git
 [submodule "strap"]
 	path = strap
 	url = https://github.com/MikeMcQuaid/strap
