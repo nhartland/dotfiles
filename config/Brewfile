@@ -1,5 +1,5 @@
 #  casks
-tap 'caskroom/homebrew-cask' || true
+#tap 'caskroom/homebrew-cask' || true
 cask_args appdir: '/Applications'
 
 cask 'google-chrome'
@@ -7,12 +7,17 @@ cask 'flux'
 cask 'steam'
 cask 'spotify'
 cask 'love'
-cask 'mactex'
-cask 'macvim'
 cask 'vlc'
 cask 'xquartz'
 cask 'kitty'
 cask 'skim'
+cask 'docker'
+cask 'miniconda'
+
+
+# fonts
+tap 'homebrew/cask-fonts'
+#cask 'font-dejavu'
 
 # vcs
 brew 'git'
@@ -27,10 +32,9 @@ brew 'graphviz'
 brew 'vim', args: ['--with-override-system-vi', '--with-client-server']
 
 # wm
-tap 'crisidev/homebrew-chunkwm'
 tap 'koekeishiya/formulae'
-brew 'chunkwm', restart_service: :changed
-brew 'koekeishiya/formulae/skhd', restart_service: :changed
+brew 'yabai', restart_service: :changed
+brew 'skhd', restart_service: :changed
 
 # shell
 brew 'zsh'
@@ -46,12 +50,10 @@ brew 'the_silver_searcher'
 # lua
 brew 'lua@5.1'
 brew 'luajit'
-
-# C/C++/fortran
-brew 'gcc'
-brew 'boost'
+brew 'luarocks'
 
 # build
+brew 'gcc'
 brew 'automake'
 brew 'autoconf'
 brew 'cmake'
@@ -64,6 +66,8 @@ brew 'yaml-cpp'
 brew 'gsl'
 
 # utils
+brew 'zip'
+brew 'shellcheck'
 brew 'exa'
 brew 'htop'
 brew 'pandoc'
@@ -76,3 +80,8 @@ brew 'grip'
 
 # db
 brew 'sqlite'
+
+# dbt
+tap 'fishtown-analytics/dbt'
+brew 'dbt'
+
