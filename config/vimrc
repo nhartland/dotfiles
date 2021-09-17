@@ -1,17 +1,19 @@
 " plug autoinstall
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
 
-" Plug 'psf/black', { 'branch': 'stable' }
+Plug 'ambv/black'
 Plug 'zxqfl/tabnine-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex'
 Plug 'dense-analysis/ale'
+Plug 'JuliaEditorSupport/julia-vim'
+
 
 " Initialize plugin system
 call plug#end()
@@ -37,7 +39,7 @@ autocmd BufWritePre *.py execute ':Black'
 
 " Currently need to enable jellybeans first, as it adds sensible SpellCheck
 " error formatting. Need to fix this
-colorscheme jellybeans 
+colorscheme jellybeans
 colorscheme Tomorrow-Night-Bright
 
 " Highlight background in insert mode
@@ -46,7 +48,7 @@ au InsertEnter * hi Normal ctermbg=234 guibg=#000000
 au InsertLeave * hi Normal ctermbg=232 guibg=#1b1d1e
 
 " Mapping time-outs, specifically to speed up pressing Esc
-set timeoutlen=1000 
+set timeoutlen=1000
 set ttimeoutlen=10
 
 " disable ex-mode
@@ -74,20 +76,20 @@ endfor
 
 " Writing mode
 function! Writing()
-  setlocal spell spelllang=en_gb 
-  setlocal wrap linebreak
-  setlocal softtabstop=4 tabstop=4 shiftwidth=4
-  setlocal textwidth=80 wrapmargin=2
-  " Don't count acronyms/ abbreviations as spelling errors.
-  syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
-  " Don't count url-ish things as spelling errors
-  syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
-  " highlight double words ("word word")
-  syn match doubleWord "\c\<\(\a\+\)\_s\+\1\>"
-  hi def link doubleWord Error
+    setlocal spell spelllang=en_gb
+    setlocal wrap linebreak
+    setlocal softtabstop=4 tabstop=4 shiftwidth=4
+    setlocal textwidth=80 wrapmargin=2
+    " Don't count acronyms/ abbreviations as spelling errors.
+    syntax match AcronymNoSpell '\<\(\u\|\d\)\{3,}s\?\>' contains=@NoSpell
+    " Don't count url-ish things as spelling errors
+    syntax match UrlNoSpell '\w\+:\/\/[^[:space:]]\+' contains=@NoSpell
+    " highlight double words ("word word")
+    syn match doubleWord "\c\<\(\a\+\)\_s\+\1\>"
+    hi def link doubleWord Error
 endfunction
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown " Identify .md as markdown
-autocmd FileType gitcommit  call Writing() 
+autocmd FileType gitcommit  call Writing()
 autocmd FileType markdown   call Writing()
 autocmd FileType wiki       call Writing()
 autocmd FileType tex        call Writing()
@@ -156,6 +158,9 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+
+" Julia
+let g:latex_to_unicode_auto = 1
 
 " netrw
 let g:netrw_banner = 0

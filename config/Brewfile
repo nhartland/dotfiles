@@ -13,7 +13,7 @@ cask 'kitty'
 cask 'skim'
 cask 'docker'
 cask 'miniconda'
-
+cask 'google-cloud-sdk'
 
 # fonts
 tap 'homebrew/cask-fonts'
@@ -82,6 +82,9 @@ brew 'grip'
 brew 'sqlite'
 
 # dbt
-tap 'fishtown-analytics/dbt'
+tap 'dbt-labs/dbt'
 brew 'dbt'
 
+# auth
+brew 'gpg'
+brew 'pinentry-mac'

@@ -21,6 +21,8 @@
     ~/.config/kitty/kitty.conf: config/kitty
     ~/.grip/settings.py: config/grip
     ~/.oh-my-zsh/themes/honukai.zsh-theme: themes/honukai.zsh-theme
+    ~/.gnupg/gpg.conf: config/gpg
+    ~/.gnupg/gpg-agent.conf: config/gpg-agent
 
 - shell:
   - [tic -x -o \~/.terminfo terminfo/kitty.terminfo, Installing kitty terminfo]
