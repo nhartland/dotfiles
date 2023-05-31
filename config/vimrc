@@ -7,12 +7,13 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tabnine/youcompleteme'
 Plug 'ambv/black'
-Plug 'zxqfl/tabnine-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex'
 Plug 'dense-analysis/ale'
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'ConradIrwin/vim-bracketed-paste'
 
 
 " Initialize plugin system
@@ -34,6 +35,7 @@ au BufNewFile,BufRead Snakefile set syntax=snakemake
 au BufNewFile,BufRead *.snake set syntax=snakemake
 
 " Run Black before saving on all python files
+let g:black_linelength = 79
 autocmd BufWritePre *.py execute ':Black'
 
 
@@ -148,6 +150,8 @@ nnoremap k gk
 
 " ale
 let g:ale_linters = {'python': ['flake8']}
+let g:ale_python_flake8_options = '--max-line-length=88, --ignore=W503'
+
 
 " disable arrow keys
 map <up> <nop>
