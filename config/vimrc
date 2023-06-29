@@ -7,12 +7,15 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ambv/black'
-Plug 'zxqfl/tabnine-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex'
 Plug 'dense-analysis/ale'
-Plug 'JuliaEditorSupport/julia-vim'
+
+
+" Switch off search highlighting
+set nohlsearch
 
 
 " Initialize plugin system
@@ -129,7 +132,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
 " General
-set esckeys
+"set esckeys
 set autowrite
 set autoindent " not sure about this one
 set autoread
@@ -147,7 +150,7 @@ nnoremap j gj
 nnoremap k gk
 
 " ale
-let g:ale_linters = {'python': ['flake8']}
+let g:ale_linters = {'python': ['flake8'], 'lua': ['luacheck']}
 
 " disable arrow keys
 map <up> <nop>
@@ -159,9 +162,21 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" Julia
-let g:latex_to_unicode_auto = 1
-
 " netrw
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
+
+"coc.nvim
+"" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
