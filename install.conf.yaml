@@ -24,6 +24,7 @@
     ~/.oh-my-zsh/themes/honukai.zsh-theme: themes/honukai.zsh-theme
     ~/.gnupg/gpg.conf: config/gpg
     ~/.gnupg/gpg-agent.conf: config/gpg-agent
+    ~/.config/yabai/set_padding.py: yabai/set_padding.py
 
 - shell:
   - [tic -x -o \~/.terminfo terminfo/kitty.terminfo, Installing kitty terminfo]

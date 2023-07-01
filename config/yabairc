@@ -43,4 +43,6 @@ yabai -m config left_padding                 20
 yabai -m config right_padding                20
 yabai -m config window_gap                   5
 
+yabai -m signal --add event=display_changed action="python3 ~/.config/yabai/set_padding.py"
+
 echo "yabai configuration loaded.."
