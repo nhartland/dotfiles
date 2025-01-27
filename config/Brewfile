@@ -79,6 +79,7 @@ brew 'markdown'
 brew 'pkg-config'
 brew 'libarchive'
 brew 'grip'
+brew 'node'
 
 # db
 brew 'sqlite'
