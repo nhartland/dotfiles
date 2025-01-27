@@ -1,3 +1,11 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
+" Load original vimrc
 source ~/.vimrc
+" Load lua vimrc
+lua require('init')
+
+
+
+
+

@@ -6,42 +6,19 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tabnine/youcompleteme'
-Plug 'ambv/black'
 Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex'
-Plug 'dense-analysis/ale'
 Plug 'ConradIrwin/vim-bracketed-paste'
-
+Plug 'neovim/nvim-lspconfig'
+call plug#end()
 
 " Switch off search highlighting
 set nohlsearch
 
-
-" Initialize plugin system
-call plug#end()
-
 set nocompatible
-
-" tabnine
-set rtp+=~/.vim/tabnine
 
 " syntax highlights
 syntax enable
-
-" Dart syntax highlighting
-au BufNewFile,BufRead *.dart set syntax=dart
-
-" Snakemake syntax highlighting
-au BufNewFile,BufRead Snakefile set syntax=snakemake
-au BufNewFile,BufRead *.snake set syntax=snakemake
-
-" Run Black before saving on all python files
-let g:black_linelength = 79
-autocmd BufWritePre *.py execute ':Black'
-
 
 " Currently need to enable jellybeans first, as it adds sensible SpellCheck
 " error formatting. Need to fix this
@@ -94,14 +71,12 @@ function! Writing()
     syn match doubleWord "\c\<\(\a\+\)\_s\+\1\>"
     hi def link doubleWord Error
 endfunction
+
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown " Identify .md as markdown
 autocmd FileType gitcommit  call Writing()
 autocmd FileType markdown   call Writing()
 autocmd FileType wiki       call Writing()
 autocmd FileType tex        call Writing()
-
-" markdown
-let g:markdown_fenced_languages = ['python', 'lua']
 
 " Automatically erase end of line whitespace in certain file types
 autocmd FileType c,cpp,lua,md,tex,python autocmd BufWritePre <buffer> %s/\s\+$//e
@@ -153,8 +128,8 @@ nnoremap j gj
 nnoremap k gk
 
 " ale
-let g:ale_linters = {'python': ['flake8'], 'lua': ['luacheck']}
-let g:ale_python_flake8_options = '--max-line-length=88, --ignore=W503'
+" let g:ale_linters = {'python': ['flake8'], 'lua': ['luacheck']}
+" let g:ale_python_flake8_options = '--max-line-length=88, --ignore=W503'
 
 " disable arrow keys
 map <up> <nop>
@@ -169,18 +144,3 @@ imap <right> <nop>
 " netrw
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
-
-"coc.nvim
-"" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction

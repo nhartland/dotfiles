@@ -29,7 +29,8 @@ brew 'imagemagick'
 brew 'graphviz'
 
 # editor
-brew 'vim', args: ['--with-override-system-vi', '--with-client-server']
+#brew 'vim', args: ['--with-override-system-vi', '--with-client-server']
+brew 'neovim'
 
 # wm
 tap 'koekeishiya/formulae'
@@ -48,6 +49,7 @@ brew 'flake8'
 brew 'the_silver_searcher'
 
 # lua
+brew 'lua-language-server'
 brew 'lua@5.1'
 brew 'luajit'
 brew 'luarocks'
@@ -68,7 +70,7 @@ brew 'gsl'
 # utils
 brew 'zip'
 brew 'shellcheck'
-brew 'exa'
+brew 'eza'
 brew 'htop'
 brew 'pandoc'
 brew 'cloc'
