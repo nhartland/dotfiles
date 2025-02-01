@@ -50,16 +50,13 @@ local servers = {
         on_attach = on_attach,
         capabilities = capabilities,
         settings = {
-            pyright = {
+            basedpyright = {
                 -- Using Ruff's import organizer
                 disableOrganizeImports = true,
-            },
-            python = {
                 analysis = {
-                    diagnosticMode = "off",
-                    typeCheckingMode = "off",
-                    -- Ignore all files for analysis to exclusively use Ruff for linting
-                    ignore = { '*' },
+                    useLibraryCodeForTypes = false,
+                    typeCheckingMode = "standard",
+                    --ignore = { '*' },
                 },
             },
         },
