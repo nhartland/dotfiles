@@ -26,6 +26,7 @@ local function on_attach(client, bufnr)
             buffer = bufnr,
             callback = function()
                 vim.lsp.buf.format { async = false, id = client.id }
+                vim.diagnostic.show()
             end,
         })
     end

@@ -6,8 +6,6 @@
 - clean: ['~']
 
 - link:
-    ~/.vim: 
-    ~/.vimrc: config/vimrc
     ~/.config/nvim: nvim
     ~/.flake8: config/flake8
     ~/.gitignore: config/gitignore

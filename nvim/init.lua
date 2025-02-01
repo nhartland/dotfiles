@@ -1,7 +1,7 @@
-local config_plugins = require('plugins')
-local config_lsp = require('lsp')
-local config_options = require('options')
-local config_keymaps = require('keymaps')
+local _ = require('plugins')
+local _ = require('lsp')
+local _ = require('options')
+local _ = require('keymaps')
 local cmp = require('cmp')
 
 vim.cmd("colorscheme jellybeans")
