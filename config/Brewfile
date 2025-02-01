@@ -46,6 +46,7 @@ brew 'flake8'
 
 # search
 brew 'the_silver_searcher'
+brew 'ripgrep'
 
 # lua
 brew 'lua-language-server'

@@ -64,6 +64,17 @@ local servers = {
     lua_ls = {
         on_attach = on_attach,
         capabilities = capabilities,
+        settings = {
+            Lua = {
+                runtime = {
+                    version = 'LuaJIT',
+                    path = vim.split(package.path, ';'),
+                },
+                diagnostics = {
+                    globals = { 'vim', 'love' },
+                },
+            }
+        }
     },
 }
 
