@@ -8,6 +8,7 @@
 - link:
     ~/.vim: 
     ~/.vimrc: config/vimrc
+    ~/.config/nvim: nvim
     ~/.flake8: config/flake8
     ~/.gitignore: config/gitignore
     ~/.gitconfig: config/gitconfig
@@ -19,9 +20,6 @@
     ~/.yabairc: config/yabairc
     ~/.Brewfile: config/Brewfile
     ~/.config/kitty/kitty.conf: config/kitty
-    ~/.grip/settings.py: config/grip
-    ~/.config/nvim/init.vim: config/neovim
-    ~/.config/nvim/lua/init.lua: config/neovim_lua
     ~/.oh-my-zsh/themes/honukai.zsh-theme: themes/honukai.zsh-theme
     ~/.gnupg/gpg.conf: config/gpg
     ~/.gnupg/gpg-agent.conf: config/gpg-agent
