@@ -8,7 +8,6 @@ cask 'steam'
 cask 'spotify'
 cask 'love'
 cask 'vlc'
-cask 'xquartz'
 cask 'kitty'
 cask 'skim'
 cask 'docker'
@@ -80,6 +79,10 @@ brew 'pkg-config'
 brew 'libarchive'
 brew 'grip'
 brew 'node'
+
+# k8s
+brew 'kubectl'
+brew 'minikube'
 
 # db
 brew 'sqlite'

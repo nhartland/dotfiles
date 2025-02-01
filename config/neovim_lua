@@ -66,42 +66,43 @@ require("mason-lspconfig").setup {
     ensure_installed = { "ruff", "basedpyright", "lua_ls" },
 }
 
--- Configure `ruff`.
--- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
--- For the default config, along with instructions on how to customize the settings
-require('lspconfig').ruff.setup {
-  on_attach=on_attach,
-  init_options = {
-    settings = {
-      -- Any extra CLI arguments for `ruff` go here.
-      args = {},
-    }
-  }
-}
-
---local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig').basedpyright.setup {
-  on_attach=on_attach,
-  capabilities=capabilities,
-  settings = {
-    pyright = {
-      -- Using Ruff's import organizer
-      disableOrganizeImports = true,
-    },
-    python = {
-      analysis = {
-        diagnosticMode = "off",
-        typeCheckingMode = "off",
-        -- Ignore all files for analysis to exclusively use Ruff for linting
-        ignore = { '*' },
+-- Table of LSP servers with their settings
+local servers = {
+  ruff = {
+    on_attach = on_attach,
+    -- ruff settings (if any) can be added here:
+    init_options = {
+      settings = {
+        args = {},
       },
     },
   },
+  basedpyright = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+      pyright = {
+        -- Using Ruff's import organizer
+        disableOrganizeImports = true,
+      },
+      python = {
+        analysis = {
+          diagnosticMode = "off",
+          typeCheckingMode = "off",
+          -- Ignore all files for analysis to exclusively use Ruff for linting
+          ignore = { '*' },
+        },
+      },
+    },
+  },
+  lua_ls = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  },
 }
 
--- Configure luaLS
-require('lspconfig').lua_ls.setup{
-  on_attach=on_attach,
-  capabilities=capabilities
-}
+local lspconfig = require("lspconfig")
+for server, config in pairs(servers) do
+  lspconfig[server].setup(config)
+end
 
