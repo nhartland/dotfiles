@@ -15,27 +15,83 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Configure plugins using lazy.nvim with your existing plugins
 require("lazy").setup({
+
+    -- Utility Plugins
     { "junegunn/goyo.vim" },
     { "lervag/vimtex" },
-    { "ConradIrwin/vim-bracketed-paste" },
-    { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
-    { "neovim/nvim-lspconfig" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-vsnip" },
-    { "hrsh7th/vim-vsnip" },
     {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup({
+                signs = {
+                    add          = { text = "+" },
+                    change       = { text = "~" },
+                    delete       = { text = "-" },
+                    topdelete    = { text = "-" },
+                    changedelete = { text = "~" },
+                },
+                current_line_blame = true, -- Show inline git blame
+            })
+        end
     },
+    -- Fidget
+    {
+        "j-hui/fidget.nvim",
+        tag = "legacy",
+        config = function()
+            require("fidget").setup({})
+        end
+    },
+
+    -- LSP Setup
+    {
+        "williamboman/mason.nvim",
+        dependencies = {
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+        }
+    },
+    -- Completion
+    --{
+    --    "hrsh7th/nvim-cmp",
+    --    dependencies = {
+    --        "hrsh7th/cmp-nvim-lsp",
+    --        "hrsh7th/cmp-buffer",
+    --        "hrsh7th/cmp-path",
+    --        "hrsh7th/cmp-vsnip",
+    --        "hrsh7th/vim-vsnip",
+    --    }
+    --},
+    -- Treesitter
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = "all",
+                highlight = { enable = true },
+                indent = { enable = true },
+            })
+        end
+    },
+    -- Telescope
     {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+        }
     },
-    { "nvim-tree/nvim-web-devicons", opts = {} },
+    -- Command line
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("lualine").setup({
+                options = { theme = "auto" }
+            })
+        end
+    },
 
 })

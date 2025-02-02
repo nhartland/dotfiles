@@ -33,12 +33,15 @@ local function on_attach(client, bufnr)
 end
 
 -- Default capabilities
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+--local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 
 -- Table of LSP servers with their settings
 local servers = {
     ruff = {
         on_attach = on_attach,
+        capabilities = capabilities,
         -- ruff settings (if any) can be added here:
         init_options = {
             settings = {
