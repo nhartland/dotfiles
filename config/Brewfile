@@ -39,7 +39,7 @@ brew 'skhd', restart_service: :changed
 # shell
 brew 'zsh'
 brew 'zsh-completions'
-brew 'z'
+brew 'zoxide'
 
 # python
 brew 'flake8'
