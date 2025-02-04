@@ -43,6 +43,7 @@ brew 'zoxide'
 
 # python
 brew 'flake8'
+brew 'poetry'
 
 # search
 brew 'the_silver_searcher'
