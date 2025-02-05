@@ -34,20 +34,39 @@ require("lazy").setup({
             })
         end
     },
-    -- Fidget
-    {
-        "j-hui/fidget.nvim",
-        config = function()
-            require("fidget").setup({})
-        end
-    },
-
     -- LSP Setup
     {
-        "williamboman/mason.nvim",
+        -- Main LSP Configuration
+        'neovim/nvim-lspconfig',
         dependencies = {
-            "williamboman/mason-lspconfig.nvim",
-            "neovim/nvim-lspconfig",
+            -- Automatically install LSPs and related tools to stdpath for Neovim
+            -- Mason must be loaded before its dependents so we need to set it up here.
+            -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
+            { 'williamboman/mason.nvim', opts = {} },
+            'williamboman/mason-lspconfig.nvim',
+            'WhoIsSethDaniel/mason-tool-installer.nvim',
+
+            -- Useful status updates for LSP.
+            {
+                'j-hui/fidget.nvim',
+                opts = {
+                    progress = {
+                        display = {
+                            skip_history = false
+                        },
+                        lsp = {
+                            log_handler = true
+                        }
+                    },
+                    notification = {
+                        override_vim_notify = true,    -- Ensure Fidget intercepts vim.notify
+                        filter = vim.log.levels.DEBUG, -- Minimum notifications level
+                    },
+                }
+            },
+
+            -- Allows extra capabilities provided by nvim-cmp
+            --'hrsh7th/cmp-nvim-lsp',
         }
     },
     -- Completion
