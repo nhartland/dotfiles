@@ -22,6 +22,12 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 vim.o.wildmode = "list:longest,full"
 vim.o.wildmenu = true
 
+-- Clears search highlighting after leaving cmdline
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+    pattern = "/,?",
+    command = "nohlsearch"
+})
+
 
 --cmp.setup({
 --    snippet = {

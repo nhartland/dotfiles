@@ -10,6 +10,10 @@ require("mason-lspconfig").setup {
     ensure_installed = { "ruff", "basedpyright", "lua_ls" },
 }
 
+local function get_poetry_venv()
+    local output = vim.fn.system("poetry env info --path")
+    return vim.fn.trim(output)
+end
 
 -- Function that sets standard capabilities for LSP
 local function on_attach(client, bufnr)
@@ -36,6 +40,7 @@ end
 --local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+vim.notify("hello")
 
 -- Table of LSP servers with their settings
 local servers = {
@@ -52,10 +57,21 @@ local servers = {
     basedpyright = {
         on_attach = on_attach,
         capabilities = capabilities,
+        on_init = function(client)
+            local venv_path = get_poetry_venv()
+            if venv_path and venv_path ~= "" then
+                -- Ensure `settings` and `python` exist before assignment
+                client.config.settings = client.config.settings or {}
+                client.config.settings.python = client.config.settings.python or {}
+                client.config.settings.python.pythonPath = venv_path .. "/bin/python"
+
+                client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+            end
+        end,
         settings = {
             basedpyright = {
                 -- Using Ruff's import organizer
-                disableOrganizeImports = true,
+                disableOrganizeImports = false,
                 analysis = {
                     useLibraryCodeForTypes = false,
                     typeCheckingMode = "standard",

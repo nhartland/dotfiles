@@ -11,10 +11,6 @@ vim.g.maplocalleader = " "
 map("n", "j", "gj", opts)
 map("n", "k", "gk", opts)
 
--- Use capital J, K as page up/down
---vim.keymap.set('n', 'J', '<PageDown>', { noremap = true, silent = true })
---vim.keymap.set('n', 'K', '<PageUp>', { noremap = true, silent = true })
-
 -- Additional global mappings...
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
