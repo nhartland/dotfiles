@@ -7,5 +7,6 @@ vim.g.maplocalleader = ' '
 local _ = require('options')
 local _ = require('keymaps')
 local _ = require('spell')
-local _ = require('plugins')
+local _ = require('lazy_bootstrap')
+local _ = require('lazy_plugins')
 local _ = require('lsp')
