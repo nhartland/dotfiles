@@ -28,8 +28,7 @@ return {
             },
 
             -- Allows extra capabilities provided by nvim-cmp
-            -- TODO: re-enable if cmp installed
-            --'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lsp',
         },
         config = function()
             vim.api.nvim_create_autocmd('LspAttach', {
@@ -134,7 +133,7 @@ return {
 
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             -- TODO: Re-enable if cmp installed
-            --capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+            capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
             local servers = {
                 pyright = {
