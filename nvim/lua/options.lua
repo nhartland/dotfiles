@@ -23,7 +23,7 @@ o.timeoutlen = 300
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 o.list = true
-o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+o.listchars = { tab = "» ", trail = "·", nbsp = "␣", leadmultispace = "   ▏" }
 
 -- Search and other options
 o.incsearch = true
@@ -34,10 +34,19 @@ o.smartcase = true
 vim.cmd("colorscheme jellybeans")
 vim.cmd("colorscheme Tomorrow-Night-Bright")
 
--- Enable update_in_insert
 vim.diagnostic.config({
-    update_in_insert = true,
     signs = true,
+    underline = true,
+    -- Not sure if I prefer this being false or true
+    virtual_text = true,
+    float = {
+        show_header = true,
+        source = 'if_many',
+        border = 'rounded',
+        focusable = false,
+    },
+    update_in_insert = true, -- default to false
+    severity_sort = false,   -- default to false
 })
 
 vim.opt.backup = true
@@ -47,9 +56,3 @@ vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 vim.o.completeopt = "menuone,noinsert,noselect"
 vim.o.wildmode = "list:longest,full"
 vim.o.wildmenu = true
-
--- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }

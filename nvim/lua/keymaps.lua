@@ -7,6 +7,9 @@ local opts = { noremap = true, silent = true }
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- Open diagnostic float
+vim.keymap.set("n", "<leader>dd", "<cmd>lua vim.diagnostic.open_float()<cr>")
+
 -- Example: Remap j/k for visual lines
 map("n", "j", "gj", opts)
 map("n", "k", "gk", opts)

@@ -26,7 +26,6 @@ return {
                     },
                 }
             },
-
             -- Allows extra capabilities provided by nvim-cmp
             'hrsh7th/cmp-nvim-lsp',
         },
@@ -88,7 +87,10 @@ return {
                         vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                             buffer = event.buf,
                             group = highlight_augroup,
-                            callback = vim.lsp.buf.document_highlight,
+                            callback = function()
+                                vim.lsp.buf.document_highlight()
+                                --vim.diagnostic.open_float()
+                            end,
                         })
 
                         vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
