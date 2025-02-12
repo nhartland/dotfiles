@@ -7,6 +7,7 @@
 
 - link:
     ~/.config/nvim: nvim
+    ~/.bigqueryrc: config/bigqueryrc
     ~/.flake8: config/flake8
     ~/.gitignore: config/gitignore
     ~/.gitconfig: config/gitconfig

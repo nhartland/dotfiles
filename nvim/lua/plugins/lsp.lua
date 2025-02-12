@@ -164,7 +164,9 @@ return {
                         python = {},
                     },
                 },
-
+                sqlls = {
+                    capabilities = capabilities,
+                },
                 lua_ls = {
                     settings = {
                         Lua = {
