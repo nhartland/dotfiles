@@ -31,8 +31,10 @@ o.ignorecase = true
 o.smartcase = true
 
 -- Colorscheme
+o.background = "dark" -- or "light" for light mode
 vim.cmd("colorscheme jellybeans")
 vim.cmd("colorscheme Tomorrow-Night-Bright")
+
 
 vim.diagnostic.config({
     signs = true,

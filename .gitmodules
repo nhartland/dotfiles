@@ -10,3 +10,6 @@
 [submodule "vim/tabnine"]
 	path = vim/tabnine
 	url = git://github.com/zxqfl/tabnine-vim
+[submodule "kitty-base16"]
+	path = base16-kitty
+	url = git@github.com:kdrag0n/base16-kitty.git

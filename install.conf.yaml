@@ -23,6 +23,8 @@
     ~/.gnupg/gpg.conf: config/gpg
     ~/.gnupg/gpg-agent.conf: config/gpg-agent
     ~/.config/yabai/set_padding.py: yabai/set_padding.py
+    ~/.config/.base16_theme: config/base16_theme
+    ~/.base16-kitty: base16-kitty
 
 - shell:
   - [tic -x -o \~/.terminfo terminfo/kitty.terminfo, Installing kitty terminfo]

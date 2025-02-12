@@ -15,15 +15,27 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-        {
-            "nvim-telescope/telescope-frecency.nvim",
-            -- install the latest stable version
-            version = "*",
-            config = function()
-                require("telescope").load_extension "frecency"
-            end,
-        }
+        { "nvim-telescope/telescope-frecency.nvim",   version = "*" }
     },
+    opts = {
+        --defaults = {
+        --},
+        pickers = {
+            find_files = {
+                preview = { hide_on_startup = true },
+                theme = "dropdown",
+            },
+            live_grep = {
+                dynamic_preview_title = true,
+                path_display = { shorten = 3 }
+            }
+        },
+    },
+    config = function(_, opts)
+        require("telescope").setup(opts)
+        require("telescope").load_extension("frecency")
+        require("telescope").load_extension("fzf")
+    end,
     keys = {
         { "<leader>ff", telescope_with_root("find_files"),                                         desc = "Telescope find files" },
         { "<leader>fg", telescope_with_root("live_grep"),                                          desc = "Telescope live grep" },
