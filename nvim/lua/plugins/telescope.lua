@@ -14,12 +14,22 @@ return {
     branch = '0.1.x',
     dependencies = {
         'nvim-lua/plenary.nvim',
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        {
+            "nvim-telescope/telescope-frecency.nvim",
+            -- install the latest stable version
+            version = "*",
+            config = function()
+                require("telescope").load_extension "frecency"
+            end,
+        }
     },
     keys = {
-        { "<leader>ff", telescope_with_root("find_files"), desc = "Telescope find files" },
-        { "<leader>fg", telescope_with_root("live_grep"),  desc = "Telescope live grep" },
-        { "<leader>fb", telescope_with_root("buffers"),    desc = "Telescope buffers" },
-        { "<leader>fh", telescope_with_root("help_tags"),  desc = "Telescope help tags" }
+        { "<leader>ff", telescope_with_root("find_files"),                                         desc = "Telescope find files" },
+        { "<leader>fg", telescope_with_root("live_grep"),                                          desc = "Telescope live grep" },
+        { "<leader>fb", telescope_with_root("buffers"),                                            desc = "Telescope buffers" },
+        { "<leader>fh", telescope_with_root("help_tags"),                                          desc = "Telescope help tags" },
+        { "<leader>e",  function() return require("telescope").extensions.frecency.frecency() end, desc = "Frecency-based file navigation" },
+
     }
 }
