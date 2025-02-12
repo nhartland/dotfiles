@@ -138,7 +138,7 @@ return {
             capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
             local servers = {
-                pyright = {
+                basedpyright = {
                     capabilities = capabilities,
                     on_init = function(client)
                         local function get_poetry_venv()
@@ -152,14 +152,21 @@ return {
                         end
                     end,
                     settings = {
-                        pyright = {
-                            -- Use this to instead use ruff's organiser
-                            disableOrganizeImports = false,
+                        basedpyright = {
                             analysis = {
-                                useLibraryCodeForTypes = false,
-                                typeCheckingMode = "standard",
+                                -- Use this to instead use ruff's organiser
+                                disableOrganizeImports = false,
+                                diagnosticMode = "openFilesOnly",
+                                typeCheckingMode = "basic",
+                                useLibraryCodeForTypes = true,
+                                --reportMissingTypeStubs = "none",
+                                --reportUnknownMemberType = false,
+                                --reportUnknownVariableType = "none",
+                                --reportUnknownArgumentType = "none",
+                                --reportUnknownLambdaType = "none",
                                 --ignore = { '*' },
-                            },
+                                --},
+                            }
                         },
                         python = {},
                     },

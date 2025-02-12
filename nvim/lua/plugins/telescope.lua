@@ -1,3 +1,14 @@
+local f = require('functions')
+local function telescope_with_root(picker)
+    -- Helper function for initialising Telescope keybindings such that they run in the project root.
+    -- TODO: Adjust such that find_project_root is called newly for each buffer rather than on opening vim
+    return function()
+        local builtin = require("telescope.builtin")
+        local root = f.find_project_root()
+        builtin[picker]({ cwd = root })
+    end
+end
+
 return {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -6,9 +17,9 @@ return {
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
     },
     keys = {
-        { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "Telescope find files" },
-        { "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>",  desc = "Telescope live grep" },
-        { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>",    desc = "Telescope buffers" },
-        { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>",  desc = "Telescope help tags" }
+        { "<leader>ff", telescope_with_root("find_files"), desc = "Telescope find files" },
+        { "<leader>fg", telescope_with_root("live_grep"),  desc = "Telescope live grep" },
+        { "<leader>fb", telescope_with_root("buffers"),    desc = "Telescope buffers" },
+        { "<leader>fh", telescope_with_root("help_tags"),  desc = "Telescope help tags" }
     }
 }
