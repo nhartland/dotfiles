@@ -30,6 +30,5 @@ return {
         { "<leader>fb", telescope_with_root("buffers"),                                            desc = "Telescope buffers" },
         { "<leader>fh", telescope_with_root("help_tags"),                                          desc = "Telescope help tags" },
         { "<leader>e",  function() return require("telescope").extensions.frecency.frecency() end, desc = "Frecency-based file navigation" },
-
     }
 }
