@@ -17,6 +17,7 @@ return {
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         { "nvim-telescope/telescope-frecency.nvim",   version = "*" }
     },
+    lazy = false,
     opts = {
         --defaults = {
         --},
@@ -35,6 +36,7 @@ return {
         require("telescope").setup(opts)
         require("telescope").load_extension("frecency")
         require("telescope").load_extension("fzf")
+        require("telescope").load_extension("base16_colorpicker")
     end,
     keys = {
         { "<leader>ff", telescope_with_root("find_files"),                                         desc = "Telescope find files" },
