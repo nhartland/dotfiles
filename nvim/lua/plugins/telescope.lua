@@ -19,8 +19,15 @@ return {
     },
     lazy = false,
     opts = {
-        --defaults = {
-        --},
+        defaults = {
+            file_ignore_patterns = {
+                "%.pyc",
+                "%.wav", "%.ogg", "%.jfxr",
+                "%.png", "%.jpg", "%.jpeg", "%.bmp", "%.gif",
+                "%.zip",
+                "%.aif", "%.ttf",
+            }
+        },
         pickers = {
             find_files = {
                 preview = { hide_on_startup = true },

@@ -5,9 +5,11 @@ return {
         "nvim-tree/nvim-web-devicons"
     },
     opts = {
-        theme = "base16",
-        component_separators = { left = '|', right = '|' },
-        section_separators = { left = '', right = '' }, -- Solid square blocks
+        options = {
+            theme = "base16",                               -- "auto"
+            component_separators = { left = '|', right = '|' },
+            section_separators = { left = '', right = '' }, -- Solid square blocks
+        },
         tabline = {
             lualine_a = {},
             lualine_b = {},
@@ -30,7 +32,7 @@ return {
         },
         sections = {
             lualine_a = { 'mode' },
-            lualine_b = { 'mode', 'branch' },
+            lualine_b = { 'branch' },
             lualine_c = { 'filename' },
             lualine_x = { 'searchcount', 'filetype' },
             lualine_y = { 'progress' },
