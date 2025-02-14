@@ -21,6 +21,13 @@ return {
             {
                 'j-hui/fidget.nvim',
                 opts = {
+                    progress = {
+                        display = {
+                            render_limit = 16, -- How many LSP messages to show at once
+                            done_ttl = 3,      -- How long a message should persist after completion
+                            done_icon = "",
+                        },
+                    },
                     notification = {
                         override_vim_notify = true,
                     },
@@ -89,7 +96,6 @@ return {
                             group = highlight_augroup,
                             callback = function()
                                 vim.lsp.buf.document_highlight()
-                                --vim.diagnostic.open_float()
                             end,
                         })
 
@@ -170,6 +176,9 @@ return {
                         },
                         python = {},
                     },
+                },
+                bashls = {
+                    capabilities = capabilities,
                 },
                 sqlls = {
                     capabilities = capabilities,

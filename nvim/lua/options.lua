@@ -36,6 +36,7 @@ vim.cmd("colorscheme jellybeans")
 vim.cmd("colorscheme Tomorrow-Night-Bright")
 
 
+
 vim.diagnostic.config({
     signs = true,
     underline = true,
