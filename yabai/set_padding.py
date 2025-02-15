@@ -1,24 +1,37 @@
 import json
 import subprocess
 
-output = subprocess.run(["yabai","-m","query","--displays"],capture_output=True,text=True)
-output_text = output.stdout.strip()
-output_json = json.loads(output_text)
+# Query yabai for displays
+output = subprocess.run(["yabai", "-m", "query", "--displays"], capture_output=True, text=True)
+displays = json.loads(output.stdout.strip())
 
+# Query yabai for spaces
+output = subprocess.run(["yabai", "-m", "query", "--spaces"], capture_output=True, text=True)
+spaces = json.loads(output.stdout.strip())
 
-for display_config in output_json:
-    width = (display_config["frame"]["w"])
+# Build commands for configuring each space based on its display
+commands = []
+for display in displays:
+    width = display["frame"]["w"]
 
-    for space in display_config["spaces"]:
-        if width >= 1920.0:
-            subprocess.run(["yabai","-m","config","--space", str(space), "window_gap","128"])
-            subprocess.run(["yabai","-m","config","--space", str(space), "top_padding","128"])
-            subprocess.run(["yabai","-m","config","--space", str(space), "bottom_padding","128"])
-            subprocess.run(["yabai","-m","config","--space", str(space), "left_padding","128"])
-            subprocess.run(["yabai","-m","config","--space", str(space), "right_padding","128"])
-        else:
-            subprocess.run(["yabai","-m","config","--space", str(space), "window_gap","5"])
-            subprocess.run(["yabai","-m","config","--space", str(space), "top_padding","20"])
-            subprocess.run(["yabai","-m","config","--space", str(space), "bottom_padding","20"])
-            subprocess.run(["yabai","-m","config","--space", str(space), "left_padding","20"])
-            subprocess.run(["yabai","-m","config","--space", str(space), "right_padding","20"])
+    # Set padding based on screen width
+    if width >= 1920:
+        padding, gap = "128", "128"
+    else:
+        padding, gap = "20", "5"
+
+    # Apply settings to each space on this display
+    for space in spaces:
+        if space["display"] == display["index"]:
+            commands.extend([
+                f"yabai -m config --space {space['index']} window_gap {gap}",
+                f"yabai -m config --space {space['index']} top_padding {padding}",
+                f"yabai -m config --space {space['index']} bottom_padding {padding}",
+                f"yabai -m config --space {space['index']} left_padding {padding}",
+                f"yabai -m config --space {space['index']} right_padding {padding}"
+            ])
+
+# Execute all yabai commands
+if commands:
+    subprocess.run("; ".join(commands), shell=True)
+

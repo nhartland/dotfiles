@@ -1,15 +1,15 @@
-return    {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require("gitsigns").setup({
-                signs = {
-                    add          = { text = "+" },
-                    change       = { text = "~" },
-                    delete       = { text = "-" },
-                    topdelete    = { text = "-" },
-                    changedelete = { text = "~" },
-                },
-                current_line_blame = true, -- Show inline git blame
-            })
-        end
-    }
+return {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+        require("gitsigns").setup({
+            signs = {
+                add          = { text = "+" },
+                change       = { text = "~" },
+                delete       = { text = "-" },
+                topdelete    = { text = "-" },
+                changedelete = { text = "~" },
+            },
+            current_line_blame = false, -- Show inline git blame
+        })
+    end
+}

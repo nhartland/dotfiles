@@ -20,8 +20,6 @@ return {
     lazy = false,
     opts = {
         defaults = {
-            border = false,
-            prompt_title = false, -- Removes the unnecessary title
             file_ignore_patterns = {
                 "%.pyc",
                 "%.wav", "%.ogg", "%.jfxr",
@@ -31,6 +29,11 @@ return {
             }
         },
         pickers = {
+            defaults = {
+                dynamic_preview_title = true,
+                path_display = { shorten = 3 },
+                theme = "ivy",
+            },
             find_files = {
                 prompt_title = false,  -- Removes the unnecessary title
                 prompt_prefix = "[Find Files] ",
@@ -52,11 +55,11 @@ return {
         require("telescope").load_extension("base16_colorpicker")
     end,
     keys = {
-        { "<leader>fc", function() return require("telescope.builtin").find_files({ cwd = "~/.config/nvim" }) end, desc = "Telescope find nvim config" },
-        { "<leader>ff", telescope_with_root("find_files"),                                                         desc = "Telescope find files" },
-        { "<leader>fg", telescope_with_root("live_grep"),                                                          desc = "Telescope live grep" },
-        { "<leader>fb", telescope_with_root("buffers"),                                                            desc = "Telescope buffers" },
-        { "<leader>fh", telescope_with_root("help_tags"),                                                          desc = "Telescope help tags" },
-        { "<leader>e",  function() return require("telescope").extensions.frecency.frecency() end,                 desc = "Frecency-based file navigation" },
+        { "<leader>fc", function() return require("telescope.builtin").find_files({ cwd = "~/dotfiles/" }) end, desc = "Telescope find config" },
+        { "<leader>ff", telescope_with_root("find_files"),                                                      desc = "Telescope find files" },
+        { "<leader>fg", telescope_with_root("live_grep"),                                                       desc = "Telescope live grep" },
+        { "<leader>fb", telescope_with_root("buffers"),                                                         desc = "Telescope buffers" },
+        { "<leader>fh", telescope_with_root("help_tags"),                                                       desc = "Telescope help tags" },
+        { "<leader>e",  function() return require("telescope").extensions.frecency.frecency() end,              desc = "Frecency-based file navigation" },
     }
 }
