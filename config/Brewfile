@@ -28,8 +28,14 @@ brew 'imagemagick'
 brew 'graphviz'
 
 # editor
-#brew 'vim', args: ['--with-override-system-vi', '--with-client-server']
 brew 'neovim'
+
+# Terminal
+brew 'zsh-syntax-highlighting'
+brew 'pure'
+brew 'fortune'
+brew 'cowsay'
+brew 'cbonsai'
 
 # wm
 tap 'koekeishiya/formulae'
