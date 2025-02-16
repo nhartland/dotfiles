@@ -27,7 +27,6 @@ function M.get_colorschemes()
         end
         if name:match("%.lua$") then
             local colourscheme_name = name:gsub("%.lua$", "")
-            vim.notify(colourscheme_name)
             table.insert(colorschemes, colourscheme_name)
         end
     end
@@ -75,6 +74,8 @@ local function load_colorscheme(name)
 end
 
 local function expose_base16_globals(colors)
+    -- Writes the colorscheme to vim.g in order to make it available to other modules.
+    -- Specifically, lualine uses these colors for theming
     for i = 0, 15 do
         local hex_key = string.format("base%02X", i)       -- e.g., "base00", "base01"
         local gui_key = string.format("base16_gui%02X", i) -- e.g., "base16_gui00", "base16_gui01"
@@ -86,7 +87,6 @@ local function expose_base16_globals(colors)
         end
     end
 end
-
 
 -- Apply colorscheme to Neovim
 local function apply_nvim_colorscheme(colors)
@@ -242,7 +242,6 @@ local function write_kitty_config(colors, name)
     if file then
         file:write(kitty_template)
         file:close()
-        vim.notify("Kitty colorscheme: " .. kitty_path, vim.log.levels.INFO)
     else
         vim.api.nvim_err_writeln("Failed to write Kitty config")
     end
@@ -261,18 +260,21 @@ function M.set_colorscheme(name)
     write_kitty_config(colors, name)
     save_colorscheme(name)
 
-    vim.fn.jobstart(
-        { "kitten", "@", "--password='control'", "set-colors", "--all", "-c", vim.fn.expand("~/.config/.kitty-theme") },
-        {
-            on_exit = function(_, code, _)
-                if code ~= 0 then
-                    vim.api.nvim_err_writeln("Kitten command failed with exit code: " .. tostring(code))
-                end
-            end,
-        }
-    )
+    vim.loop.spawn("kitten", {
+        args = {
+            "@",
+            "set-colors",
+            "--all",
+            "-c",
+            kitty_path,
+        },
+    }, nil)
 
-    vim.notify("Colorscheme applied: " .. name, vim.log.levels.INFO)
+    -- Reload lualine if already loaded to referesh colourscheme
+    if package.loaded["lazy"] and package.loaded['lualine'] then
+        require("lazy.core.loader").reload("lualine.nvim")
+    end
+    -- TODO: Call kitten to update live kitty colourschemes
 end
 
 load_last_colorscheme()

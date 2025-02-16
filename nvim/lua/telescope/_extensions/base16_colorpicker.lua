@@ -4,10 +4,10 @@ local finders = require("telescope.finders")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local f = require('functions')
+local mc = require('mycolour')
 
 local function base16_colorpicker()
-    local colors = vim.fn.getcompletion("", "color")
+    local colors = mc.get_colorschemes()
 
     pickers.new({}, {
         prompt_title = "Change Colorscheme",
@@ -19,7 +19,7 @@ local function base16_colorpicker()
             local function apply_colorscheme()
                 local selection = action_state.get_selected_entry()
                 if selection then
-                    f.set_colorscheme(selection[1])
+                    mc.set_colorscheme(selection[1])
                 end
                 actions.close(prompt_bufnr)
             end

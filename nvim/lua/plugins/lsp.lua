@@ -24,7 +24,7 @@ return {
                     progress = {
                         display = {
                             render_limit = 16, -- How many LSP messages to show at once
-                            done_ttl = 3, -- How long a message should persist after completion
+                            done_ttl = 3,      -- How long a message should persist after completion
                             done_icon = "",
                         },
                     },
@@ -43,6 +43,11 @@ return {
                     local map = function(keys, func, desc, mode)
                         mode = mode or "n"
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+                    end
+
+                    local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    if client and client.server_capabilities.semanticTokensProvider then
+                        client.server_capabilities.semanticTokensProvider = nil
                     end
 
                     -- Jump to the definition of the word under your cursor.

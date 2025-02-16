@@ -10,9 +10,7 @@ ZSH_THEME="honukai"
 HIST_STAMPS="dd.mm.yyyy"
 
 # Kitty themes
-# For the approach -> see
-# https://rrethy.github.io/book/colorscheme.html
-eval "kitten @ --password='control' set-colors -c $HOME/.base16-kitty/colors/$(cat $HOME/.config/.base16_theme).conf"
+eval "kitten @ --password='control' set-colors -c $HOME/.config/kitty/current-theme.conf"
 
 source $ZSH/oh-my-zsh.sh
 source ~/.shellrc
