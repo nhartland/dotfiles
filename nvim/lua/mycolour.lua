@@ -45,14 +45,20 @@ local function save_colorscheme(name)
 end
 
 -- Read last used colorscheme from file
-local function load_last_colorscheme()
+local function get_active_colorscheme()
     local file = io.open(colorscheme_save_path, "r")
     if file then
         local name = file:read("*l")
         file:close()
-        if name and name ~= "" then
-            M.set_colorscheme(name)
-        end
+        return name
+    end
+    vim.notify("No active colourscheme found at " .. colorscheme_save_path)
+end
+
+local function load_last_colorscheme()
+    local name = get_active_colorscheme()
+    if name and name ~= "" then
+        M.set_colorscheme(name)
     end
 end
 
@@ -71,6 +77,16 @@ local function load_colorscheme(name)
     end
 
     return colors
+end
+
+function M.get_active_color_table()
+    -- Returns the underlying color table currently active
+    local name = load_last_colorscheme()
+    if name then
+        return load_colorscheme(name)
+    else
+        return {}
+    end
 end
 
 local function expose_base16_globals(colors)
