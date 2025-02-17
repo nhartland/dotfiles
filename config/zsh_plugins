@@ -1,0 +1,15 @@
+# .zsh_plugins.txt
+rupa/z              # some bash plugins work too
+
+# you can even use Oh My Zsh plugins
+getantidote/use-omz
+ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/extract
+
+# add fish-like features
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+
+# vi-mode
+jeffreytse/zsh-vi-mode

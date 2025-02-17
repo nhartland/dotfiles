@@ -20,10 +20,10 @@ function ai_session_rprompt() {
   fi
 
   # If you want to hide it for the 'default' session, check:
-  # if [[ $current_session == "default" ]]; then
-  #   RPROMPT=""
-  #   return
-  # fi
+  if [[ $current_session == "default" ]]; then
+    RPROMPT=""
+    return
+  fi
 
   # Add the session to the right side prompt in a subtle color
   RPROMPT="%F{yellow}[$current_session]%f "  # leading space if you want spacing
@@ -36,11 +36,13 @@ add-zsh-hook precmd ai_session_rprompt
 
 # ~~~ END: AI session in right prompt ~~~
 
-
 # Enable history search with Up/Down arrows
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
+# .zshrc
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 
 # ZSH syntax highlighting ('brew install zsh-syntax-highlighting')
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

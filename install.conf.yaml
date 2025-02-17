@@ -18,6 +18,7 @@
     ~/.skhdrc: config/skhdrc
     ~/.yabairc: config/yabairc
     ~/.Brewfile: config/Brewfile
+    ~/.zsh_plugins.txt: config/zsh_plugins
     ~/.config/kitty/kitty.conf: config/kitty
     ~/.oh-my-zsh/themes/honukai.zsh-theme: themes/honukai.zsh-theme
     ~/.gnupg/gpg.conf: config/gpg

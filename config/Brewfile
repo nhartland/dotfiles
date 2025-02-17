@@ -32,6 +32,7 @@ brew 'neovim'
 
 # Terminal
 brew 'zsh-syntax-highlighting'
+brew 'antidote'
 brew 'pure'
 brew 'fortune'
 brew 'cowsay'
