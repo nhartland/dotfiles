@@ -2,16 +2,26 @@
 source ${HOME}/.config/antidote/antidote.zsh
 antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 
+# Detect OS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # macOS-specific settings
+  BREW_PREFIX=$(brew --prefix)
+  source "$BREW_PREFIX/share/zsh/site-functions"
+  fpath+=("$BREW_PREFIX/share/zsh/site-functions")
+  eval "$("$BREW_PREFIX/bin/brew" shellenv)"
+  # Kitty themes
+  eval "kitten @ --password='control' set-colors -c $HOME/.config/kitty/current-theme.conf"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux-specific settings
+  # (Add any specific Linux configurations if needed)
+  :
+fi
+
 #Timestamp format
 HIST_STAMPS="dd.mm.yyyy"
 
-source "$(brew --prefix)/share/zsh/site-functions"
-
 # Prompt
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
-autoload -Uz promptinit
-promptinit
-prompt pure
+autoload -Uz promptinit; promptinit; prompt pure
 zstyle :prompt:pure:git:stash show yes
 
 # Completion
@@ -49,9 +59,6 @@ add-zsh-hook precmd ai_session_rprompt
 # Enable history search with Up/Down arrows
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
-
-# Kitty themes
-eval "kitten @ --password='control' set-colors -c $HOME/.config/kitty/current-theme.conf"
 
 source ~/.shellrc
 
