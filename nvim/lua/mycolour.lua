@@ -150,6 +150,7 @@ local function apply_nvim_colorscheme(colors)
     hi.Number = { guifg = colors.base09 }
     hi.Parameter = { guifg = colors.base07 }
     hi.Special = { guifg = colors.base0C }
+    hi.NormalFloat = { guibg = colors.base01 }
 
     -- Treesitter Groups (Link to Standard Syntax Groups)
     hi["@comment"] = "Comment"
