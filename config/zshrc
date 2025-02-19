@@ -24,9 +24,6 @@ HIST_STAMPS="dd.mm.yyyy"
 autoload -Uz promptinit; promptinit; prompt pure
 zstyle :prompt:pure:git:stash show yes
 
-# Completion
-autoload -U compinit; compinit
-
 # ~~~ BEGIN: AI session in right prompt ~~~
 
 # We'll define a precmd() hook that runs before each prompt display
@@ -67,7 +64,9 @@ alias vi="nvim"
 alias v="nvim"
 alias ls="eza"
 
+# Z/fzf setup
 eval "$(zoxide init zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #GitHub signed commits
 export GPG_TTY=$(tty)
@@ -78,4 +77,3 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
