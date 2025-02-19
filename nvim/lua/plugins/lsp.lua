@@ -58,7 +58,7 @@ return {
                     -- Find references for the word under your cursor.
                     map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
-                    map("<leader>h", vim.lsp.buf.hover, "[H]over [I]nfo")
+                    map("<leader>hi", vim.lsp.buf.hover, "[H]over [I]nfo")
 
                     -- Rename the variable under your cursor.
                     --  Most Language Servers support renaming across files, etc.
