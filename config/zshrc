@@ -1,11 +1,21 @@
+# Antidote package manager for zsh
+source ${HOME}/.config/antidote/antidote.zsh
+antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
+
 #Timestamp format
 HIST_STAMPS="dd.mm.yyyy"
 
+source "$(brew --prefix)/share/zsh/site-functions"
+
+# Prompt
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -Uz promptinit
 promptinit
 prompt pure
 zstyle :prompt:pure:git:stash show yes
+
+# Completion
+autoload -U compinit; compinit
 
 # ~~~ BEGIN: AI session in right prompt ~~~
 
@@ -40,13 +50,6 @@ add-zsh-hook precmd ai_session_rprompt
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
-# .zshrc
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
-antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
-
-# ZSH syntax highlighting ('brew install zsh-syntax-highlighting')
-source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-
 # Kitty themes
 eval "kitten @ --password='control' set-colors -c $HOME/.config/kitty/current-theme.conf"
 
@@ -57,11 +60,6 @@ alias vi="nvim"
 alias v="nvim"
 alias ls="eza"
 
-# gcloud sdk
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-
-source "$(brew --prefix)/share/zsh/site-functions"
 eval "$(zoxide init zsh)"
 
 #GitHub signed commits

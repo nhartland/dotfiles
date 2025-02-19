@@ -11,5 +11,8 @@ zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 
+# Pure prompt
+sindresorhus/pure kind:fpath
+
 # vi-mode
 jeffreytse/zsh-vi-mode

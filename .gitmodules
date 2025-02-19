@@ -10,3 +10,6 @@
 [submodule "vim/tabnine"]
 	path = vim/tabnine
 	url = git://github.com/zxqfl/tabnine-vim
+[submodule "zsh/antidote"]
+	path = zsh/antidote
+	url = https://github.com/mattmc3/antidote.git
