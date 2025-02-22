@@ -37,6 +37,18 @@ return {
             "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
+            -- Format and organise imports on save
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                callback = function()
+                    vim.lsp.buf.format()
+                    vim.lsp.buf.code_action({
+                        context = { only = { "source.organizeImports" } },
+                        apply = true,
+                    })
+                    vim.wait(10)
+                end,
+            })
+
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
                 callback = function(event)
@@ -69,13 +81,15 @@ return {
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             -- TODO: Re-enable if cmp installed
             capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+            local pyright_capabilities = vim.deepcopy(capabilities)
+            pyright_capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
 
             local servers = {
                 ruff = {
                     capabilities = capabilities,
                 },
                 basedpyright = {
-                    capabilities = capabilities,
+                    capabilities = pyright_capabilities,
                     on_init = function(client)
                         local venv_path = require("functions").get_poetry_venv()
                         if venv_path and venv_path ~= "" then
@@ -87,15 +101,19 @@ return {
                         basedpyright = {
                             analysis = {
                                 -- Use this to instead use ruff's organiser
-                                disableOrganizeImports = false,
+                                disableOrganizeImports = true,
                                 diagnosticMode = "openFilesOnly",
                                 typeCheckingMode = "basic",
                                 useLibraryCodeForTypes = true,
+                                -- Overlap with ruff
+                                reportUndefinedVariable = false,
+                                reportUnusedImport = false,
                                 --reportMissingTypeStubs = "none",
                                 --reportUnknownMemberType = false,
                                 --reportUnknownVariableType = "none",
                                 --reportUnknownArgumentType = "none",
                                 --reportUnknownLambdaType = "none",
+                                -- Use this to disable all linting
                                 --ignore = { '*' },
                             },
                         },
