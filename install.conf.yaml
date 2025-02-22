@@ -6,6 +6,7 @@
 - clean: ['~']
 
 - link:
+    ~/.config/ruff/pyproject.toml: config/ruff.toml
     ~/.config/nvim: nvim
     ~/.config/antidote: zsh/antidote
     ~/.bigqueryrc: config/bigqueryrc
@@ -21,7 +22,6 @@
     ~/.Brewfile: config/Brewfile
     ~/.zsh_plugins.txt: config/zsh_plugins
     ~/.config/kitty/kitty.conf: config/kitty
-    ~/.oh-my-zsh/themes/honukai.zsh-theme: themes/honukai.zsh-theme
     ~/.gnupg/gpg.conf: config/gpg
     ~/.gnupg/gpg-agent.conf: config/gpg-agent
     ~/.config/yabai/set_padding.py: yabai/set_padding.py
