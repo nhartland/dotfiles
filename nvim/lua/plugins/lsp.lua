@@ -41,11 +41,14 @@ return {
             vim.api.nvim_create_autocmd("BufWritePre", {
                 callback = function()
                     vim.lsp.buf.format()
+                    -- This does lead to an unfortunate notification "No code actions available"
+                    -- TODO: See if we can limit to python?"
                     vim.lsp.buf.code_action({
                         context = { only = { "source.organizeImports" } },
                         apply = true,
                     })
-                    vim.wait(10)
+                    -- Above command is not blocking so we wait here for a little while
+                    vim.wait(100)
                 end,
             })
 
@@ -79,8 +82,12 @@ return {
             })
 
             local capabilities = vim.lsp.protocol.make_client_capabilities()
-            -- TODO: Re-enable if cmp installed
             capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+            -- Disable hints from pyright
+            -- This isn't ideal, as it means things like unreachable code are not linted
+            -- TODO: explore different options:
+            -- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1075539112
             local pyright_capabilities = vim.deepcopy(capabilities)
             pyright_capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
 
