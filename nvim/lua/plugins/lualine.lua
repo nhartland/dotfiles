@@ -15,7 +15,7 @@ return {
             lualine_b = {},
             lualine_c = {
                 {
-                    require("functions").get_relative_path,
+                    require("custom.functions").get_relative_path,
                     --                    color = { bg = 'NONE', fg = "white" },
                 },
             },

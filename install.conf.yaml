@@ -8,6 +8,7 @@
 - link:
     ~/.config/ruff/pyproject.toml: config/ruff.toml
     ~/.config/nvim: nvim
+    ~/.neovim-python: neovim-python
     ~/.config/antidote: zsh/antidote
     ~/.bigqueryrc: config/bigqueryrc
     ~/.flake8: config/flake8

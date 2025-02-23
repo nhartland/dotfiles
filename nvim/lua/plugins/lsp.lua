@@ -98,7 +98,7 @@ return {
                 basedpyright = {
                     capabilities = pyright_capabilities,
                     on_init = function(client)
-                        local venv_path = require("functions").get_poetry_venv()
+                        local venv_path = require("custom.functions").get_poetry_venv()
                         if venv_path and venv_path ~= "" then
                             client.config.settings.python.pythonPath = venv_path .. "/bin/python"
                             client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })

@@ -1,4 +1,4 @@
-local f = require('functions')
+local f = require('custom.functions')
 local function telescope_with_root(picker)
     -- Helper function for initialising Telescope keybindings such that they run in the project root.
     -- TODO: Adjust such that find_project_root is called newly for each buffer rather than on opening vim

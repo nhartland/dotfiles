@@ -1,5 +1,4 @@
 local M = {}
-local Path = require("plenary.path")
 
 function M.find_project_root()
     local markers = {
@@ -32,6 +31,7 @@ function M.find_project_root()
         "Dockerfile",
     }
 
+    local Path = require("plenary.path")
     local path = Path:new(vim.fn.expand("%:p:h"))
 
     while path and path.filename ~= "/" do
@@ -60,6 +60,13 @@ end
 function M.get_poetry_venv()
     local output = vim.fn.system("poetry env info --path")
     return vim.fn.trim(output)
+end
+
+function M.get_master_poetry_venv()
+    local handle = io.popen("poetry env info -p -C ~/.neovim-python")
+    local result = handle:read("*a")
+    handle:close()
+    return result:gsub("\n", "") .. "/bin/python"
 end
 
 return M

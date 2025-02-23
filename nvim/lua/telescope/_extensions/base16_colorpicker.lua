@@ -4,7 +4,7 @@ local finders = require("telescope.finders")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local mc = require('mycolour')
+local mc = require('custom.mycolour')
 
 local function base16_colorpicker()
     local colors = mc.get_colorschemes()
