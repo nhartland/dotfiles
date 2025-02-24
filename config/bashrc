@@ -7,3 +7,4 @@ source ~/.shellrc
 export PATH="$HOME/.poetry/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+

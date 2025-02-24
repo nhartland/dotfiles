@@ -1,3 +1,5 @@
+base16_theme
 vim/spell
 vim/.netrwhist
 *.json
+.ipynb_checkpoints

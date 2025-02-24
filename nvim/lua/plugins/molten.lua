@@ -8,7 +8,21 @@ return {
             -- these are examples, not defaults. Please see the readme
             vim.g.molten_image_provider = "image.nvim"
             vim.g.molten_output_win_max_height = 20
+
+            -- Output as virtual text. Allows outputs to always be shown, works with images, but can
+            -- be buggy with longer images
+            vim.g.molten_virt_text_output = true
+
+            vim.g.molten_image_location = 'both'
+            -- this will make it so the output shows up below the \`\`\` cell delimiter
+            vim.g.molten_virt_lines_off_by_1 = true
+
+            vim.g.molten_auto_open_html_in_browser = true
         end,
+        keys = {
+            { "<leader>mi", ":MoltenInit<CR>:QuartoActivate<CR>", desc = "[M]olten [I]nit" },
+            --{ "<S-CR>",     ":MoltenEvaluateOperator<CR>", desc = "EvaluateOperator" },
+        }
     },
     {
         -- see the image.nvim readme for more information about configuring this plugin
@@ -26,5 +40,44 @@ return {
             package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
             package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
         end,
-    }
+    },
+    {
+        "quarto-dev/quarto-nvim",
+        ft = { "quarto", "markdown" },
+        init = function()
+            local runner = require("quarto.runner")
+            vim.keymap.set("n", "<S-CR>", runner.run_cell, { desc = "run cell", silent = true })
+        end,
+        opts = {
+            lspFeatures = {
+                -- NOTE: put whatever languages you want here:
+                languages = { "lua", "python" },
+                chunks = "all",
+                diagnostics = {
+                    enabled = true,
+                    triggers = { "BufWritePost" },
+                },
+                completion = {
+                    enabled = true,
+                },
+            },
+            keymap = {
+                run_cell = '<S-CR>'
+                --    -- NOTE: setup your own keymaps:
+                --    hover = "H",
+                --    definition = "gd",
+                --    rename = "<leader>rn",
+                --    references = "gr",
+                --    format = "<leader>gf",
+            },
+            codeRunner = {
+                enabled = true,
+                default_method = "molten",
+            },
+        },
+        dependencies = {
+            "jmbuhr/otter.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
 }
