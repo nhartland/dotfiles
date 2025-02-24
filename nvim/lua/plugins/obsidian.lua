@@ -1,7 +1,7 @@
 return {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
-    lazy = false,
+    lazy = true,
     --ft = "markdown",
     -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
     event = {
@@ -16,18 +16,24 @@ return {
     dependencies = {
         -- Required.
         "nvim-lua/plenary.nvim",
+        -- Requires yarn/npm
+        {
+            "iamcco/markdown-preview.nvim",
+            cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+            build = "cd app && yarn install",
+            init = function()
+                vim.g.mkdp_filetypes = { "markdown" }
+            end,
+            ft = { "markdown" },
+        },
 
         -- see below for full list of optional dependencies 👇
     },
     opts = {
         workspaces = {
             {
-                name = "work",
-                path = "~/vault/picnic",
-            },
-            {
-                name = "work",
-                path = "~/vault/personal",
+                name = "notes",
+                path = "~/vault",
             },
         },
 
@@ -56,7 +62,7 @@ return {
         -- way then set 'mappings = {}'.
         mappings = {
             -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-            ["gf"] = {
+            ["gd"] = {
                 action = function()
                     return require("obsidian").util.gf_passthrough()
                 end,
