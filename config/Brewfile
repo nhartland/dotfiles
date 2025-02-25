@@ -92,8 +92,8 @@ brew 'pkg-config'
 brew 'libarchive'
 brew 'grip'
 
-# yarn/npm
-brew 'yarn'
+# js/npm
+brew 'deno'
 brew 'node'
 #
 # k8s

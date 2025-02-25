@@ -1,5 +1,6 @@
-return { {
+return {
     "nvim-treesitter/nvim-treesitter",
+    event = "VeryLazy",
     build = ":TSUpdate",
     config = function()
         require("nvim-treesitter.configs").setup({
@@ -29,12 +30,10 @@ return { {
             indent = { enable = true },
         })
     end
-},
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        opts = {
-            enable = true,
-            separator = '═'
-        }
-    }
 }
+--    {
+--        "nvim-treesitter/nvim-treesitter-context",
+--        opts = {
+--            enable = true,
+--            separator = '═'
+--        }

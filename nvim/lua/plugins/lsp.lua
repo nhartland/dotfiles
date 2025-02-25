@@ -14,6 +14,7 @@ return {
     {
         -- Main LSP Configuration
         "neovim/nvim-lspconfig",
+        --event = "VeryLazy",
         dependencies = {
             { "williamboman/mason.nvim", opts = {} },
             "williamboman/mason-lspconfig.nvim",
@@ -95,6 +96,12 @@ return {
             pyright_capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
 
             local servers = {
+                shellcheck = {
+                    capabilities = capabilities,
+                },
+                sqlfluff = {
+                    capabilities = capabilities,
+                },
                 ruff = {
                     capabilities = capabilities,
                 },

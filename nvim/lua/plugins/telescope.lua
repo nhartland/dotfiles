@@ -17,7 +17,7 @@ return {
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         { "nvim-telescope/telescope-frecency.nvim",   version = "*" }
     },
-    lazy = false,
+    event = "VeryLazy",
     opts = {
         defaults = {
             file_ignore_patterns = {

@@ -20,7 +20,6 @@ return {
         {
 
             "toppair/peek.nvim",
-            event = { "VeryLazy" },
             ft = { "markdown", "quarto" },
             build = "deno task --quiet build:fast",
             config = function()
