@@ -18,6 +18,7 @@ cask 'google-cloud-sdk'
 tap 'homebrew/cask-fonts'
 #cask 'font-dejavu'
 
+
 # vcs
 brew 'git'
 brew 'git-lfs'
@@ -42,6 +43,9 @@ brew 'cbonsai'
 tap 'koekeishiya/formulae'
 brew 'yabai', restart_service: :changed
 brew 'skhd', restart_service: :changed
+
+# Sync
+brew 'syncthing', restart_service: :changed
 
 # shell
 brew 'zsh'
@@ -87,8 +91,11 @@ brew 'markdown'
 brew 'pkg-config'
 brew 'libarchive'
 brew 'grip'
-brew 'node'
 
+# yarn/npm
+brew 'yarn'
+brew 'node'
+#
 # k8s
 brew 'kubectl'
 brew 'minikube'
