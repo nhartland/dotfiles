@@ -4,6 +4,7 @@ return {
     lazy = true,
     --ft = "markdown",
     -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+    cmd = { "ObsidianToday", "ObsidianTomorrow", "ObsidianYesterday", "ObsidianNew", "ObsidianSearch" },
     event = {
         -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
         -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
@@ -16,16 +17,30 @@ return {
     dependencies = {
         -- Required.
         "nvim-lua/plenary.nvim",
-        -- Requires yarn/npm
         {
-            "iamcco/markdown-preview.nvim",
-            cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-            build = "cd app && yarn install",
-            init = function()
-                vim.g.mkdp_filetypes = { "markdown" }
+
+            "toppair/peek.nvim",
+            event = { "VeryLazy" },
+            ft = { "markdown", "quarto" },
+            build = "deno task --quiet build:fast",
+            config = function()
+                require("peek").setup(
+                    { app = 'browser' }
+                )
+                vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+                vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
             end,
-            ft = { "markdown" },
         },
+        -- Requires yarn/npm
+        --{
+        --    "iamcco/markdown-preview.nvim",
+        --    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        --    build = "cd app && yarn install",
+        --    init = function()
+        --        vim.g.mkdp_filetypes = { "markdown" }
+        --    end,
+        --    ft = { "markdown" },
+        --},
 
         -- see below for full list of optional dependencies 👇
     },
@@ -33,13 +48,13 @@ return {
         workspaces = {
             {
                 name = "notes",
-                path = "~/vault",
+                path = "~/vault/notes",
             },
         },
 
         daily_notes = {
             -- Optional, if you keep daily notes in a separate directory.
-            folder = "notes/daily",
+            folder = "daily",
             -- Optional, if you want to change the date format for the ID of daily notes.
             date_format = "%Y-%m-%d",
             -- Optional, if you want to change the date format of the default alias of daily notes.
@@ -92,7 +107,8 @@ return {
         -- Optional, for templates (see below).
         templates = {
             folder = "templates",
-            date_format = "%Y-%m-%d",
+            --date_format = "%Y-%m-%d",
+            date_format = "%-d %B, %Y",
             time_format = "%H:%M",
             -- A map for custom variables, the key should be the variable and the value a function
             substitutions = {},

@@ -12,6 +12,10 @@ o.expandtab = true
 o.backup = true
 o.backupdir = { "~/.vim-tmp", "~/.tmp", "~/tmp", "/var/tmp", "/tmp" }
 
+-- help conceallevel
+-- Sets concealed text to single character
+o.conceallevel = 1
+
 -- Enable break indent
 o.breakindent = true
 -- Decrease update time
