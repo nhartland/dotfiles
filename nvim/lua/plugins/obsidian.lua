@@ -11,14 +11,11 @@ return {
         -- refer to `:h file-pattern` for more examples
         "BufReadPre " .. vim.fn.expand "~" .. "/vault/**/*.md",
         "BufNewFile " .. vim.fn.expand "~" .. "/vault/**/*.md",
-        --"BufReadPre path/to/my-vault/*.md",
-        --"BufNewFile path/to/my-vault/*.md",
     },
     dependencies = {
         -- Required.
         "nvim-lua/plenary.nvim",
         {
-
             "toppair/peek.nvim",
             ft = { "markdown", "quarto" },
             build = "deno task --quiet build:fast",
@@ -30,18 +27,12 @@ return {
                 vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
             end,
         },
-        -- Requires yarn/npm
-        --{
-        --    "iamcco/markdown-preview.nvim",
-        --    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        --    build = "cd app && yarn install",
-        --    init = function()
-        --        vim.g.mkdp_filetypes = { "markdown" }
-        --    end,
-        --    ft = { "markdown" },
-        --},
-
-        -- see below for full list of optional dependencies 👇
+    },
+    keys = {
+        { "<leader>os", "<cmd>ObsidianSearch<cr>",    mode = "n", desc = "[O]bsidian [S]earch" },
+        { "<leader>on", "<cmd>ObsidianNew<cr>",       mode = "n", desc = "[O]bsidian [N]ew" },
+        { "<leader>ot", "<cmd>ObsidianToday<cr>",     mode = "n", desc = "[O]bsidian [T]oday" },
+        { "<leader>oy", "<cmd>ObsidianYesterday<cr>", mode = "n", desc = "[O]bsidian [Y]esterday" }
     },
     opts = {
         workspaces = {
@@ -75,7 +66,7 @@ return {
         -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
         -- way then set 'mappings = {}'.
         mappings = {
-            -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+            -- Overrides the 'gd' mapping to work on markdown/wiki links within your vault.
             ["gd"] = {
                 action = function()
                     return require("obsidian").util.gf_passthrough()
