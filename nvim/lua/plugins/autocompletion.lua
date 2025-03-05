@@ -71,8 +71,21 @@ return {
                     --  This will expand snippets if the LSP sent a snippet.
                     ['<S-Tab>'] = cmp.mapping.confirm { select = true },
                     ['<Right>'] = cmp.mapping.confirm { select = true },
-                    ['<Tab>'] = cmp.mapping.confirm { select = true },
 
+                    --['<Tab>'] = cmp.mapping.confirm { select = true },
+                    ['<Tab>'] = cmp.mapping(function(fallback)
+                        local copilot = require 'copilot.suggestion'
+
+                        if copilot.is_visible() then
+                            copilot.accept()
+                        elseif cmp.visible() then
+                            cmp.select_next_item()
+                        elseif luasnip.expand_or_locally_jumpable() then
+                            luasnip.expand_or_jump()
+                        else
+                            fallback()
+                        end
+                    end, { 'i', 's' }),
                     -- If you prefer more traditional completion keymaps,
                     -- you can uncomment the following lines
                     --['<CR>'] = cmp.mapping.confirm { select = true },
