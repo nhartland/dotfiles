@@ -38,21 +38,34 @@ return {
             "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
-            -- Format and organise imports on save
+            -- Format and organize imports on save
             vim.api.nvim_create_autocmd("BufWritePre", {
                 callback = function()
-                    vim.lsp.buf.format()
-                    -- This does lead to an unfortunate notification "No code actions available"
-                    -- TODO: See if we can limit to python?"
-                    vim.lsp.buf.code_action({
-                        context = { only = { "source.organizeImports" } },
-                        apply = true,
-                    })
-                    -- Above command is not blocking so we wait here for a little while
-                    vim.wait(100)
+                    local filetype = vim.bo.filetype
+                    if filetype == "python" then
+                        vim.lsp.buf.format()
+                        vim.lsp.buf.code_action({
+                            context = {
+                                only = { "source.organizeImports" },
+                                diagnostics = {}
+                            },
+                            apply = true,
+                        })
+                        vim.wait(100)
+                    elseif filetype == "markdown" then
+                        -- This code tracks and resets the cursor position
+                        local cur_pos = vim.api.nvim_win_get_cursor(0)
+                        vim.cmd("silent! %!prettier --stdin-filepath " .. vim.fn.expand("%"))
+                        vim.api.nvim_win_set_cursor(0, cur_pos)
+                    else
+                        -- Check that there is an LSP attached
+                        local clients = vim.lsp.get_clients({ bufnr = 0 })
+                        if next(clients) ~= nil then
+                            vim.lsp.buf.format()
+                        end
+                    end
                 end,
             })
-
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
                 callback = function(event)
@@ -144,8 +157,8 @@ return {
                     capabilities = capabilities,
                 },
                 lua_ls = {
-                    on_attach = function(client, _)
-                        client.server_capabilities.documentFormattingProvider = false
+                    on_attach = function(_, _)
+                        --client.server_capabilities.documentFormattingProvider = false
                     end,
                     settings = {
                         Lua = {
@@ -156,6 +169,10 @@ return {
                                 globals = { "vim", "love" },
                             },
                         },
+                    },
+                },
+                prettier = {
+                    settings = {
                     },
                 },
             }

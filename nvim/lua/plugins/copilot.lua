@@ -54,4 +54,61 @@ return {
             })
         end,
     },
-}
+    {
+        {
+            "CopilotC-Nvim/CopilotChat.nvim",
+            dependencies = {
+                { "github/copilot.vim" },                       -- or zbirenbaum/copilot.lua
+                { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+            },
+            build = "make tiktoken",                            -- Only on MacOS or Linux
+            opts = {
+                -- See Configuration section for options
+            },
+            keys = {
+                -- Show prompts actions with telescope
+                {
+                    "<leader>ap",
+                    function()
+                        require("CopilotChat").select_prompt({
+                            context = {
+                                "buffers",
+                            },
+                        })
+                    end,
+                    desc = "CopilotChat - Prompt actions",
+                },
+                -- Chat with Copilot in visual mode
+                {
+                    "<leader>cc",
+                    ":CopilotChatVisual",
+                    mode = "x",
+                    desc = "CopilotChat - Open in vertical split",
+                },
+                {
+                    "<leader>cx",
+                    ":CopilotChatInline",
+                    mode = "x",
+                    desc = "CopilotChat - Inline chat",
+                },
+                -- Custom input for CopilotChat
+                {
+                    "<leader>ai",
+                    function()
+                        local input = vim.fn.input("Ask Copilot: ")
+                        if input ~= "" then
+                            vim.cmd("CopilotChat " .. input)
+                        end
+                    end,
+                    desc = "CopilotChat - Ask input",
+                },
+                -- Generate commit message based on the git diff
+                {
+                    "<leader>am",
+                    "<cmd>CopilotChatCommit<cr>",
+                    desc = "CopilotChat - Generate commit message for all changes",
+                },
+            },
+        }
+
+    } }

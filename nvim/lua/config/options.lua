@@ -53,6 +53,6 @@ vim.opt.backup = true
 vim.opt.backupdir = { "~/.vim-tmp", "~/.tmp", "~/tmp", "/var/tmp", "/tmp" }
 vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 
-vim.o.completeopt = "menuone,noinsert,noselect"
+vim.o.completeopt = "menuone,noinsert,noselect,popup"
 vim.o.wildmode = "list:longest,full"
 vim.o.wildmenu = true
