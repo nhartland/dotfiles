@@ -41,6 +41,7 @@ return {
             -- Format and organize imports on save
             vim.api.nvim_create_autocmd("BufWritePre", {
                 callback = function()
+                    local bufnr = vim.api.nvim_get_current_buf()
                     local filetype = vim.bo.filetype
                     if filetype == "python" then
                         vim.lsp.buf.format()
@@ -62,6 +63,7 @@ return {
                         local clients = vim.lsp.get_clients({ bufnr = 0 })
                         if next(clients) ~= nil then
                             vim.lsp.buf.format()
+                            vim.diagnostic.enable(bufnr)
                         end
                     end
                 end,

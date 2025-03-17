@@ -58,12 +58,11 @@ return {
         {
             "CopilotC-Nvim/CopilotChat.nvim",
             dependencies = {
-                { "github/copilot.vim" },                       -- or zbirenbaum/copilot.lua
-                { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+                { "zbirenbaum/copilot.vim" },
+                { "nvim-lua/plenary.nvim", branch = "master" },
             },
-            build = "make tiktoken",                            -- Only on MacOS or Linux
+            build = "make tiktoken",
             opts = {
-                -- See Configuration section for options
             },
             keys = {
                 -- Show prompts actions with telescope
@@ -80,13 +79,13 @@ return {
                 },
                 -- Chat with Copilot in visual mode
                 {
-                    "<leader>cc",
+                    "<leader>ac",
                     ":CopilotChatVisual",
                     mode = "x",
                     desc = "CopilotChat - Open in vertical split",
                 },
                 {
-                    "<leader>cx",
+                    "<leader>ax",
                     ":CopilotChatInline",
                     mode = "x",
                     desc = "CopilotChat - Inline chat",
