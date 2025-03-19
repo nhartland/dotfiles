@@ -63,6 +63,20 @@ return {
             },
             build = "make tiktoken",
             opts = {
+                -- default window options
+                window = {
+                    layout = 'horizontal',  -- 'vertical', 'horizontal', 'float', 'replace'
+                    width = 0.5,            -- fractional width of parent, or absolute width in columns when > 1
+                    height = 0.3,           -- fractional height of parent, or absolute height in rows when > 1
+                    -- Options below only apply to floating windows
+                    relative = 'editor',    -- 'editor', 'win', 'cursor', 'mouse'
+                    border = 'single',      -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
+                    row = nil,              -- row position of the window, default is centered
+                    col = nil,              -- column position of the window, default is centered
+                    title = 'Copilot Chat', -- title of chat window
+                    footer = nil,           -- footer of chat window
+                    zindex = 1,             -- determines if window is on top or below other floating windows
+                },
             },
             keys = {
                 -- Show prompts actions with telescope
@@ -77,35 +91,11 @@ return {
                     end,
                     desc = "CopilotChat - Prompt actions",
                 },
-                -- Chat with Copilot in visual mode
-                {
-                    "<leader>ac",
-                    ":CopilotChatVisual",
-                    mode = "x",
-                    desc = "CopilotChat - Open in vertical split",
-                },
-                {
-                    "<leader>ax",
-                    ":CopilotChatInline",
-                    mode = "x",
-                    desc = "CopilotChat - Inline chat",
-                },
                 -- Custom input for CopilotChat
                 {
                     "<leader>ai",
-                    function()
-                        local input = vim.fn.input("Ask Copilot: ")
-                        if input ~= "" then
-                            vim.cmd("CopilotChat " .. input)
-                        end
-                    end,
+                    "<cmd>CopilotChat<cr>",
                     desc = "CopilotChat - Ask input",
-                },
-                -- Generate commit message based on the git diff
-                {
-                    "<leader>am",
-                    "<cmd>CopilotChatCommit<cr>",
-                    desc = "CopilotChat - Generate commit message for all changes",
                 },
             },
         }

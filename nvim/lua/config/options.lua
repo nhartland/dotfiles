@@ -12,6 +12,10 @@ o.expandtab = true
 o.backup = true
 o.backupdir = { "~/.vim-tmp", "~/.tmp", "~/tmp", "/var/tmp", "/tmp" }
 
+-- Open splits to the right and below by default
+vim.o.splitright = true
+vim.o.splitbelow = true
+
 -- help conceallevel
 -- Sets concealed text to single character
 o.conceallevel = 2
