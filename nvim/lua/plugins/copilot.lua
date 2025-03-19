@@ -63,7 +63,7 @@ return {
             },
             build = "make tiktoken",
             opts = {
-                -- default window options
+                auto_insert_mode = true,
                 window = {
                     layout = 'horizontal',  -- 'vertical', 'horizontal', 'float', 'replace'
                     width = 0.5,            -- fractional width of parent, or absolute width in columns when > 1
