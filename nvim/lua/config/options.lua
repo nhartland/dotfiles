@@ -14,7 +14,7 @@ o.backupdir = { "~/.vim-tmp", "~/.tmp", "~/tmp", "/var/tmp", "/tmp" }
 
 -- help conceallevel
 -- Sets concealed text to single character
-o.conceallevel = 0 --1
+o.conceallevel = 2
 
 -- Enable break indent
 o.breakindent = true

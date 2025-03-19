@@ -57,6 +57,8 @@ return {
                         -- This code tracks and resets the cursor position
                         local cur_pos = vim.api.nvim_win_get_cursor(0)
                         vim.cmd("silent! %!prettier --stdin-filepath " .. vim.fn.expand("%"))
+                        local last_line = vim.api.nvim_buf_line_count(0)
+                        cur_pos[1] = math.min(cur_pos[1], last_line)
                         vim.api.nvim_win_set_cursor(0, cur_pos)
                     else
                         -- Check that there is an LSP attached
