@@ -383,11 +383,13 @@ x11_bell_volume 80
 
 
 # BEGIN_KITTY_FONTS
-font_family      family='0xProto Nerd Font Mono' postscript_name=0xProtoNFM-Regular
+font_family      family="0xProto Nerd Font Mono"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
 # END_KITTY_FONTS
+
+disable_ligatures cursor
 
 
 # BEGIN_KITTY_THEME

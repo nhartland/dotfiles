@@ -91,6 +91,8 @@ return {
                     --  To jump back, press <C-t>.
                     map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
+                    map("gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype")
+
                     -- Find references for the word under your cursor.
                     map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 

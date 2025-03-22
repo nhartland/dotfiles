@@ -16,7 +16,9 @@ cask 'google-cloud-sdk'
 
 # fonts
 tap 'homebrew/cask-fonts'
-#cask 'font-dejavu'
+brew 'font-fira-code'
+brew 'font-jetbrains-mono'
+brew 'font-iosevka'
 
 
 # vcs
