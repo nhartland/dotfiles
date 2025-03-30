@@ -62,6 +62,14 @@ function M.get_poetry_venv()
     return vim.fn.trim(output)
 end
 
+function M.get_poetry_interpreter()
+    local venv_path = M.get_poetry_venv()
+    if venv_path and venv_path ~= "" then
+        return venv_path .. "/bin/python"
+    end
+    return nil
+end
+
 function M.get_master_poetry_venv()
     local handle = io.popen("poetry env info -p -C ~/.neovim-python")
     local result = handle:read("*a")

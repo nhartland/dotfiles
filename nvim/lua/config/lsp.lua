@@ -1,0 +1,133 @@
+-- Defined in init.lua
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+capabilities.textDocument.semanticTokens.multilineTokenSupport = true
+
+vim.lsp.config('*', {
+    capabilities = capabilities,
+    root_markers = { '.git' },
+})
+
+vim.lsp.enable({
+    'luals',
+    'harperls',
+    'basedpyright',
+    'ruff',
+    'bashls',
+    'sqlls',
+    "yamlls",
+    "dockerls",
+})
+
+vim.diagnostic.config({
+    -- Use the default configuration
+    --virtual_lines = true,
+    virtual_text = true, --{ current_line = true },
+
+    -- Alternatively, customize specific options
+    --virtual_lines = {
+    --    -- Only show virtual line diagnostics for the current cursor line
+    --    current_line = true,
+    --},
+})
+--        -- Disable hints from pyright
+--        -- This isn't ideal, as it means things like unreachable code are not linted
+--        -- TODO: explore different options:
+--        -- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1075539112
+--        local pyright_capabilities = vim.deepcopy(capabilities)
+--        pyright_capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+
+--vim.api.nvim_create_autocmd('LspAttach', {
+--  group = vim.api.nvim_create_augroup('my.lsp', {}),
+--  callback = function(args)
+--    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+--    if client:supports_method('textDocument/implementation') then
+--      -- Create a keymap for vim.lsp.buf.implementation ...
+--    end
+--    -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
+--    if client:supports_method('textDocument/completion') then
+--      -- Optional: trigger autocompletion on EVERY keypress. May be slow!
+--      -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+--      -- client.server_capabilities.completionProvider.triggerCharacters = chars
+--      vim.lsp.completion.enable(true, client.id, args.buf, {autotrigger = true})
+--    end
+--    -- Auto-format ("lint") on save.
+--    -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+--    if not client:supports_method('textDocument/willSaveWaitUntil')
+--        and client:supports_method('textDocument/formatting') then
+--      vim.api.nvim_create_autocmd('BufWritePre', {
+--        group = vim.api.nvim_create_augroup('my.lsp', {clear=false}),
+--        buffer = args.buf,
+--        callback = function()
+--          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+--        end,
+--      })
+--    end
+--  end,
+--})
+
+-- Format and organize imports on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+    callback = function()
+        local bufnr = vim.api.nvim_get_current_buf()
+        local filetype = vim.bo.filetype
+        if filetype == "python" then
+            vim.lsp.buf.format({ bufnr = bufnr, async = false, timeout_ms = 1000 })
+            vim.lsp.buf.code_action({
+                context = {
+                    only = { "source.organizeImports" },
+                    diagnostics = {}
+                },
+                apply = true,
+                async = false,
+            })
+        elseif filetype == "markdown" then
+            -- This code tracks and resets the cursor position
+            local cur_pos = vim.api.nvim_win_get_cursor(0)
+            vim.cmd("silent! %!prettier --stdin-filepath " .. vim.fn.expand("%"))
+            local last_line = vim.api.nvim_buf_line_count(0)
+            cur_pos[1] = math.min(cur_pos[1], last_line)
+            vim.api.nvim_win_set_cursor(0, cur_pos)
+        else
+            -- Check that there is an LSP attached
+            local clients = vim.lsp.get_clients({ bufnr = 0 })
+            if next(clients) ~= nil then
+                vim.lsp.buf.format({ bufnr = bufnr, async = false, timeout_ms = 1000 })
+                vim.diagnostic.enable(bufnr)
+            end
+        end
+    end,
+})
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+    callback = function(event)
+        local map = function(keys, func, desc, mode)
+            mode = mode or "n"
+            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+        end
+
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client and client.server_capabilities.semanticTokensProvider then
+            client.server_capabilities.semanticTokensProvider = nil
+        end
+
+        -- Use internal formatting for bindings like gq.
+        vim.bo[event.buf].formatexpr = nil
+
+        -- Jump to the definition of the word under your cursor.
+        --  This is where a variable was first declared, or where a function is defined, etc.
+        --  To jump back, press <C-t>.
+        map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+
+        map("gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype")
+
+        -- Find references for the word under your cursor.
+        map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+
+        map("<leader>hi", vim.lsp.buf.hover, "[H]over [I]nfo")
+
+        -- Rename the variable under your cursor.
+        --  Most Language Servers support renaming across files, etc.
+        map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+    end,
+})
