@@ -163,9 +163,6 @@ return {
                     capabilities = capabilities,
                 },
                 lua_ls = {
-                    on_attach = function(_, _)
-                        --client.server_capabilities.documentFormattingProvider = false
-                    end,
                     settings = {
                         Lua = {
                             completion = {

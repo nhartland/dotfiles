@@ -27,6 +27,33 @@ return {
                 vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
             end,
         },
+        {
+            -- Currently just using this for inline latex
+            'MeanderingProgrammer/render-markdown.nvim',
+            dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+            opts = {
+                -- Disable most rendering
+                render_modes = false,
+                -- checkboxes already rendered by obsidian.nvim
+                checkbox = {
+                    enabled = false,
+                },
+                -- Enable latex rendering when in insert mode
+                latex = {
+                    enabled = true,
+                    render_modes = { 'i' },
+                },
+                code = {
+                    render_modes = true,
+                    style = 'language',
+                    width = 'block',
+                    min_width = 45,
+                    left_pad = 2,
+                    language_pad = 2,
+                },
+
+            },
+        },
     },
     keys = {
         { "<leader>os", "<cmd>ObsidianSearch<cr>",    mode = "n", desc = "[O]bsidian [S]earch" },
