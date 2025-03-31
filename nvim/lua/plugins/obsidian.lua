@@ -33,10 +33,10 @@ return {
             dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
             opts = {
                 -- Disable most rendering
-                render_modes = false,
-                -- checkboxes already rendered by obsidian.nvim
+                render_modes = true,
                 checkbox = {
-                    enabled = false,
+                    render_modes = true,
+                    enabled = true,
                 },
                 -- Enable latex rendering when in insert mode
                 latex = {
@@ -74,6 +74,10 @@ return {
         { "<leader>oy", "<cmd>ObsidianYesterday<cr>", mode = "n", desc = "[O]bsidian [Y]esterday" }
     },
     opts = {
+        ui = {
+            -- Handled by render-markdown
+            enable = false
+        },
         workspaces = {
             {
                 name = "notes",

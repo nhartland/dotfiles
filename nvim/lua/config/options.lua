@@ -18,7 +18,7 @@ vim.o.splitbelow = true
 
 -- help conceallevel
 -- Sets concealed text to single character
-o.conceallevel = 2
+o.conceallevel = 0
 
 -- Enable break indent
 o.breakindent = true
