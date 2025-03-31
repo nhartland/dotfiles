@@ -51,6 +51,18 @@ return {
                     left_pad = 2,
                     language_pad = 2,
                 },
+                dash = {
+                    enabled = true,
+                    render_modes = true,
+                    icon = '─',
+                    width = 'full',
+                    left_margin = 0,
+                    highlight = 'RenderMarkdownDash',
+                },
+                pipe_table = {
+                    enabled = true,
+                    render_modes = true,
+                },
 
             },
         },
