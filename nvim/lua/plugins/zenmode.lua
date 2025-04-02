@@ -47,36 +47,6 @@ return {
                 enabled = false,
                 font = "+4", -- font size increment
             },
-            -- this will change the font size on alacritty when in zen mode
-            -- requires  Alacritty Version 0.10.0 or higher
-            -- uses `alacritty msg` subcommand to change font size
-            alacritty = {
-                enabled = false,
-                font = "14", -- font size
-            },
-            -- this will change the font size on wezterm when in zen mode
-            -- See alse also the Plugins/Wezterm section in this projects README
-            wezterm = {
-                enabled = false,
-                -- can be either an absolute font size or the number of incremental steps
-                font = "+4", -- (10% increase per step)
-            },
-            -- this will change the scale factor in Neovide when in zen mode
-            -- See alse also the Plugins/Wezterm section in this projects README
-            neovide = {
-                enabled = false,
-                -- Will multiply the current scale factor by this number
-                scale = 1.2,
-                -- disable the Neovide animations while in Zen mode
-                disable_animations = {
-                    neovide_animation_length = 0,
-                    neovide_cursor_animate_command_line = false,
-                    neovide_scroll_animation_length = 0,
-                    neovide_position_animation_length = 0,
-                    neovide_cursor_animation_length = 0,
-                    neovide_cursor_vfx_mode = "",
-                }
-            },
         },
         -- callback where you can add custom code when the Zen window opens
         on_open = function(win)

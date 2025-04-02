@@ -17,6 +17,7 @@ return {
         "nvim-lua/plenary.nvim",
         {
             "toppair/peek.nvim",
+            version = '*',
             ft = { "markdown", "quarto" },
             build = "deno task --quiet build:fast",
             config = function()
@@ -28,12 +29,18 @@ return {
             end,
         },
         {
-            -- Currently just using this for inline latex
+            -- Replaces obsidian.nvim rendering
             'MeanderingProgrammer/render-markdown.nvim',
+            version = '*',
             dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
             opts = {
-                -- Disable most rendering
+                -- Enable most rendering across all modes
                 render_modes = true,
+                heading = {
+                    enabled = true,
+                    sign = false,
+                    position = 'inline'
+                },
                 checkbox = {
                     render_modes = true,
                     enabled = true,
