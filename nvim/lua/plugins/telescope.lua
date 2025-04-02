@@ -31,6 +31,9 @@ return {
                 }
             },
             extensions = {
+                ["fidget"] = {
+                    require("telescope").load_extension("fidget")
+                },
                 ["ui-select"] = {
                     require("telescope.themes").get_ivy {
                         layout_config = { height = 0.30 },

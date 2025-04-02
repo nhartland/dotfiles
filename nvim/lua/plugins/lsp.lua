@@ -22,6 +22,7 @@ return {
             {
                 "j-hui/fidget.nvim",
                 opts = {
+
                     progress = {
                         display = {
                             render_limit = 16, -- How many LSP messages to show at once
