@@ -17,6 +17,7 @@ return {
         "nvim-lua/plenary.nvim",
         {
             "toppair/peek.nvim",
+            version = '*',
             ft = { "markdown", "quarto" },
             build = "deno task --quiet build:fast",
             config = function()
@@ -27,6 +28,51 @@ return {
                 vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
             end,
         },
+        {
+            -- Replaces obsidian.nvim rendering
+            'MeanderingProgrammer/render-markdown.nvim',
+            version = '*',
+            dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+            opts = {
+                -- Enable most rendering across all modes
+                render_modes = true,
+                heading = {
+                    enabled = true,
+                    sign = false,
+                    position = 'inline'
+                },
+                checkbox = {
+                    render_modes = true,
+                    enabled = true,
+                },
+                -- Enable latex rendering when in insert mode
+                latex = {
+                    enabled = true,
+                    render_modes = { 'i' },
+                },
+                code = {
+                    render_modes = true,
+                    style = 'language',
+                    width = 'block',
+                    min_width = 45,
+                    left_pad = 2,
+                    language_pad = 2,
+                },
+                dash = {
+                    enabled = true,
+                    render_modes = true,
+                    icon = '─',
+                    width = 'full',
+                    left_margin = 0,
+                    highlight = 'RenderMarkdownDash',
+                },
+                pipe_table = {
+                    enabled = true,
+                    render_modes = true,
+                },
+
+            },
+        },
     },
     keys = {
         { "<leader>os", "<cmd>ObsidianSearch<cr>",    mode = "n", desc = "[O]bsidian [S]earch" },
@@ -35,6 +81,10 @@ return {
         { "<leader>oy", "<cmd>ObsidianYesterday<cr>", mode = "n", desc = "[O]bsidian [Y]esterday" }
     },
     opts = {
+        ui = {
+            -- Handled by render-markdown
+            enable = false
+        },
         workspaces = {
             {
                 name = "notes",

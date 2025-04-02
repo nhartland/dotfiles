@@ -12,11 +12,11 @@ end
 return {
     {
         'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
+        --version = '*'
+        --branch = '0.1.x',
         dependencies = {
             'nvim-lua/plenary.nvim',
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-            { "nvim-telescope/telescope-frecency.nvim",   version = "*" },
             { "nvim-telescope/telescope-ui-select.nvim",  version = "*" }
         },
         event = "VeryLazy",
@@ -31,34 +31,50 @@ return {
                 }
             },
             extensions = {
+                ["fidget"] = {
+                    require("telescope").load_extension("fidget")
+                },
                 ["ui-select"] = {
                     require("telescope.themes").get_ivy {
                         layout_config = { height = 0.30 },
                     } }
             },
             pickers = {
-                defaults = {
-                    dynamic_preview_title = true,
-                    path_display = { shorten = 3 },
-                    theme = "ivy",
-                },
-                find_files = {
-                    prompt_title = false,  -- Removes the unnecessary title
-                    prompt_prefix = "[Find Files] ",
-                    results_title = false, -- Removes the unnecessary title
-                    preview = { hide_on_startup = true },
-                    theme = "ivy",
-                    layout_config = { height = 0.30 },
-                },
                 live_grep = {
                     dynamic_preview_title = true,
-                    path_display = { shorten = 3 },
-                }
+                    path_display = { "smart", shorten = { len = 3 } },
+                    wrap_results = true,
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        vertical = {
+                            width = 0.9,
+                            height = 0.9,
+                            preview_height = 0.6,
+                            preview_cutoff = 0
+                        }
+                    },
+                },
+                buffers = {
+                    prompt_prefix = "[Find Buffer] ",
+                    theme = "ivy",
+                    prompt_title = false,
+                    results_title = false,
+                    sort_mru = true,
+                    preview = { hide_on_startup = true },
+                    layout_config = { height = 0.30 },
+                },
+                find_files = {
+                    prompt_prefix = "[Find Files] ",
+                    theme = "ivy",
+                    prompt_title = false,
+                    results_title = false,
+                    layout_config = { height = 0.30 },
+                    preview = { hide_on_startup = true },
+                },
             },
         },
         config = function(_, opts)
             require("telescope").setup(opts)
-            require("telescope").load_extension("frecency")
             require("telescope").load_extension("fzf")
             require("telescope").load_extension("base16_colorpicker")
             require("telescope").load_extension("ui-select")
@@ -69,7 +85,6 @@ return {
             { "<leader>fg", telescope_with_root("live_grep"),                                                       desc = "Telescope live grep" },
             { "<leader>fb", telescope_with_root("buffers"),                                                         desc = "Telescope buffers" },
             { "<leader>fh", telescope_with_root("help_tags"),                                                       desc = "Telescope help tags" },
-            { "<leader>e",  function() return require("telescope").extensions.frecency.frecency() end,              desc = "Frecency-based file navigation" },
         }
     },
 }
