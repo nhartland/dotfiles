@@ -171,6 +171,7 @@ return {
                             },
                             diagnostics = {
                                 globals = { "vim", "love" },
+                                disable = { "missing-fields" },
                             },
                         },
                     },

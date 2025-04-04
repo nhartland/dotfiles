@@ -8,6 +8,7 @@ return {
             -- I don't find the panel useful.
             panel = { enabled = false },
             suggestion = {
+                enabled = false,
                 auto_trigger = true,
                 -- Use alt to interact with Copilot.
                 keymap = {
@@ -41,6 +42,12 @@ return {
                 set_trigger(false)
             end)
         end,
+        dependencies = {
+            "zbirenbaum/copilot-cmp",
+            config = function()
+                require("copilot_cmp").setup()
+            end
+        }
     },
     {
         {

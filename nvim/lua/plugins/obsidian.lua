@@ -32,7 +32,10 @@ return {
             -- Replaces obsidian.nvim rendering
             'MeanderingProgrammer/render-markdown.nvim',
             version = '*',
-            dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+            dependencies = {
+                'nvim-treesitter/nvim-treesitter',
+                'nvim-tree/nvim-web-devicons'
+            },
             opts = {
                 -- Enable most rendering across all modes
                 render_modes = true,
@@ -121,13 +124,6 @@ return {
                 end,
                 opts = { noremap = false, expr = true, buffer = true },
             },
-            -- Toggle check-boxes.
-            ["<leader>ch"] = {
-                action = function()
-                    return require("obsidian").util.toggle_checkbox()
-                end,
-                opts = { buffer = true },
-            },
             -- Smart action depending on context, either follow link or toggle checkbox.
             ["<cr>"] = {
                 action = function()
@@ -161,11 +157,8 @@ return {
         --  * "current_dir" - put new notes in same directory as the current buffer.
         --  * "notes_subdir" - put new notes in the default notes subdirectory.
         new_notes_location = "notes_subdir",
-
-
         -- Either 'wiki' or 'markdown'.
         preferred_link_style = "markdown",
-
         -- Optional, for templates (see below).
         templates = {
             folder = "templates",
@@ -175,7 +168,6 @@ return {
             -- A map for custom variables, the key should be the variable and the value a function
             substitutions = {},
         },
-
         picker = {
             -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
             name = "telescope.nvim",

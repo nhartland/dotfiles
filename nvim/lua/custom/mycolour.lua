@@ -106,7 +106,7 @@ end
 
 -- Apply colorscheme to Neovim
 local function apply_nvim_colorscheme(colors)
-    local hi = setmetatable({}, {
+    local hi                 = setmetatable({}, {
         __newindex = function(_, hlgroup, args)
             if type(args) == "string" then
                 vim.api.nvim_set_hl(0, hlgroup, { link = args })
@@ -133,40 +133,51 @@ local function apply_nvim_colorscheme(colors)
         end,
     })
 
-    M.current_colors = colors
+    M.current_colors         = colors
 
     -- Standard Highlight Groups
-    hi.Normal = { guifg = colors.base05, guibg = colors.base00 }
-    hi.Bold = { gui = "bold" }
-    hi.Italic = { gui = "italic" }
-    hi.Underlined = { guifg = colors.base05, gui = "underline" }
-    hi.Error = { guifg = colors.base08, guibg = colors.base00 }
-    hi.Comment = { guifg = colors.base03, gui = "italic" }
-    hi.Keyword = { guifg = colors.base0E, gui = "bold" }
-    hi.String = { guifg = colors.base0B }
-    hi.Function = { guifg = colors.base0D, gui = "bold" }
-    hi.Type = { guifg = colors.base0A }
-    hi.Identifier = { guifg = colors.base05 }
-    hi.Number = { guifg = colors.base09 }
-    hi.Parameter = { guifg = colors.base07 }
-    hi.Special = { guifg = colors.base0C }
-    hi.NormalFloat = { guibg = colors.base01 }
+    hi.Normal                = { guifg = colors.base05, guibg = colors.base00 }
+    hi.Bold                  = { gui = "bold" }
+    hi.Italic                = { gui = "italic" }
+    hi.Underlined            = { guifg = colors.base05, gui = "underline" }
+    hi.Error                 = { guifg = colors.base08, guibg = colors.base00 }
+    hi.Comment               = { guifg = colors.base03, gui = "italic" }
+    hi.Keyword               = { guifg = colors.base0E, gui = "bold" }
+    hi.String                = { guifg = colors.base0B }
+    hi.Function              = { guifg = colors.base0D, gui = "bold" }
+    hi.Type                  = { guifg = colors.base0A }
+    hi.Identifier            = { guifg = colors.base05 }
+    hi.Number                = { guifg = colors.base09 }
+    hi.Parameter             = { guifg = colors.base07 }
+    hi.Special               = { guifg = colors.base0C }
+    hi.NormalFloat           = { guibg = colors.base01 }
 
     -- Treesitter Groups (Link to Standard Syntax Groups)
-    hi["@comment"] = "Comment"
-    hi["@keyword"] = "Keyword"
-    hi["@string"] = "String"
-    hi["@function"] = "Function"
-    hi["@type"] = "Type"
-    hi["@variable"] = "Identifier"
-    hi["@number"] = "Number"
-    hi["@boolean"] = "Number"
-    hi["@operator"] = "Keyword"
-    hi["@field"] = "Identifier"
-    hi["@property"] = "Identifier"
-    hi["@parameter"] = "Parameter"
-    hi["@constant"] = "Parameter"
-    hi["@namespace"] = "Identifier"
+    hi["@comment"]           = "Comment"
+    hi["@keyword"]           = "Keyword"
+    hi["@string"]            = "String"
+    hi["@function"]          = "Function"
+    hi["@type"]              = "Type"
+    hi["@variable"]          = "Identifier"
+    hi["@number"]            = "Number"
+    hi["@boolean"]           = "Number"
+    hi["@operator"]          = "Keyword"
+    hi["@field"]             = "Identifier"
+    hi["@property"]          = "Identifier"
+    hi["@parameter"]         = "Parameter"
+    hi["@constant"]          = "Parameter"
+    hi["@namespace"]         = "Identifier"
+
+    -- nvim-cmp integration
+    hi.CmpBorder             = { guifg = colors.base04, guibg = colors.base00 }
+    hi.Pmenu                 = { guifg = colors.base05, guibg = colors.base00 }
+    hi.PmenuSel              = { guifg = colors.base00, guibg = colors.base0D, gui = "bold" }
+    hi.PmenuThumb            = { guibg = colors.base04 }
+    hi.CmpDocBorder          = { guifg = colors.base04, guibg = colors.base00 }
+    hi.CmpGhostText          = { guifg = colors.base03, gui = "italic" }
+    hi.CmpItemAbbrMatch      = { guifg = colors.base0D, gui = "bold" }
+    hi.CmpItemKind           = { guifg = colors.base0E }
+    hi.CmpItemMenu           = { guifg = colors.base03 }
 
     -- Telescope Groups
     hi.TelescopePromptPrefix = { guifg = colors.base0D }
