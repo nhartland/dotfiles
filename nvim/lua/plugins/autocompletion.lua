@@ -22,6 +22,8 @@ return {
                             path = "[path]",
                             copilot = "[AI]",
                             nvim_lsp_signature_help = "[sig]",
+                            obsidian = "[Obsidian]",
+                            obsidian_new = "[Obsidian]",
                         })[entry.source.name]
                         -- Leave vim_item.kind untouched to display type
                         return vim_item
