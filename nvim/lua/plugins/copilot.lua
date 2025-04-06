@@ -55,6 +55,7 @@ return {
             dependencies = {
                 { "nvim-lua/plenary.nvim", branch = "master" },
             },
+            version = '*',
             build = "make tiktoken",
             opts = {
                 auto_insert_mode = true,
