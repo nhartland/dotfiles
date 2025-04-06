@@ -168,17 +168,6 @@ local function apply_nvim_colorscheme(colors)
     hi["@constant"]          = "Parameter"
     hi["@namespace"]         = "Identifier"
 
-    -- nvim-cmp integration
-    hi.CmpBorder             = { guifg = colors.base04, guibg = colors.base00 }
-    hi.Pmenu                 = { guifg = colors.base05, guibg = colors.base00 }
-    hi.PmenuSel              = { guifg = colors.base00, guibg = colors.base0D, gui = "bold" }
-    hi.PmenuThumb            = { guibg = colors.base04 }
-    hi.CmpDocBorder          = { guifg = colors.base04, guibg = colors.base00 }
-    hi.CmpGhostText          = { guifg = colors.base03, gui = "italic" }
-    hi.CmpItemAbbrMatch      = { guifg = colors.base0D, gui = "bold" }
-    hi.CmpItemKind           = { guifg = colors.base0E }
-    hi.CmpItemMenu           = { guifg = colors.base03 }
-
     -- Telescope Groups
     hi.TelescopePromptPrefix = { guifg = colors.base0D }
 

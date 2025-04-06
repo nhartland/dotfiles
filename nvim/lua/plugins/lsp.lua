@@ -35,8 +35,6 @@ return {
                     },
                 },
             },
-            -- Allows extra capabilities provided by nvim-cmp
-            "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
             -- Format and organize imports on save
@@ -106,7 +104,7 @@ return {
             })
 
             local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+            capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
             -- Disable hints from pyright
             -- This isn't ideal, as it means things like unreachable code are not linted
@@ -124,6 +122,19 @@ return {
                 },
                 ruff = {
                     capabilities = capabilities,
+                },
+                markdown_oxide = {
+                    capabilities = vim.tbl_deep_extend(
+                        'force',
+                        capabilities,
+                        {
+                            workspace = {
+                                didChangeWatchedFiles = {
+                                    dynamicRegistration = true,
+                                },
+                            },
+                        }
+                    ),
                 },
                 basedpyright = {
                     capabilities = pyright_capabilities,
@@ -189,7 +200,6 @@ return {
             })
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
             require("mason-lspconfig").setup({
-                ensure_installed = {},
                 automatic_installation = false,
                 handlers = {
                     function(server_name)
