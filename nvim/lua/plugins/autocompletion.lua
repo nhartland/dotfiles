@@ -41,11 +41,7 @@ return {
                 },
                 mapping = cmp.mapping.preset.insert {
                     ['<Tab>'] = cmp.mapping(function(fallback)
-                        local copilot = require 'copilot.suggestion'
-
-                        if copilot.is_visible() then
-                            copilot.accept()
-                        elseif cmp.visible() then
+                        if cmp.visible() then
                             cmp.confirm()
                         else
                             fallback()
@@ -62,10 +58,10 @@ return {
                     },
                     { name = "vim-dadbod-completion",   group_index = 1 },
                     { name = 'nvim_lsp_signature_help', group_index = 1 },
-                    { name = "copilot",                 group_index = 2 },
                     { name = 'nvim_lsp',                group_index = 2 },
-                    { name = 'buffer',                  group_index = 3 },
-                    { name = 'path',                    group_index = 3 },
+                    { name = "copilot",                 group_index = 3 },
+                    { name = 'buffer',                  group_index = 4 },
+                    { name = 'path',                    group_index = 4 },
                 },
             }
         end,
