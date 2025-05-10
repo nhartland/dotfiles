@@ -1,7 +1,7 @@
 # .zsh_plugins.txt
-rupa/z              # some bash plugins work too
+rupa/z
 
-# you can even use Oh My Zsh plugins
+# Oh My Zsh plugins
 getantidote/use-omz
 ohmyzsh/ohmyzsh path:lib
 ohmyzsh/ohmyzsh path:plugins/extract
@@ -13,6 +13,3 @@ zsh-users/zsh-history-substring-search
 
 # Pure prompt
 sindresorhus/pure kind:fpath
-
-# vi-mode
-jeffreytse/zsh-vi-mode

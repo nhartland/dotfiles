@@ -60,7 +60,7 @@ return {
             build = "make tiktoken",
             opts = {
                 auto_insert_mode = true,
-                model = "copilot:claude-3.7-sonnet",
+                --model = "copilot:claude-3.7-sonnet",
                 window = {
                     layout = 'horizontal',  -- 'vertical', 'horizontal', 'float', 'replace'
                     width = 0.5,            -- fractional width of parent, or absolute width in columns when > 1

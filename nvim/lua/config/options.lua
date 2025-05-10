@@ -33,6 +33,9 @@ o.timeoutlen = 300
 o.list = true
 o.listchars = { tab = "» ", trail = "·", nbsp = "␣", leadmultispace = "   ▏" }
 
+-- Add fzf to runtimepath
+o.runtimepath:append("/opt/homebrew/opt/fzf")
+
 -- Search and other options
 o.incsearch = true
 o.ignorecase = true

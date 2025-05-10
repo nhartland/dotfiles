@@ -158,6 +158,7 @@ return {
                     },
                 },
                 bashls = {
+                    filetypes = { "sh", "zsh", ".common_profile", ".bashrc", ".bash_profile", ".zshrc", ".zprofile" },
                     capabilities = capabilities,
                 },
                 sqlls = {
