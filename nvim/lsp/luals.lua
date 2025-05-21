@@ -15,7 +15,14 @@ return {
             },
             runtime = {
                 version = 'LuaJIT',
-            }
+            },
+            format = {
+                enable = true,
+                defaultConfig = {
+                    align_continuous_line_space = "1",
+                    align_chain_expr = "True"
+                },
+            },
         }
     }
 }
