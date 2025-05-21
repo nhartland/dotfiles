@@ -1,5 +1,5 @@
 # Antidote package manager for zsh
-source ${HOME}/.config/antidote/antidote.zsh
+source ~/.config/antidote/antidote.zsh
 antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 
 # Detect OS
@@ -44,7 +44,6 @@ function ai_session_rprompt() {
 
   # Add the session to the right side prompt in a subtle color
   RPROMPT="%F{yellow}[$current_session]%f "  # leading space if you want spacing
-
 }
 
 # Use zsh's built-in add-zsh-hook to run this before displaying each prompt
@@ -76,5 +75,4 @@ gpgconf --launch gpg-agent
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-eval "$(/opt/homebrew/bin/brew shellenv)"
 

@@ -7,7 +7,9 @@ return {
         opts = {
             -- I don't find the panel useful.
             panel = { enabled = false },
+            copilot_model = "gpt-4o-copilot",
             suggestion = {
+                enabled = false,
                 auto_trigger = true,
                 -- Use alt to interact with Copilot.
                 keymap = {
@@ -41,6 +43,12 @@ return {
                 set_trigger(false)
             end)
         end,
+        dependencies = {
+            "zbirenbaum/copilot-cmp",
+            config = function()
+                require("copilot_cmp").setup()
+            end
+        }
     },
     {
         {
@@ -48,9 +56,11 @@ return {
             dependencies = {
                 { "nvim-lua/plenary.nvim", branch = "master" },
             },
+            version = '*',
             build = "make tiktoken",
             opts = {
                 auto_insert_mode = true,
+                --model = "copilot:claude-3.7-sonnet",
                 window = {
                     layout = 'horizontal',  -- 'vertical', 'horizontal', 'float', 'replace'
                     width = 0.5,            -- fractional width of parent, or absolute width in columns when > 1

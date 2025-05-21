@@ -5,16 +5,12 @@ return {
     config = function()
         require("nvim-treesitter.configs").setup({
             ensure_installed = {
-                'r',
                 'python',
                 'markdown',
                 'markdown_inline',
-                'julia',
                 'bash',
                 'yaml',
                 'lua',
-                'vim',
-                'query',
                 'vimdoc',
                 'latex', -- requires tree-sitter-cli (installed automatically via Mason)
                 'html',
@@ -28,6 +24,9 @@ return {
             },
             highlight = { enable = true },
             indent = { enable = true },
+            -- Automatically install missing parsers when entering buffer
+            -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+            auto_install = false,
         })
     end
 }

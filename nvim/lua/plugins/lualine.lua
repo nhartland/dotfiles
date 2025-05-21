@@ -3,6 +3,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons",
+        "pnx/lualine-lsp-status",
     },
     opts = {
         options = {
@@ -31,7 +32,7 @@ return {
             lualine_a = { "mode" },
             lualine_b = { "branch" },
             lualine_c = { "filename" },
-            lualine_x = { "searchcount", "filetype" },
+            lualine_x = { "searchcount", "filetype", "lsp-status" },
             lualine_y = { "progress" },
             lualine_z = { "location" },
         },
