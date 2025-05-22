@@ -22,8 +22,3 @@ local _ = require("config.lsp")
 local _ = require("config.keymaps")
 local _ = require("config.options")
 local _ = require("config.spell")
-
--- Check if Molten is available
-if vim.fn.exists(':MoltenInit') == 0 then
-    vim.notify('MoltenInit command is not available, run :UpdateRemotePlugins', vim.log.levels.WARN)
-end

@@ -24,27 +24,11 @@ return {
                 "ruff",
                 "sqlfluff",
                 "sqlls",
-                "stylua",
                 "yaml-language-server",
                 "dockerfile-language-server",
             }
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
         end
-    },
-    {
-        "j-hui/fidget.nvim",
-        opts = {
-            progress = {
-                display = {
-                    render_limit = 16, -- How many LSP messages to show at once
-                    done_ttl = 3,      -- How long a message should persist after completion
-                    done_icon = "",
-                },
-            },
-            notification = {
-                override_vim_notify = true,
-            },
-        },
     },
     {
         -- Allows extra capabilities provided by nvim-cmp
