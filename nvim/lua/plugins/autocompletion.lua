@@ -52,10 +52,6 @@ return {
                     max_view_entries = 5
                 },
                 sources = {
-                    {
-                        name = 'lazydev',
-                        group_index = 0,
-                    },
                     { name = "vim-dadbod-completion",   group_index = 1 },
                     { name = 'nvim_lsp_signature_help', group_index = 1 },
                     { name = 'nvim_lsp',                group_index = 2 },
