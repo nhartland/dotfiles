@@ -45,19 +45,23 @@ local function save_colorscheme(name)
 end
 
 -- Read last used colorscheme from file
-local function get_active_colorscheme()
+local function get_active_colorscheme_name()
     local file = io.open(colorscheme_save_path, "r")
     if file then
         local name = file:read("*l")
         file:close()
-        return name
+        if name and name ~= "" then
+            return name
+        end
     end
-    vim.notify("No active colourscheme found at " .. colorscheme_save_path)
+    vim.notify("No active colourscheme found at " .. colorscheme_save_path .. " or file is empty.")
+    return nil
 end
 
-local function load_last_colorscheme()
-    local name = get_active_colorscheme()
-    if name and name ~= "" then
+-- This function is called at the end of the file to set the theme on startup
+local function apply_last_saved_colorscheme()
+    local name = get_active_colorscheme_name()
+    if name then -- name will be nil if not found or empty, so this check is sufficient
         M.set_colorscheme(name)
     end
 end
@@ -80,8 +84,8 @@ local function load_colorscheme(name)
 end
 
 function M.get_active_color_table()
-    -- Returns the underlying color table currently active
-    local name = load_last_colorscheme()
+    -- Returns the underlying color table currently active (without re-applying the theme)
+    local name = get_active_colorscheme_name()
     if name then
         return load_colorscheme(name)
     else
@@ -106,7 +110,7 @@ end
 
 -- Apply colorscheme to Neovim
 local function apply_nvim_colorscheme(colors)
-    local hi                 = setmetatable({}, {
+    local hi = setmetatable({}, {
         __newindex = function(_, hlgroup, args)
             if type(args) == "string" then
                 vim.api.nvim_set_hl(0, hlgroup, { link = args })
@@ -133,51 +137,74 @@ local function apply_nvim_colorscheme(colors)
         end,
     })
 
-    M.current_colors         = colors
+    M.current_colors = colors
 
     -- Standard Highlight Groups
-    hi.Normal                = { guifg = colors.base05, guibg = colors.base00 }
-    hi.Bold                  = { gui = "bold" }
-    hi.Italic                = { gui = "italic" }
-    hi.Underlined            = { guifg = colors.base05, gui = "underline" }
-    hi.Error                 = { guifg = colors.base08, guibg = colors.base00 }
-    hi.Comment               = { guifg = colors.base03, gui = "italic" }
-    hi.Keyword               = { guifg = colors.base0E, gui = "bold" }
-    hi.String                = { guifg = colors.base0B }
-    hi.Function              = { guifg = colors.base0D, gui = "bold" }
-    hi.Type                  = { guifg = colors.base0A }
-    hi.Identifier            = { guifg = colors.base05 }
-    hi.Number                = { guifg = colors.base09 }
-    hi.Parameter             = { guifg = colors.base07 }
-    hi.Special               = { guifg = colors.base0C }
-    hi.NormalFloat           = { guibg = colors.base01 }
+    hi.Normal      = { guifg = colors.base05, guibg = colors.base00 }
+    hi.Bold        = { gui = "bold" }
+    hi.Italic      = { gui = "italic" }
+    hi.Underlined  = { guifg = colors.base05, gui = "underline" }
+    hi.Error       = { guifg = colors.base08, guibg = colors.base00 }
+    hi.Comment     = { guifg = colors.base03, gui = "italic" }
+    hi.Keyword     = { guifg = colors.base0E, gui = "bold" }
+    hi.String      = { guifg = colors.base0B }
+    hi.Function    = { guifg = colors.base0D, gui = "bold" }
+    hi.Type        = { guifg = colors.base0A }
+    hi.Identifier  = { guifg = colors.base05 }
+    hi.Number      = { guifg = colors.base09 }
+    hi.Parameter   = { guifg = colors.base07 }
+    hi.Special     = { guifg = colors.base0C }
+    hi.NormalFloat = { guibg = colors.base01 }
 
     -- Treesitter Groups (Link to Standard Syntax Groups)
-    hi["@comment"]           = "Comment"
-    hi["@keyword"]           = "Keyword"
-    hi["@string"]            = "String"
-    hi["@function"]          = "Function"
-    hi["@type"]              = "Type"
-    hi["@variable"]          = "Identifier"
-    hi["@number"]            = "Number"
-    hi["@boolean"]           = "Number"
-    hi["@operator"]          = "Keyword"
-    hi["@field"]             = "Identifier"
-    hi["@property"]          = "Identifier"
-    hi["@parameter"]         = "Parameter"
-    hi["@constant"]          = "Parameter"
-    hi["@namespace"]         = "Identifier"
+    hi["@comment"]   = "Comment"
+    hi["@keyword"]   = "Keyword"
+    hi["@string"]    = "String"
+    hi["@function"]  = "Function"
+    hi["@type"]      = "Type"
+    hi["@variable"]  = "Identifier"
+    hi["@number"]    = "Number"
+    hi["@boolean"]   = "Number"
+    hi["@operator"]  = "Keyword"
+    hi["@field"]     = "Identifier"
+    hi["@property"]  = "Identifier"
+    hi["@parameter"] = "Parameter"
+    hi["@constant"]  = "Parameter"
+    hi["@namespace"] = "Identifier"
 
     -- nvim-cmp integration
-    hi.CmpBorder             = { guifg = colors.base04, guibg = colors.base00 }
-    hi.Pmenu                 = { guifg = colors.base05, guibg = colors.base00 }
-    hi.PmenuSel              = { guifg = colors.base00, guibg = colors.base0D, gui = "bold" }
-    hi.PmenuThumb            = { guibg = colors.base04 }
-    hi.CmpDocBorder          = { guifg = colors.base04, guibg = colors.base00 }
-    hi.CmpGhostText          = { guifg = colors.base03, gui = "italic" }
-    hi.CmpItemAbbrMatch      = { guifg = colors.base0D, gui = "bold" }
-    hi.CmpItemKind           = { guifg = colors.base0E }
-    hi.CmpItemMenu           = { guifg = colors.base03 }
+    hi.CmpBorder        = { guifg = colors.base04, guibg = colors.base01 }
+    hi.Pmenu            = { guifg = colors.base05, guibg = colors.base01 }
+    hi.PmenuSel         = { guifg = colors.base00, guibg = colors.base0D, gui = "bold" }
+    hi.PmenuThumb       = { guibg = colors.base04 }
+    hi.CmpDocBorder     = { guifg = colors.base04, guibg = colors.base00 }
+    hi.CmpGhostText     = { guifg = colors.base03, gui = "italic" }
+    hi.CmpItemAbbrMatch = { guifg = colors.base0D, gui = "bold" }
+    hi.CmpItemKind      = { guifg = colors.base0E }
+    hi.CmpItemMenu      = { guifg = colors.base03 }
+
+    -- blink.cmp integration
+    hi.BlinkCmpMenu                         = "Pmenu"
+    hi.BlinkCmpMenuBorder                   = "CmpBorder"
+    hi.BlinkCmpMenuSelection                = "PmenuSel"
+    hi.BlinkCmpScrollBarThumb               = "PmenuThumb"
+    hi.BlinkCmpScrollBarGutter              = { guibg = colors.base02 }
+    hi.BlinkCmpLabel                        = "Pmenu"
+    hi.BlinkCmpLabelDeprecated              = "CmpItemMenu"
+    hi.BlinkCmpLabelMatch                   = "Pmenu"
+    hi.BlinkCmpLabelDetail                  = "CmpItemMenu"
+    hi.BlinkCmpLabelDescription             = "CmpItemMenu"
+    hi.BlinkCmpKind                         = "CmpItemKind"
+    -- hi.BlinkCmpKind<kind> would be specific, e.g., hi.BlinkCmpKindCopilot = { guifg = colors.base0D, gui = "bold" } (already defined)
+    hi.BlinkCmpSource                       = "CmpItemMenu"
+    hi.BlinkCmpGhostText                    = "CmpGhostText" -- Or NonText: { guifg = colors.base03 }
+    hi.BlinkCmpDoc                          = "NormalFloat"  -- { guifg = colors.base05, guibg = colors.base01 }
+    hi.BlinkCmpDocBorder                    = "NormalFloat"
+    hi.BlinkCmpDocSeparator                 = "NormalFloat"
+    hi.BlinkCmpDocCursorLine                = "Visual"
+    hi.BlinkCmpSignatureHelp                = "NormalFloat"
+    hi.BlinkCmpSignatureHelpBorder          = "NormalFloat"
+    hi.BlinkCmpSignatureHelpActiveParameter = "LspSignatureActiveParameter"
 
     -- Telescope Groups
     hi.TelescopePromptPrefix = { guifg = colors.base0D }
@@ -305,6 +332,6 @@ function M.set_colorscheme(name)
     -- TODO: Call kitten to update live kitty colourschemes
 end
 
-load_last_colorscheme()
+apply_last_saved_colorscheme()
 
 return M

@@ -43,10 +43,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
             vim.api.nvim_win_set_cursor(0, cur_pos)
         else
             -- Check that there is an LSP attached
-            local clients = vim.lsp.get_clients({ bufnr = 0 })
+            local clients = vim.lsp.get_clients({ bufnr = bufnr })
             if next(clients) ~= nil then
                 vim.lsp.buf.format({ bufnr = bufnr, async = false, timeout_ms = 1000 })
-                vim.diagnostic.enable(bufnr)
             end
         end
     end,
