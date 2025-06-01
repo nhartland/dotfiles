@@ -19,14 +19,6 @@ vim.lsp.enable({
     "markdown-oxide",
 })
 
-vim.diagnostic.config({
-    virtual_text = false, --{ current_line = true },
-    --virtual_lines = {
-    --    -- Only show virtual line diagnostics for the current cursor line
-    --    current_line = false,
-    --},
-})
-
 -- Format and organize imports on save
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()

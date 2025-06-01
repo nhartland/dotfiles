@@ -54,10 +54,16 @@ return {
                 sources = {
                     { name = "vim-dadbod-completion",   group_index = 1 },
                     { name = 'nvim_lsp_signature_help', group_index = 1 },
-                    { name = 'nvim_lsp',                group_index = 2 },
-                    { name = "copilot",                 group_index = 3 },
-                    { name = 'buffer',                  group_index = 4 },
-                    { name = 'path',                    group_index = 4 },
+                    { name = 'nvim_lsp', group_index = 2,
+                        option = {
+                            markdown_oxide = {
+                                keyword_pattern = [[\(\k\| \|\/\|#\)\+]]
+                            }
+                        }
+                    },
+                    { name = "copilot", group_index = 3 },
+                    { name = 'buffer',  group_index = 4 },
+                    { name = 'path',    group_index = 4 },
                 },
             }
         end,

@@ -46,6 +46,10 @@ vim.diagnostic.config({
     underline = true,
     -- Not sure if I prefer this being false or true
     virtual_text = true,
+    --virtual_lines = {
+    --    enabled = false,
+    --    current_line = false,
+    --},
     float = {
         show_header = true,
         source = 'if_many',
@@ -55,6 +59,7 @@ vim.diagnostic.config({
     update_in_insert = true, -- default to false
     severity_sort = false,   -- default to false
 })
+
 
 vim.opt.backup = true
 vim.opt.backupdir = { "~/.vim-tmp", "~/.tmp", "~/tmp", "/var/tmp", "/tmp" }
