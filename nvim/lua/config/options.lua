@@ -12,6 +12,9 @@ o.expandtab = true
 o.backup = true
 o.backupdir = { "~/.vim-tmp", "~/.tmp", "~/tmp", "/var/tmp", "/tmp" }
 
+-- Setting this to anything else messes with Telescope
+o.winborder = 'none'
+
 -- Open splits to the right and below by default
 vim.o.splitright = true
 vim.o.splitbelow = true

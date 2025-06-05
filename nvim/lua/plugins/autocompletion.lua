@@ -32,7 +32,7 @@ return {
                         columns = {
                             { "label", "label_description", gap = 1 }, { "kind", gap = 1 }, { "source_id" }
                         }
-                    }
+                    },
                 },
                 ghost_text = {
                     enabled = true,

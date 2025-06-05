@@ -155,6 +155,8 @@ local function apply_nvim_colorscheme(colors)
     hi.Parameter   = { guifg = colors.base07 }
     hi.Special     = { guifg = colors.base0C }
     hi.NormalFloat = { guibg = colors.base01 }
+    -- Custom
+    hi.ItemMatch   = { guifg = colors.base0D }
 
     -- Treesitter Groups (Link to Standard Syntax Groups)
     hi["@comment"]   = "Comment"
@@ -179,7 +181,7 @@ local function apply_nvim_colorscheme(colors)
     hi.PmenuThumb       = { guibg = colors.base04 }
     hi.CmpDocBorder     = { guifg = colors.base04, guibg = colors.base00 }
     hi.CmpGhostText     = { guifg = colors.base03, gui = "italic" }
-    hi.CmpItemAbbrMatch = { guifg = colors.base0D, gui = "bold" }
+    hi.CmpItemAbbrMatch = "ItemMatch"
     hi.CmpItemKind      = { guifg = colors.base0E }
     hi.CmpItemMenu      = { guifg = colors.base03 }
 
@@ -191,7 +193,7 @@ local function apply_nvim_colorscheme(colors)
     hi.BlinkCmpScrollBarGutter              = { guibg = colors.base02 }
     hi.BlinkCmpLabel                        = "Pmenu"
     hi.BlinkCmpLabelDeprecated              = "CmpItemMenu"
-    hi.BlinkCmpLabelMatch                   = "Pmenu"
+    hi.BlinkCmpLabelMatch                   = "ItemMatch"
     hi.BlinkCmpLabelDetail                  = "CmpItemMenu"
     hi.BlinkCmpLabelDescription             = "CmpItemMenu"
     hi.BlinkCmpKind                         = "CmpItemKind"
