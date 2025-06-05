@@ -24,34 +24,6 @@ HIST_STAMPS="dd.mm.yyyy"
 autoload -Uz promptinit; promptinit; prompt pure
 zstyle :prompt:pure:git:stash show yes
 
-# ~~~ BEGIN: AI session in right prompt ~~~
-
-# We'll define a precmd() hook that runs before each prompt display
-function ai_session_rprompt() {
-  # read the session name (or default if file doesn't exist/empty)
-  local current_session
-  if [[ -f "$HOME/.config/ai/session_current" ]]; then
-    current_session=$(<"$HOME/.config/ai/session_current")
-  else
-    current_session="default"
-  fi
-
-  # If you want to hide it for the 'default' session, check:
-  if [[ $current_session == "default" ]]; then
-    RPROMPT=""
-    return
-  fi
-
-  # Add the session to the right side prompt in a subtle color
-  RPROMPT="%F{yellow}[$current_session]%f "  # leading space if you want spacing
-}
-
-# Use zsh's built-in add-zsh-hook to run this before displaying each prompt
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd ai_session_rprompt
-
-# ~~~ END: AI session in right prompt ~~~
-
 # Enable history search with Up/Down arrows
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
@@ -63,6 +35,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
 alias ls="eza"
+alias q="aichat"
 
 # Z/fzf setup
 eval "$(zoxide init zsh)"

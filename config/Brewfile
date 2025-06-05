@@ -9,19 +9,15 @@ cask 'spotify'
 cask 'love'
 cask 'vlc'
 cask 'kitty'
-cask 'skim'
 cask 'docker'
-cask 'miniconda'
 cask 'google-cloud-sdk'
 
-# fonts
-tap 'homebrew/cask-fonts'
-brew 'font-fira-code'
-brew 'font-jetbrains-mono'
-brew 'font-iosevka'
-
+# ai
+brew 'aider'
+brew 'aichat'
 
 # vcs
+brew 'gh'
 brew 'git'
 brew 'git-lfs'
 
@@ -37,17 +33,11 @@ brew 'neovim'
 brew 'zsh-syntax-highlighting'
 brew 'antidote'
 brew 'pure'
-brew 'fortune'
-brew 'cowsay'
-brew 'cbonsai'
 
 # wm
 tap 'koekeishiya/formulae'
-brew 'yabai', restart_service: :changed
-brew 'skhd', restart_service: :changed
-
-# Sync
-brew 'syncthing', restart_service: :changed
+brew 'yabai'
+brew 'skhd'
 
 # shell
 brew 'zsh'
@@ -55,7 +45,6 @@ brew 'zsh-completions'
 brew 'zoxide'
 
 # python
-brew 'flake8'
 brew 'poetry'
 
 # search
@@ -63,51 +52,23 @@ brew 'the_silver_searcher'
 brew 'ripgrep'
 
 # lua
-brew 'lua-language-server'
-brew 'lua@5.1'
 brew 'luajit'
 brew 'luarocks'
 
-# build
-brew 'gcc'
-brew 'automake'
-brew 'autoconf'
-brew 'cmake'
-
-# conf
-brew 'libyaml'
-brew 'yaml-cpp'
-
-# numerics
-brew 'gsl'
-
 # utils
 brew 'zip'
-brew 'shellcheck'
 brew 'eza'
 brew 'htop'
 brew 'pandoc'
 brew 'cloc'
 brew 'wget'
-brew 'markdown'
-brew 'pkg-config'
-brew 'libarchive'
-brew 'grip'
 
 # js/npm
-brew 'deno'
 brew 'node'
-#
+
 # k8s
 brew 'kubectl'
 brew 'minikube'
-
-# db
-brew 'sqlite'
-
-# dbt
-tap 'dbt-labs/dbt'
-brew 'dbt'
 
 # auth
 brew 'gpg'
