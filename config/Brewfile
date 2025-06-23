@@ -9,12 +9,15 @@ cask 'spotify'
 cask 'love'
 cask 'vlc'
 cask 'kitty'
-cask 'docker'
 cask 'google-cloud-sdk'
 
 # ai
 brew 'aider'
 brew 'aichat'
+
+# Containers
+brew 'docker'
+brew 'colima'
 
 # vcs
 brew 'gh'
