@@ -32,20 +32,19 @@ brew 'graphviz'
 # editor
 brew 'neovim'
 
-# Terminal
+# shell
+brew 'zsh'
+brew 'zsh-completions'
+brew 'zoxide'
 brew 'zsh-syntax-highlighting'
 brew 'antidote'
 brew 'pure'
+brew 'fzf'
 
 # wm
 tap 'koekeishiya/formulae'
 brew 'yabai'
 brew 'skhd'
-
-# shell
-brew 'zsh'
-brew 'zsh-completions'
-brew 'zoxide'
 
 # python
 brew 'poetry'

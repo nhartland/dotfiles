@@ -13,8 +13,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   eval "kitten @ --password='control' set-colors -c $HOME/.config/kitty/current-theme.conf"
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux-specific settings
-  # (Add any specific Linux configurations if needed)
-  :
 fi
 
 #Timestamp format
@@ -39,7 +37,20 @@ alias q="aichat"
 
 # Z/fzf setup
 eval "$(zoxide init zsh)"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
+
+zoxide_fzf_cd() {
+  local dir
+  dir=$(
+    zoxide query --list --score |
+    fzf --height 40% --layout=reverse --info=inline \
+        --nth=2.. --tac --no-sort \
+        --bind='enter:become:echo {2..}'
+  )
+  [[ -n $dir ]] && cd "$dir"
+}
+bindkey -s '^D' 'zoxide_fzf_cd\n'
+
 
 #GitHub signed commits
 export GPG_TTY=$(tty)
