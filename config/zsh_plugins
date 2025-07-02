@@ -13,3 +13,7 @@ zsh-users/zsh-history-substring-search
 
 # Pure prompt
 sindresorhus/pure kind:fpath
+
+# zsh autocomplete with fzf
+Aloxaf/fzf-tab
+

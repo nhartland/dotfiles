@@ -10,6 +10,9 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Open diagnostic float
 vim.keymap.set("n", "<leader>hd", "<cmd>lua vim.diagnostic.open_float()<cr>")
 
--- Example: Remap j/k for visual lines
+-- Escape maps to exit terminal mode
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
+
+-- Remap j/k for visual lines
 map("n", "j", "gj", opts)
 map("n", "k", "gk", opts)

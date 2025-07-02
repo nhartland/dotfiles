@@ -1,3 +1,9 @@
+# Return now if running inside Neovim's :terminal
+if [[ -n "$NVIM" ]]; then
+  echo "Detected Neovim PTY → skipping .zshrc"
+  return
+fi
+
 # Antidote package manager for zsh
 source ~/.config/antidote/antidote.zsh
 antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
@@ -10,7 +16,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   fpath+=("$BREW_PREFIX/share/zsh/site-functions")
   eval "$("$BREW_PREFIX/bin/brew" shellenv)"
   # Kitty themes
-  eval "kitten @ --password='control' set-colors -c $HOME/.config/kitty/current-theme.conf"
+  if [[ -n "$KITTY_WINDOW_ID" ]]; then
+      eval "kitten @ --password='control' set-colors -c $HOME/.config/kitty/current-theme.conf"
+  fi
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux-specific settings
 fi
