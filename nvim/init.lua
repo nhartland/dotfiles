@@ -17,6 +17,7 @@ end
 
 -- This should be imported before lualine/lazy
 local _ = require("custom.mycolour")
+local _ = require("custom.love_runner")
 local _ = require("config.lazy")
 local _ = require("config.lsp")
 local _ = require("config.keymaps")
