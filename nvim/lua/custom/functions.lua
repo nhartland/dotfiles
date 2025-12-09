@@ -52,9 +52,9 @@ function M.get_relative_path()
     local root = M.find_project_root()
     local filepath = vim.fn.expand("%:p") -- Get full file path
     if filepath:sub(1, #root) == root then
-        return filepath:sub(#root + 2)    -- Return relative path from root
+        return filepath:sub(#root + 2) -- Return relative path from root
     end
-    return filepath                       -- Fallback to full path if outside the project
+    return filepath -- Fallback to full path if outside the project
 end
 
 function M.get_poetry_venv()

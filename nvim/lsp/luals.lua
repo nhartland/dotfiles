@@ -23,6 +23,12 @@ return {
                     align_chain_expr = "True"
                 },
             },
+            workspace = {
+                library = {
+                    vim.fn.expand '~/work/mywork/lua/STv4/forma',
+                    "${3rd}/love2d/library"
+                }
+            }
         }
     }
 }

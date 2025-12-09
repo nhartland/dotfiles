@@ -10,7 +10,7 @@ return {
             build = "make tiktoken",
             opts = {
                 auto_insert_mode = true,
-                model = "claude-sonnet-4",
+                model = "gemini-2.5-pro",
                 window = {
                     layout = 'horizontal',
                     width = 0.5,

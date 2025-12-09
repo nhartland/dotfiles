@@ -28,5 +28,5 @@
     ~/.config/yabai/set_padding.py: yabai/set_padding.py
 
 - shell:
-  - [tic -x -o \~/.terminfo terminfo/kitty.terminfo, Installing kitty terminfo]
+  - [tic -x -o "$HOME/.terminfo" terminfo/kitty.terminfo, Installing kitty terminfo]
   - [git submodule update --init --recursive, Installing submodules]

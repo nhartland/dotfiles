@@ -393,6 +393,6 @@ disable_ligatures cursor
 
 
 # BEGIN_KITTY_THEME
-# Gruvbox Dark Hard
+# Rosé Pine Dawn
 include current-theme.conf
 # END_KITTY_THEME

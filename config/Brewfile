@@ -3,17 +3,13 @@
 cask_args appdir: '/Applications'
 
 cask 'google-chrome'
-cask 'flux'
+cask 'flux-app'
 cask 'steam'
 cask 'spotify'
 cask 'love'
 cask 'vlc'
 cask 'kitty'
-cask 'google-cloud-sdk'
-
-# ai
-brew 'aider'
-brew 'aichat'
+cask 'gcloud-cli'
 
 # Containers
 brew 'docker'
@@ -70,7 +66,6 @@ brew 'node'
 
 # k8s
 brew 'kubectl'
-brew 'minikube'
 
 # auth
 brew 'gpg'

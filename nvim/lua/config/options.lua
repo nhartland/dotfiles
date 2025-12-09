@@ -34,7 +34,7 @@ o.timeoutlen = 300
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 o.list = true
-o.listchars = { tab = "» ", trail = "·", nbsp = "␣", leadmultispace = "   ▏" }
+o.listchars = { tab = "» ", trail = "·", nbsp = "␣", leadmultispace = "   │" }
 
 -- Add fzf to runtimepath
 o.runtimepath:append("/opt/homebrew/opt/fzf")

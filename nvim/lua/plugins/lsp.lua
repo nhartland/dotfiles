@@ -1,6 +1,6 @@
 -- LSP Plugins
 return {
-    { "williamboman/mason.nvim", opts = {} },
+    { "mason-org/mason.nvim", opts = {} },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         config = function()
