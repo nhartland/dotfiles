@@ -18,37 +18,7 @@ vim.lsp.enable({
     "markdown-oxide",
 })
 
--- Format and organize imports on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-    callback = function()
-        local bufnr = vim.api.nvim_get_current_buf()
-        local filetype = vim.bo.filetype
-        if filetype == "python" then
-            vim.lsp.buf.format({ bufnr = bufnr, async = false, timeout_ms = 1000 })
-            vim.lsp.buf.code_action({
-                context = {
-                    only = { "source.organizeImports" },
-                    diagnostics = {}
-                },
-                apply = true,
-                async = false,
-            })
-        elseif filetype == "markdown" then
-            -- This code tracks and resets the cursor position
-            local cur_pos = vim.api.nvim_win_get_cursor(0)
-            vim.cmd("silent! %!prettier --stdin-filepath " .. vim.fn.expand("%"))
-            local last_line = vim.api.nvim_buf_line_count(0)
-            cur_pos[1] = math.min(cur_pos[1], last_line)
-            vim.api.nvim_win_set_cursor(0, cur_pos)
-        else
-            -- Check that there is an LSP attached
-            local clients = vim.lsp.get_clients({ bufnr = bufnr })
-            if next(clients) ~= nil then
-                vim.lsp.buf.format({ bufnr = bufnr, async = false, timeout_ms = 1000 })
-            end
-        end
-    end,
-})
+
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
     callback = function(event)

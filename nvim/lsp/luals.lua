@@ -19,6 +19,7 @@ return {
             format = {
                 enable = true,
                 defaultConfig = {
+                    align_continuous_assign_statement = "True",
                     align_continuous_line_space = "1",
                     align_chain_expr = "True"
                 },
