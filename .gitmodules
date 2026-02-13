@@ -4,12 +4,12 @@
 [submodule "strap"]
 	path = strap
 	url = https://github.com/MikeMcQuaid/strap
-[submodule "vim/pack/plugins/start/vim-gitgutter"]
-	path = vim/pack/plugins/start/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "vim/tabnine"]
 	path = vim/tabnine
 	url = git://github.com/zxqfl/tabnine-vim
 [submodule "zsh/antidote"]
 	path = zsh/antidote
 	url = https://github.com/mattmc3/antidote.git
+[submodule "nvim/lsp-addons/love2d"]
+	path = nvim/lsp-addons/love2d
+	url = https://github.com/LuaCATS/love2d.git
