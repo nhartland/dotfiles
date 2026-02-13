@@ -17,16 +17,16 @@ return {
                 diagnosticMode = "openFilesOnly",
                 typeCheckingMode = "basic",
                 useLibraryCodeForTypes = true,
-                -- Overlap with ruff
-                reportUndefinedVariable = false,
-                reportUnusedImport = false,
-                --reportMissingTypeStubs = "none",
-                --reportUnknownMemberType = false,
-                --reportUnknownVariableType = "none",
-                --reportUnknownArgumentType = "none",
-                --reportUnknownLambdaType = "none",
-                -- Use this to disable all linting
-                --ignore = { '*' },
+                -- Defer all lint-style diagnostics to ruff
+                diagnosticSeverityOverrides = {
+                    reportUndefinedVariable = "none",
+                    reportUnusedImport = "none",
+                    reportUnusedVariable = "none",
+                    reportMissingImports = "none",
+                    reportMissingModuleSource = "none",
+                    reportUnusedExpression = "none",
+                    reportDuplicateImport = "none",
+                },
             },
         },
         python = {

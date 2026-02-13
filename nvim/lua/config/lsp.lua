@@ -9,7 +9,6 @@ vim.lsp.config('*', {
 
 vim.lsp.enable({
     'luals',
-    'harperls',
     'basedpyright',
     'ruff',
     'bashls',

@@ -24,7 +24,7 @@ return {
                 },
             },
             workspace = {
-                userThirdParty = { os.getenv("HOME") .. ".config/nvim/lsp-addons/love2d" },
+                userThirdParty = { os.getenv("HOME") .. "/.config/nvim/lsp-addons/love2d" },
                 checkThirdParty = "Apply",
                 library = {
                     vim.fn.expand '~/work/mywork/lua/STv4/forma',
