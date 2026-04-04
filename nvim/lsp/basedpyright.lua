@@ -29,8 +29,5 @@ return {
                 },
             },
         },
-        python = {
-            pythonPath = require("custom.functions").get_poetry_interpreter()
-        },
     }
 }

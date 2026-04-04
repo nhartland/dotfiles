@@ -57,24 +57,4 @@ function M.get_relative_path()
     return filepath -- Fallback to full path if outside the project
 end
 
-function M.get_poetry_venv()
-    local output = vim.fn.system("poetry env info --path")
-    return vim.fn.trim(output)
-end
-
-function M.get_poetry_interpreter()
-    local venv_path = M.get_poetry_venv()
-    if venv_path and venv_path ~= "" then
-        return venv_path .. "/bin/python"
-    end
-    return nil
-end
-
-function M.get_master_poetry_venv()
-    local handle = io.popen("poetry env info -p -C ~/.neovim-python")
-    local result = handle:read("*a")
-    handle:close()
-    return result:gsub("\n", "") .. "/bin/python"
-end
-
 return M
