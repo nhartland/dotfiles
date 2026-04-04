@@ -68,8 +68,8 @@ return
         lazy = true,
         cmd = { "Obsidian" },
         event = {
-            "BufReadPre " .. vim.fn.expand "~" .. "/vault/**/*.md",
-            "BufNewFile " .. vim.fn.expand "~" .. "/vault/**/*.md",
+            "BufReadPre ~/vault/**/*.md",
+            "BufNewFile ~/vault/**/*.md",
         },
         keys = {
             { "<leader>os", "<cmd>Obsidian search<cr>",    mode = "n", desc = "[O]bsidian [S]earch" },

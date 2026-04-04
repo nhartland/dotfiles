@@ -18,7 +18,6 @@ function M.find_project_root()
         "selene.toml",
         ".luarc.json",
         ".luacheckrc",
-        "init.lua",
         ".nvim.lua",
 
         -- General Development

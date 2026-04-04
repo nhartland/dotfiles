@@ -1,8 +1,9 @@
 -- LSP Plugins
 return {
-    { "mason-org/mason.nvim", opts = {} },
+    { "mason-org/mason.nvim", event = "VeryLazy", opts = {} },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
+        event = "VeryLazy",
         config = function()
             -- Ensure the servers and tools above are installed
             local ensure_installed = {

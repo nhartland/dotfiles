@@ -13,7 +13,7 @@ local colorscheme_save_path = vim.fn.expand("~/.config/.base16_theme")
 
 -- Get list of colorscheme files
 function M.get_colorschemes()
-    local handle = vim.loop.fs_scandir(colorscheme_dir)
+    local handle = vim.uv.fs_scandir(colorscheme_dir)
     local colorschemes = {}
     if not handle then
         vim.api.nvim_err_writeln("Error: Could not scan colorschemes directory.")
@@ -21,7 +21,7 @@ function M.get_colorschemes()
     end
 
     while true do
-        local name, _ = vim.loop.fs_scandir_next(handle)
+        local name, _ = vim.uv.fs_scandir_next(handle)
         if not name then
             break
         end
@@ -317,7 +317,7 @@ function M.set_colorscheme(name)
     write_kitty_config(colors, name)
     save_colorscheme(name)
 
-    vim.loop.spawn("kitten", {
+    vim.uv.spawn("kitten", {
         args = {
             "@",
             "set-colors",

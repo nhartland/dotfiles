@@ -1,7 +1,7 @@
 return {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },
-    root_markers = { '.luarc.json', '.luarc.jsonc' },
+    root_markers = { '.luarc.json', '.luarc.jsonc', '.git' },
     -- https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
     settings = {
         Lua = {
@@ -24,14 +24,7 @@ return {
                     align_chain_expr = "True"
                 },
             },
-            workspace = {
-                userThirdParty = { os.getenv("HOME") .. "/.config/nvim/lsp-addons/love2d" },
-                checkThirdParty = "Apply",
-                library = {
-                    vim.fn.expand '~/work/mywork/lua/STv4/forma',
-                    "${3rd}/love2d/library"
-                }
-            }
+
         }
     }
 }

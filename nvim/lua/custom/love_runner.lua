@@ -15,7 +15,7 @@ local function open_terminal()
     love_term_bufnr = vim.api.nvim_get_current_buf()
     love_term_winid = vim.api.nvim_get_current_win()
     vim.api.nvim_buf_set_name(love_term_bufnr, "LOVE2D Terminal")
-    vim.api.nvim_buf_set_option(love_term_bufnr, "buflisted", true)
+    vim.bo[love_term_bufnr].buflisted = true
 
     vim.api.nvim_create_autocmd("TermClose", {
         buffer = love_term_bufnr,

@@ -9,9 +9,6 @@ o.mouse = ""
 o.tabstop = 4
 o.shiftwidth = 4
 o.expandtab = true
-o.backup = true
-o.backupdir = { "~/.vim-tmp", "~/.tmp", "~/tmp", "/var/tmp", "/tmp" }
-
 -- Setting this to anything else messes with Telescope
 o.winborder = 'none'
 
@@ -64,9 +61,9 @@ vim.diagnostic.config({
 })
 
 
-vim.opt.backup = true
-vim.opt.backupdir = { "~/.vim-tmp", "~/.tmp", "~/tmp", "/var/tmp", "/tmp" }
-vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
+o.backup = true
+o.backupdir = { "~/.vim-tmp", "~/.tmp", "~/tmp", "/var/tmp", "/tmp" }
+o.backupskip = { "/tmp/*", "/private/tmp/*" }
 
 vim.o.completeopt = "menuone,noinsert,noselect,popup"
 vim.o.wildmode = "list:longest,full"
