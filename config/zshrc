@@ -36,7 +36,18 @@ bindkey '^[[B' history-search-forward
 
 source ~/.shellrc
 
-alias jp="poetry -P ~/.neovim-python run jupyter lab"
+jp() {
+    local cwd="$PWD"
+    local env_dir="$HOME/.neovim-python"
+    
+    if [ ! -d "$env_dir" ]; then
+        echo "Poetry environment directory $env_dir does not exist"
+        return 1
+    fi
+    
+    poetry run --directory "$env_dir" jupyter lab --notebook-dir="$cwd"
+}
+#alias jp="poetry run jupyter lab --project=~/.neovim-python"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
@@ -68,3 +79,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/hartland/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

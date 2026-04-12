@@ -1,6 +1,7 @@
 [user]
 	name = Nathan Hartland
-	email = nathan@pseudorandom.dev
+	email = nathan.hartland@teampicnic.com
+	signingkey = /Users/hartland/.ssh/SigningPicnic.pub
 [core]
 	excludesfile = ~/.gitignore
 [push]
@@ -26,3 +27,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
