@@ -1,16 +1,15 @@
 [project]
-name = "neovim-pyenv"
+name = "jupyter-hub"
 version = "0.1.0"
 description = ""
 authors = [
     {name = "Nathan Hartland",email = "nathan@pseudorandom.dev"}
 ]
 readme = "README.md"
-requires-python = ">=3.13,<4.0"
+requires-python = ">=3.13,<3.14"
 dependencies = [
     "plotly (>=6.0.0,<7.0.0)",
     "jupyter (>=1.1.1,<2.0.0)",
-    "pynvim (>=0.5.2,<0.6.0)",
     "pyperclip (>=1.9.0,<2.0.0)",
     "nbformat (>=5.10.4,<6.0.0)",
     "pnglatex (>=1.1,<2.0)",
@@ -19,8 +18,7 @@ dependencies = [
     "jupyterlab (>=4.3.5,<5.0.0)",
     "jupyterlab-lsp (>=5.1.0,<6.0.0)",
     "jupyterlab-code-formatter (>=3.0.2,<4.0.0)",
-    "isort (>=6.0.1,<7.0.0)",
-    "black (>=25.1.0,<26.0.0)",
+    "ruff (>=0.9.0,<1.0.0)",
     "jedi-language-server (>=0.45.1,<0.46.0)",
     "pylatexenc (>=2.10,<3.0)",
 ]

@@ -36,7 +36,7 @@ bindkey '^[[B' history-search-forward
 
 source ~/.shellrc
 
-alias jp="poetry -P ~/.neovim-python run jupyter lab"
+alias jp="poetry -P ~/.jupyter-hub run jupyter lab"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
