@@ -8,3 +8,8 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/hartland/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+. "/Users/hartland/.deno/env"
