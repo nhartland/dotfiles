@@ -32,6 +32,7 @@ brew 'graphviz'
 
 # editor
 brew 'neovim'
+brew 'tree-sitter-cli'
 
 # shell
 brew 'zsh'

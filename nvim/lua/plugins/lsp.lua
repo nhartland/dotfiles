@@ -1,6 +1,6 @@
 -- LSP Plugins
 return {
-    { "mason-org/mason.nvim", event = "VeryLazy", opts = {} },
+    { "mason-org/mason.nvim", opts = {} },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         event = "VeryLazy",

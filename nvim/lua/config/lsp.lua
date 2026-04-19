@@ -2,29 +2,33 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.semanticTokens.multilineTokenSupport = true
 
-vim.lsp.config('*', {
+vim.lsp.config("*", {
     capabilities = capabilities,
-    root_markers = { '.git' },
+    root_markers = { ".git" },
 })
 
 vim.lsp.enable({
-    'luals',
-    'basedpyright',
-    'ruff',
-    'bashls',
-    'sqlls',
+    "luals",
+    "ty",
+    "ruff",
+    "bashls",
+    "sqlls",
     "yamlls",
     "dockerls",
     "markdown-oxide",
 })
-
 
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
     callback = function(event)
         local map = function(keys, func, desc, mode)
             mode = mode or "n"
-            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+            vim.keymap.set(
+                mode,
+                keys,
+                func,
+                { buffer = event.buf, desc = "LSP: " .. desc }
+            )
         end
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -38,12 +42,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-t>.
-        map("gd", function() require("telescope.builtin").lsp_definitions() end, "[G]oto [D]efinition")
+        map("gd", function()
+            require("telescope.builtin").lsp_definitions()
+        end, "[G]oto [D]efinition")
 
-        map("gt", function() require("telescope.builtin").lsp_type_definitions() end, "[G]oto [T]ype")
+        map("gt", function()
+            require("telescope.builtin").lsp_type_definitions()
+        end, "[G]oto [T]ype")
 
         -- Find references for the word under your cursor.
-        map("gr", function() require("telescope.builtin").lsp_references() end, "[G]oto [R]eferences")
+        map("gr", function()
+            require("telescope.builtin").lsp_references()
+        end, "[G]oto [R]eferences")
 
         map("<leader>hi", vim.lsp.buf.hover, "[H]over [I]nfo")
 
