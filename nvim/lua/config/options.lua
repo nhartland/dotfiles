@@ -64,6 +64,8 @@ vim.diagnostic.config({
 o.backup = true
 o.backupdir = { "~/.vim-tmp", "~/.tmp", "~/tmp", "/var/tmp", "/tmp" }
 o.backupskip = { "/tmp/*", "/private/tmp/*" }
+o.swapfile = true
+o.directory = { vim.fn.expand("~/.vim-swap//"), "/tmp//" }
 
 vim.o.completeopt = "menuone,noinsert,noselect,popup"
 vim.o.wildmode = "list:longest,full"

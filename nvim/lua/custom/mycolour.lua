@@ -2,9 +2,6 @@ local M = {}
 
 -- Path to the colorschemes directory
 local colorscheme_dir = vim.fn.expand("~/.config/nvim/colorschemes/")
--- Ensure Neovim can find colorschemes
-package.path = colorscheme_dir .. "?.lua;" .. package.path
-
 -- Path to kitty config
 local kitty_path = vim.fn.expand("~/.config/kitty/current-theme.conf")
 
@@ -66,9 +63,9 @@ local function apply_last_saved_colorscheme()
     end
 end
 
--- Load colorscheme from Lua file using require with error handling
 local function load_colorscheme(name)
-    local success, colors = pcall(require, name)
+    local path = colorscheme_dir .. name .. ".lua"
+    local success, colors = pcall(dofile, path)
     if not success then
         vim.api.nvim_err_writeln("Error: Failed to load colorscheme '" .. name .. "'.")
         vim.api.nvim_err_writeln("Lua require error: " .. tostring(colors))
