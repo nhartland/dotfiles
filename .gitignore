@@ -1,5 +1,7 @@
 base16_theme
 vim/spell
+nvim/spell/*
+!nvim/spell/.gitkeep
 vim/.netrwhist
 *.json
 .ipynb_checkpoints
