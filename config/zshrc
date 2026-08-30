@@ -17,7 +17,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   eval "$("$BREW_PREFIX/bin/brew" shellenv)"
   # Kitty themes
   if [[ -n "$KITTY_WINDOW_ID" ]]; then
-      eval "kitten @ --password='control' set-colors -c $HOME/.config/kitty/current-theme.conf"
+      kitten @ set-colors -c "$HOME/.config/kitty/current-theme.conf"
   fi
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux-specific settings
