@@ -39,7 +39,6 @@ brew 'zsh'
 brew 'zsh-completions'
 brew 'zoxide'
 brew 'zsh-syntax-highlighting'
-brew 'antidote'
 brew 'pure'
 brew 'fzf'
 
