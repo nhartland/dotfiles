@@ -4,6 +4,7 @@
 [submodule "strap"]
 	path = strap
 	url = https://github.com/MikeMcQuaid/strap
+	branch = main
 [submodule "zsh/antidote"]
 	path = zsh/antidote
 	url = https://github.com/mattmc3/antidote.git
