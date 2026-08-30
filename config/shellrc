@@ -1,6 +1,6 @@
 # Common shell
 EDITOR="vim"
-export KITTY_CONFIG_DIRECTORY="~/.config/kitty/"
-export PATH="~/.bin/:$PATH"
+export KITTY_CONFIG_DIRECTORY="$HOME/.config/kitty/"
+export PATH="$HOME/.bin:$PATH"
 # Local rc
-source ~/.common_profile
+[ -f ~/.common_profile ] && source ~/.common_profile

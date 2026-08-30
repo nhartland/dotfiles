@@ -40,12 +40,21 @@ alias jp="poetry -P ~/.jupyter-hub run jupyter lab"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
-alias ls="eza"
-alias q="aichat"
+command -v eza >/dev/null && alias ls="eza"
 
 # Z/fzf setup
-eval "$(zoxide init zsh)"
-source <(fzf --zsh)
+command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
+if command -v fzf >/dev/null; then
+  # fzf >= 0.48 generates the shell integration; older packages ship it as files.
+  if fzf_init=$(fzf --zsh 2>/dev/null); then
+    eval "$fzf_init"
+  else
+    for f in /usr/share/doc/fzf/examples/{key-bindings,completion}.zsh; do
+      [[ -r $f ]] && source $f
+    done
+  fi
+  unset fzf_init f
+fi
 
 zoxide_fzf_cd() {
   local dir
@@ -60,9 +69,6 @@ zoxide_fzf_cd() {
 bindkey -s '^D' 'zoxide_fzf_cd\n'
 
 
-#GitHub signed commits
-export GPG_TTY=$(tty)
-gpgconf --launch gpg-agent
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
@@ -70,5 +76,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/hartland/.rd/bin:$PATH"
+[ -d "$HOME/.rd/bin" ] && export PATH="$HOME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
