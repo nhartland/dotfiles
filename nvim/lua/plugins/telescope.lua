@@ -28,12 +28,7 @@ return {
                     "%.aif", "%.ttf",
                 }
             },
-            extensions = {
-                ["ui-select"] = {
-                    require("telescope.themes").get_ivy {
-                        layout_config = { height = 0.30 },
-                    } }
-            },
+            extensions = {},
             pickers = {
                 live_grep = {
                     dynamic_preview_title = true,
@@ -69,6 +64,9 @@ return {
             },
         },
         config = function(_, opts)
+            opts.extensions["ui-select"] = {
+                require("telescope.themes").get_ivy { layout_config = { height = 0.30 } },
+            }
             require("telescope").setup(opts)
             require("telescope").load_extension("fzf")
             require("telescope").load_extension("base16_colorpicker")

@@ -31,11 +31,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             )
         end
 
-        local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client and client.server_capabilities.semanticTokensProvider then
-            client.server_capabilities.semanticTokensProvider = nil
-        end
-
         -- Use internal formatting for bindings like gq.
         vim.bo[event.buf].formatexpr = nil
 

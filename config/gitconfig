@@ -5,8 +5,6 @@
 	excludesfile = ~/.gitignore
 [push]
 	default = simple
-[credential]
-	helper = osxkeychain
 [diff]
     tool = kitty
     guitool = kitty.gui
@@ -28,5 +26,7 @@
 	required = true
 [gpg]
 	format = ssh
-[commit]
-	gpgsign = true
+# Machine-local settings (signing key, credential helper). Untracked and
+# optional -- git silently ignores the include if the file is absent.
+[include]
+	path = ~/.gitconfig.local

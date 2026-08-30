@@ -16,6 +16,17 @@ which are setup as submodules.
 # When on macOS
 cd strap && bash bin/strap.sh
 ```
-### vim
-vim plugins are setup in the vim8 standard way, located at "vim/pack/plugins/"
-for compatibility with vim7, pathogen is used to mirror these plugins.
+
+### neovim
+
+`nvim/` is symlinked to `~/.config/nvim`. Requires neovim >= 0.11; plugins
+(lazy.nvim) and LSP servers (Mason) install on first launch.
+
+### Linux
+
+Debian (bookworm or newer), shell sessions only:
+
+```Shell
+git clone https://github.com/nhartland/dotfiles ~/dotfiles
+~/dotfiles/scripts/bootstrap-debian.sh
+```

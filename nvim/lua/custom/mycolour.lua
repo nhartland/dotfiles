@@ -8,6 +8,9 @@ local kitty_path = vim.fn.expand("~/.config/kitty/current-theme.conf")
 -- Path to last set colorscheme
 local colorscheme_save_path = vim.fn.expand("~/.config/.base16_theme")
 
+-- Used when no colorscheme has been chosen on this machine yet.
+local default_colorscheme = "everforest-hardest"
+
 -- Get list of colorscheme files
 function M.get_colorschemes()
     local handle = vim.uv.fs_scandir(colorscheme_dir)
@@ -51,8 +54,7 @@ local function get_active_colorscheme_name()
             return name
         end
     end
-    vim.notify("No active colourscheme found at " .. colorscheme_save_path .. " or file is empty.")
-    return nil
+    return default_colorscheme
 end
 
 -- This function is called at the end of the file to set the theme on startup

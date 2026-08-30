@@ -141,8 +141,11 @@ rectangle_select_modifiers ctrl+alt
 # control all aspects of kitty, including sending text to kitty windows,
 # opening new windows, closing windows, reading the content of windows, etc.
 # Note that this even works over ssh connections.
-allow_remote_control password
-remote_control_password 'control' set-colors
+# Socket-only remote control: authority comes from filesystem permissions
+# on the socket rather than a shared secret. kitty exports KITTY_LISTEN_ON
+# into child processes, so `kitten @` works without --to or a password.
+allow_remote_control socket-only
+listen_on unix:/tmp/mykitty-{kitty_pid}
 
 
 # The value of the TERM environment variable to set

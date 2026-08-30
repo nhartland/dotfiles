@@ -4,9 +4,7 @@
 [submodule "strap"]
 	path = strap
 	url = https://github.com/MikeMcQuaid/strap
-[submodule "vim/tabnine"]
-	path = vim/tabnine
-	url = git://github.com/zxqfl/tabnine-vim
+	branch = main
 [submodule "zsh/antidote"]
 	path = zsh/antidote
 	url = https://github.com/mattmc3/antidote.git
