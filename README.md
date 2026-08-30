@@ -17,6 +17,11 @@ which are setup as submodules.
 cd strap && bash bin/strap.sh
 ```
 
+### neovim
+
+`nvim/` is symlinked to `~/.config/nvim`. Requires neovim >= 0.11; plugins
+(lazy.nvim) and LSP servers (Mason) install on first launch.
+
 ### Linux
 
 Debian (bookworm or newer), shell sessions only:
