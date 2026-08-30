@@ -1,9 +1,4 @@
--- Defined in init.lua
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.semanticTokens.multilineTokenSupport = true
-
 vim.lsp.config("*", {
-    capabilities = capabilities,
     root_markers = { ".git" },
 })
 

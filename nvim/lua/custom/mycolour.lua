@@ -16,7 +16,7 @@ function M.get_colorschemes()
     local handle = vim.uv.fs_scandir(colorscheme_dir)
     local colorschemes = {}
     if not handle then
-        vim.api.nvim_err_writeln("Error: Could not scan colorschemes directory.")
+        vim.notify("Error: Could not scan colorschemes directory.", vim.log.levels.ERROR)
         return colorschemes
     end
 
@@ -40,7 +40,7 @@ local function save_colorscheme(name)
         file:write(name)
         file:close()
     else
-        vim.api.nvim_err_writeln("Failed to save colorscheme")
+        vim.notify("Failed to save colorscheme", vim.log.levels.ERROR)
     end
 end
 
@@ -69,13 +69,13 @@ local function load_colorscheme(name)
     local path = colorscheme_dir .. name .. ".lua"
     local success, colors = pcall(dofile, path)
     if not success then
-        vim.api.nvim_err_writeln("Error: Failed to load colorscheme '" .. name .. "'.")
-        vim.api.nvim_err_writeln("Lua require error: " .. tostring(colors))
+        vim.notify("Error: Failed to load colorscheme '" .. name .. "'.", vim.log.levels.ERROR)
+        vim.notify("Lua require error: " .. tostring(colors), vim.log.levels.ERROR)
         return nil
     end
 
     if type(colors) ~= "table" then
-        vim.api.nvim_err_writeln("Error: Colorscheme '" .. name .. "' did not return a valid table.")
+        vim.notify("Error: Colorscheme '" .. name .. "' did not return a valid table.", vim.log.levels.ERROR)
         return nil
     end
 
@@ -102,7 +102,7 @@ local function expose_base16_globals(colors)
         if colors[hex_key] then
             vim.g[gui_key] = colors[hex_key]
         else
-            vim.api.nvim_err_writeln("Missing color key: " .. hex_key)
+            vim.notify("Missing color key: " .. hex_key, vim.log.levels.ERROR)
         end
     end
 end
@@ -299,7 +299,7 @@ local function write_kitty_config(colors, name)
         file:write(kitty_template)
         file:close()
     else
-        vim.api.nvim_err_writeln("Failed to write Kitty config")
+        vim.notify("Failed to write Kitty config", vim.log.levels.ERROR)
     end
 end
 
@@ -307,7 +307,7 @@ end
 function M.set_colorscheme(name)
     local colors = load_colorscheme(name)
     if not colors then
-        vim.api.nvim_err_writeln("Failed to load colorscheme: " .. name)
+        vim.notify("Failed to load colorscheme: " .. name, vim.log.levels.ERROR)
         return
     end
 
