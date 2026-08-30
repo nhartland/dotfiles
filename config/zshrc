@@ -15,9 +15,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   source "$BREW_PREFIX/share/zsh/site-functions"
   fpath+=("$BREW_PREFIX/share/zsh/site-functions")
   eval "$("$BREW_PREFIX/bin/brew" shellenv)"
-  # Kitty themes
-  if [[ -n "$KITTY_WINDOW_ID" ]]; then
-      kitten @ set-colors -c "$HOME/.config/kitty/current-theme.conf"
+  # Kitty themes. Remote control is socket-based (see config/kitty), and the
+  # socket only exists for a kitty started after that config landed -- so gate
+  # on KITTY_LISTEN_ON rather than KITTY_WINDOW_ID.
+  if [[ -n "$KITTY_LISTEN_ON" ]]; then
+      kitten @ set-colors -c "$HOME/.config/kitty/current-theme.conf" 2>/dev/null
   fi
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux-specific settings
