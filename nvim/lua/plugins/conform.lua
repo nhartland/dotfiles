@@ -9,6 +9,8 @@ return {
             lua = { "stylua", lsp_format = "fallback" },
         },
         formatters = {
+            -- Only use stylua in projects with a stylua.toml; otherwise fall back to lua_ls.
+            stylua = { require_cwd = true },
             prettier = {
                 prepend_args = { "--prose-wrap", "always" },
             },

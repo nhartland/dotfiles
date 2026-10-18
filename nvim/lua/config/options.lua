@@ -57,7 +57,7 @@ vim.diagnostic.config({
         focusable = false,
     },
     update_in_insert = true, -- default to false
-    severity_sort = false,   -- default to false
+    severity_sort = true,    -- default to false
 })
 
 
